@@ -13,9 +13,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ModalModule,CollapseModule, AccordionModule, DatepickerModule } from 'ngx-bootstrap';
 
 /* Import prismjs core for code hughlits */
-import 'prismjs/prism';
+//import 'prismjs/prism';
 /* Import the language you need to highlight */
-import 'prismjs/components/prism-markup';
+//import 'prismjs/components/prism-markup';
 import { PrismComponent } from 'angular-prism';
 import { PositionHelper } from '../shared/helpers/postion.helper';
 import { SortItemsPipe } from "app/shared/helpers/sort.pipe";
