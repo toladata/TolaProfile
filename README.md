@@ -4,14 +4,14 @@ Profile and user management
 
 Install
 ===
-This project is a 2-in-1 project. With a complete Django rest backend and and Angular2 frontend. Ensure the server you are running on has all the required pip packages for the backend. And all installations for Angular2.
+This project is a 2-in-1 project, with a complete Django REST Backend and a stand-alone Angular2 frontend. Ensure the server you are running on has all the required pip packages for the backend. And all installations for Angular2.
 
 Virtual Environemnt
 ===
 Create a virtual environment on each server your app will run on and install
 app specific libraries in the venv
 
-Instructions (Django Rest Backend)
+Instructions (Django REST Backend)
 ====
 Create Virtualenv
 virtualenv venv  (USES SERVER INSTALLED PACKAGES)
@@ -40,3 +40,10 @@ pip install -r requirements.txt
 
 Instructions (Angular 2 FrontEnd)
 ====
+Refer to (https://angular.io/guide/quickstart) for step by step guide on how to set up angular2 environment.
+
+cd into "FrontEnd" app
+npm install
+*install packages and other app dependancies
+ng serve
+*start the server
