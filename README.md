@@ -11,6 +11,9 @@ Virtual Environemnt
 Create a virtual environment on each server your app will run on and install
 app specific libraries in the venv
 
+## Configuration
+Copy the source/settings/local-sample.py to local.py and modify 
+
 Instructions (Django REST Backend)
 ====
 Create Virtualenv
