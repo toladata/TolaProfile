@@ -40,10 +40,10 @@ pip install -r requirements.txt
 
 Instructions (Angular 2 FrontEnd)
 ====
-Refer to (https://angular.io/guide/quickstart) for step by step guide on how to set up angular2 environment.
+Refer to (https://angular.io/guide/quickstart) for step by step guide on how to set up angular2 environment
 
 cd into "FrontEnd" app
 npm install
-*install packages and other app dependancies
+* install packages and other app dependancies
 ng serve
-*start the server
+* start the server
