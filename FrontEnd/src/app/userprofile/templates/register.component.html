@@ -1,0 +1,36 @@
+<div class="container content"> 
+    <div class="card col-md-6 content offset-md-3">
+        <div class="card-block">
+            <div class="text-center">
+                <h3><i class="fa fa-user"></i> Register</h3>
+                <hr class="mt-2 mb-2">
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" novalidate>
+                <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    <input type="text" id="FirstName" class="form-control" formControlName="firstname" >
+                    <label for="FirstName">First Name</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="lastName" class="form-control" formControlName="lastname" >
+                    <label for="lastName">Email</label>
+                </div>
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input type="text" id="lastName" class="form-control" formControlName="username">
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input type="password" id="password" class="form-control" formControlName="password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="text-center">
+                   <button class="btn btn-primary">Register</button>   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.content
+{
+	margin-top: 70px;
+}
+.task
+{
+	background-color: #f8f8f8;
+	font-weight: bold;
+}
+.edit_btn
+{
+	background-color: #6CB7F0;
+}
+.delete_btn
+{
+	background-color: #E15F4F;
+}
+.card
+{
+	margin-bottom: 10px;
+}
+.card-block
+{
+	padding:5px;
+}
