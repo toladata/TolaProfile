@@ -3,7 +3,7 @@
 }
 
 .view {
-    background-image: url('./assets/img/bg-img.jpg')no-repeat center center fixed;
+    background-image: url('../front_end_assets/img/bg-img.jpg')no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
