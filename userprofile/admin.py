@@ -16,10 +16,10 @@ class OrganizationAdmin(admin.ModelAdmin):
     
 
 class TolaUserAdmin(admin.ModelAdmin):
-	list_display = ('name', 'user', 'organization', 'country')
+	list_display = ('username', 'email', 'organization', 'country')
 	display = 'TolaUser'
 
 # Register your models here.
-admin.register(Organization, OrganizationAdmin)
-admin.register(Country, CoutryAdmin)
-admin.register(TolaUser, TolaUserAdmin)
+admin.site.register(Organization, OrganizationAdmin)
+admin.site.register(Country, CoutryAdmin)
+admin.site.register(TolaUser, TolaUserAdmin)

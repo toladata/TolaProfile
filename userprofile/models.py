@@ -89,12 +89,33 @@ class TolaUserManager(BaseUserManager):
         return tolauser
 
     def create_superuser(self, email, password=None, **kwargs):
-        tolauser = self.create_user(email, password, kwargs)
+        tolauser = self.create_user(email, password, **kwargs)
 
         tolauser.is_admin = True
+        tolauser.is_staff = True        
         tolauser.save()
 
         return tolauser
+
+    def get_full_name(self):
+        return self.fullname
+
+    def get_short_name(self):
+        return self.shortname
+
+    @property
+    def is_superuser(self):
+        return self.is_superuser
+
+    @property
+    def is_staff(self):
+        return self.is_superuser
+
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
 
 class TolaUser(AbstractBaseUser):
     
@@ -104,7 +125,7 @@ class TolaUser(AbstractBaseUser):
     lastname = models.CharField("Last Name", blank=True, null=True, max_length=50)
     
     organization = models.ForeignKey('Organization', default=1, blank=True, null=True, )
-    country = models.ForeignKey(Country, blank=True, null=True)
+    country = models.ForeignKey(Country, blank=True,default=1, null=True)
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
@@ -115,6 +136,8 @@ class TolaUser(AbstractBaseUser):
     table_url = models.CharField(blank=True, null=True, max_length=255)
 
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    
 
     objects = TolaUserManager()
 
@@ -127,5 +150,26 @@ class TolaUser(AbstractBaseUser):
 
     def __unicode__(self):
         return self.username
+    
+    def get_full_name(self):
+        return self.fullname
+
+    def get_short_name(self):
+        return self.username
+
+    @property
+    def is_superuser(self):
+        return self.is_admin
+
+    @property
+    def is_staff(self):
+        return self.is_staff
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return self.is_admin
+
 
 
