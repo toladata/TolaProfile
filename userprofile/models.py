@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import AbstracBaseUser
+from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.signals import user_logged_in, user_logged_out 
 from urllib2 import urlopen
 import json
@@ -97,5 +98,37 @@ class TolaUser(AbstracBaseUser):
 
     def __unicode__(self):
         return self.username
+
+
+class TolaUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **kwargs):
+        
+        # Ensure that an email is set
+        if not email:
+            raise ValueError('You must have a valid e-mail address')
+
+        # Ensure that a username is set
+        if not kwargs.get('username'):
+            raise ValueError('You must have a valid username')
+
+        tolauser = self.model(
+            email=self.normalize_email(email),
+            username=kwargs.get('username'),
+            firstname=kwargs.get('firstname', None),
+            lastname=kwargs.get('lastname', None),
+        )
+
+        tolauser.set_password(password)
+        tolauser.save()
+
+        return tolauser
+
+    def create_superuser(self, email, password=None, **kwargs):
+        tolauser = self.create_user(email, password, kwargs)
+
+        tolauser.is_admin = True
+        tolauser.save()
+
+        return tolauser
 
 
