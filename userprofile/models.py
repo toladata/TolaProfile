@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.contrib.auth.models import AbstracBaseUser
 from django.contrib.auth.signals import user_logged_in, user_logged_out 
 from urllib2 import urlopen
 import json
@@ -65,24 +66,36 @@ class Organization(models.Model):
         return self.name
 
 
-class TolaUser(models.Model):
-    name = models.CharField("Given Name", blank=False, null=False, max_length=100)
-    user = models.OneToOneField(User, unique=True, related_name='tolawork_user')
+class TolaUser(AbstracBaseUser):
+    
+    username = models.CharField("Username", unique=True, null=False, max_length=50)
+    email = models.EmailField(unique=True)
+    firstname = models.CharField("First Name", blank=True, null=True, max_length=50)
+    lastname = models.CharField("Last Name", blank=True, null=True, max_length=50)
+    
     organization = models.ForeignKey('Organization', default=1, blank=True, null=True, )
     country = models.ForeignKey(Country, blank=True, null=True)
+
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
+
     activity_api_token = models.CharField(blank=True, null=True, max_length=255)
     tables_api_token = models.CharField(blank=True, null=True, max_length=255)
     activity_url = models.CharField(blank=True, null=True, max_length=255)
     table_url = models.CharField(blank=True, null=True, max_length=255)
 
+    is_admin = models.BooleanField(default=False)
+
+    objects = TolaUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     class Meta:
         verbose_name_plural = 'Tola Users'
-        ordering = ('name',)
+        ordering = ('username',)
 
     def __unicode__(self):
-        return self.name
-
-
-
+        return self.username
 
 
