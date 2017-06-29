@@ -20,6 +20,6 @@ class TolaUserAdmin(admin.ModelAdmin):
 	display = 'TolaUser'
 
 # Register your models here.
-admin.Register(Organization, OrganizationAdmin)
-admin.Register(Country, CoutryAdmin)
-admin.Register(TolaUser, TolaUserAdmin)
+admin.register(Organization, OrganizationAdmin)
+admin.register(Country, CoutryAdmin)
+admin.register(TolaUser, TolaUserAdmin)
