@@ -131,51 +131,21 @@ FIXTURE_DIRS = (
 )
 ########## END FIXTURE CONFIGURATION
 
-
-########## TEMPLATE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.request',
-    'tola.processor.report_server_check',
-)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
-TEMPLATE_DIRS = (
-    normpath(join(SITE_ROOT, 'customdashboard','templates')),
-    normpath(join(SITE_ROOT, 'templates')),
-)
-########## END TEMPLATE CONFIGURATION
-
-
-########## MIDDLEWARE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
-MIDDLEWARE_CLASSES = (
-    # Default Django middleware.
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.RemoteUserMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'simple_history.middleware.HistoryRequestMiddleware',
-    #'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
-########## END MIDDLEWARE CONFIGURATION
-
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 ########## REST CONFIGURATION
 # Add Pagination to Rest Framework lists
@@ -200,53 +170,42 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 ########## END URL CONFIGURATION
 
 
-########## APP CONFIGURATION
+# Application definition
+
 DJANGO_APPS = (
-    # Default Django apps:
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    'admin_report',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
-    'social.apps.django_app.default',
 )
 
 THIRD_PARTY_APPS = (
     'rest_framework',
-    'rest_framework.authtoken',
-    'django_tables2',
-    'crispy_forms',
-    'django_extensions',
-    'mathfilters',
-    'import_export',
-    'django_wysiwyg',
-    'ckeditor',
-    'ckeditor_uploader',
-    'simplejson',
-    'simple_history',
+    'corsheaders',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'workflow',
-    'formlibrary',
-    'tola',
-    'feed',
-    'indicators',
-    'customdashboard',
-    'configurabledashboard',
-    'tables',
-    'reports',
-
+    'source',
+    'userprofile',
+    'task',
 )
 
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
@@ -290,31 +249,6 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 import os
 PROJECT_PATH = dirname(dirname(dirname(abspath(__file__))))
 path.append(PROJECT_PATH)
-
-
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'filters': {
-#        'require_debug_false': {
-#            '()': 'django.utils.log.RequireDebugFalse'
-#        }
-#    },
-#    'handlers': {
-#        'mail_admins': {
-#            'level': 'ERROR',
-#            'filters': ['require_debug_false'],
-#            'class': 'django.utils.log.AdminEmailHandler'
-#        }
-#   },
-#    'loggers': {
-#        'django.request': {
-#            'handlers': ['mail_admins'],
-#            'level': 'ERROR',
-#            'propagate': True,
-#        },
-#    }
-#}
 
 
 LOGGING = {
@@ -362,5 +296,7 @@ CKEDITOR_CONFIGS = {
         'width': 300,
     },
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
