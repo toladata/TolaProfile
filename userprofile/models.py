@@ -161,10 +161,6 @@ class TolaUser(AbstractBaseUser):
     def is_superuser(self):
         return self.is_admin
 
-    @property
-    def is_staff(self):
-        return self.is_staff
-
     def has_perm(self, perm, obj=None):
         return self.is_admin
 

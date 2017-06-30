@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UserprofileService } from '../userprofile.service';
+import { Router } from "@angular/router";
 
 
 
@@ -14,11 +15,11 @@ export class LoginComponent implements OnInit {
 
   private loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private _service: UserprofileService) { 
+  constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) { 
 
     this.loginForm = fb.group({
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     })
   }
 
@@ -26,6 +27,15 @@ export class LoginComponent implements OnInit {
   }
   login(loginForm){
 
-    this._service.login(loginForm.username, loginForm.password);
+    this._service.login(loginForm.email, loginForm.password)
+            .subscribe(result => {
+                if (result === true) {
+                    let loggedUser = localStorage.getItem("loggedUser");
+                    console.log(loggedUser);
+                    this.router.navigate(['task']);
+                } else {
+                  console.log("There was a problem");
+                }
+            });
   }
 }
