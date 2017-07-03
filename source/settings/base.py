@@ -78,6 +78,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 CORS_ORIGIN_ALLOW_ALL = True
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER':
+    #'rest_framework_jwt.utils.jwt_response_payload_handler',
+    'source.utils.jwt_response_payload_handler',
+}
