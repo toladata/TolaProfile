@@ -29,8 +29,6 @@ ALLOWED_HOSTS = []
 
 ROOT_URLCONF = 'source.urls'
 
-CORS_ORIGIN_ALLOW_ALL = True
-
 WSGI_APPLICATION = 'source.wsgi.application'
 
 #Tell django to use TolaUser model instead of default User
@@ -49,29 +47,11 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',    # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': 'localhost',    # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',  # Set to empty string for default.
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
 
 
 # Internationalization
