@@ -1,39 +1,38 @@
 <div class="container content"> 
-    <div class="card col-md-6 content offset-md-3">
+    <div class="card col-md-8 content offset-md-2">
         <div class="card-block">
             <div class="text-center">
                 <h3><i class="fa fa-user"></i> Register</h3>
             </div>
             <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" novalidate>
                 <div class="form-group row">
-                    <label for="FirstName" class="col-2 col-form-label">Name</label>
-                    <div class="col-10">
+                    <label for="FirstName" class="col-md-2 col-sm-2 col-form-label">First Name</label>
+                    <div class="col-md-10 col-sm-10">
                         <input type="text" id="FirstName" class="form-control" formControlName="firstname" >
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lastName" class="col-2 col-form-label">Email</label>
-                    <div class="col-10">
-                        <input type="text" id="lastName" class="form-control" formControlName="lastname" >
+                    <label for="email" class="col-md-2 col-sm-2 col-form-label">Email</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="text" id="email" class="form-control" formControlName="email" >
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label for="lastname" class="col-md-2 col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="text" id="lastName" class="form-control" formControlName="lastname">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="username" class="col-2 col-form-label">Username</label>
-                    <div class="col-10">
-                        <input type="text" id="lastName" class="form-control" formControlName="username">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="password" class="col-2 col-form-label">Password</label>
-                    <div class="col-10">
+                    <label for="password" class="col-md-2 col-sm-2 col-form-label">Password</label>
+                    <div class="col-md-10 col-sm-10">
                         <input type="password" id="password" class="form-control" formControlName="password">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="password" class="col-2 col-form-label"> Confirm Password</label>
-                    <div class="col-10">
-                        <input type="password" id="password" class="form-control" formControlName="password">
+                    <label for="password1" class="col-md-2 col-sm-2 col-form-label"> Confirm Password</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="password1" id="password" class="form-control" formControlName="confirm_password">
                     </div>
                 </div>
                 <div class="text-center">

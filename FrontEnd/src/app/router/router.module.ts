@@ -7,7 +7,7 @@ import {LandingpageComponent} from "app/landingpage.component";
 
 const appRoutes: Routes = [
 
-  { path: 'task', component: TaskComponent },
+  { path: 'task', component: TaskComponent, data:{requiresLogin: true} },
   {path: 'home', component: LandingpageComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
