@@ -26,27 +26,48 @@ export class UserprofileService {
     
     return this.http.post('http://127.0.0.1:8000/api/auth/login/',JSON.stringify({ email: email, password: password}), options)
         .map((response: Response) => {
-            // login successful if there's a jwt token in the response
-            let token = response.json() && response.json().token;
-            if (token) {
-                // set token property
-                this.token = token;
+                    // login successful if there's a jwt token in the response
+                    let token = response.json() && response.json().token;
+                    if (token) {
+                        // set token property
+                        this.token = token;
 
-                // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('loggedUser', JSON.stringify({ email: email, token: token }));
+                        // store username and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('loggedUser', JSON.stringify({ email: email, token: token }));
 
-                // return true for successful login
-                return true;
-            } else {
-                // return false for failed login
-                console.log("there was an error");
-                return false;
-            }
-         });
+                        // return true for successful login
+                        return true;
+                    } else {
+                        // return false for failed login
+                        console.log("there was an error");
+                        return false;
+                    }
+            });
     }
 
     register(userData){
-        console.log(userData);
+        console.log(JSON.stringify(userData));
+
+        let headers = new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+         });
+
+         let options = new RequestOptions({
+            headers: headers,
+    });
+    
+    return this.http.post('http://127.0.0.1:8000/api/auth/register/',JSON.stringify(userData), options)
+        .map((response: Response) => {
+
+                    let data = response.json();
+                    if (data) {
+                        return true;
+                    } else {
+                        console.log("there was an error");
+                        return false;
+                    }
+            });
 
     }
 
