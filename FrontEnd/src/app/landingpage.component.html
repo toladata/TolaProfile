@@ -1,26 +1,32 @@
-<body style="background-image: url('./front_end_assets/img/bg-img.jpg'); background-repeat: no-repeat; background-size: cover; height:100%;padding-bottom:120px">
-	<div class="container content"> 
-	    <div class="card col-md-6 offset-md-3">
+<body [ngStyle]="{'background-image':  'url(\'./front_end_assets/img/bg-img.jpg\')',
+       'background-color': '#f8f8f8',
+       'background-repeat': 'no-repeat',
+       'background-size': '100% 100%',
+	   'max-height':'780px'}">
+	<div class="container"> 
+		<div class="col-md-12 clear-fix"></div>
+	    <div class="card col-md-6 col-sm-6 offset-md-3">
 	        <div class="card-block">
 	            <div class="text-center">
-	                <h3><i class="fa fa-lock"></i> Login</h3>
-	                <hr class="mt-2 mb-2">
+	                <h3 class="topic"><i class="fa fa-lock"></i> Login</h3>
 	            </div>
-	            <form >
+	            <form>
 	                <!--Body-->
-	                <div class="md-form">
-	                    <i class="fa fa-envelope prefix"></i>
-	                    <input type="text" id="form2" class="form-control">
-	                    <label for="form2">Username</label>
+	                <div class="form-group row">
+	                    <label class="col-md-2 col-sm-2 col-form-label">Username</label>
+	                    <div class="col-md-10 col-sm-10">
+	                        <input type="text" id="form2" class="form-control">
+	                    </div>
 	                </div>
-	                <div class="md-form">
-	                    <i class="fa fa-lock prefix"></i>
-	                    <input type="password" id="form4" class="form-control">
-	                    <label for="form4">Password</label>
+	                <div class="form-group row">
+	                    <label for="form4" class="col-md-2 col-sm-2 col-form-label">Password</label>
+	                    <div class="col-md-10 col-sm-10">
+	                        <input type="password" id="form4" class="form-control">
+	                    </div>
 	                </div>
 	                <div class="text-center">
 	                    <button class="btn btn-primary">Login</button>
-				        <div class="options">
+	                    <div class="options">
 				            <p>Not a member? <a href="#">Sign Up</a></p>
 				            <p>Forgot <a href="#">Password?</a></p>
 				        </div>
@@ -28,5 +34,6 @@
 	            </form>
 	        </div>
 	    </div>
+		<div class="col-md-12 clear-fix"></div>
 	</div>
 </body>
