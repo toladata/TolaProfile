@@ -80,7 +80,7 @@ CACHES = {
 }
 ########## END CACHE CONFIGURATION
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 
