@@ -1,68 +1,115 @@
 <div class="container content">
-      <h4>My Tasks</h4>
+      <h4 class="topic">My Tasks</h4>
   <div class="col-md-12 row">
-    <div class="col-md-8 col-xs-6">
-      <!--Panel-->
+    <div class="col-md-8 col-xs-6 task_main">
       <div class="card">
-          <div class="card-header task">
-              <a href="#">The task title</a>
+        <div class="card-header">
+          <a href="#">The task title</a>
+        </div>
+        <div class="card-block">
+          <p class="card-text">This is the task description.</p>
+          <div class="flex-row">
+            <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+            <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
           </div>
-          <div class="card-block">
-            <p class="card-text">This is the task description.</p>
-            <div class="flex-row">
-              <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-              <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-            </div>
-          </div>
-      </div>
-      <!--/.Panel-->
-      <!--Panel-->
-      <div class="card">
-          <div class="card-header task">
-              <a href="#">The task title</a>
-          </div>
-          <div class="card-block">
-            <p class="card-text">This is the task description.</p>
-            <div class="flex-row">
-              <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-              <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-            </div>
-          </div>
+        </div>
       </div>
       <div class="card">
-          <div class="card-header task">
-              <a href="#">The task title</a>
+        <div class="card-header primary">
+          <a href="#">The task title</a>
+        </div>
+        <div class="card-block">
+          <p class="card-text">This is the task description.</p>
+          <div class="flex-row">
+            <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+            <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
           </div>
-          <div class="card-block">
-            <p class="card-text">This is the task description.</p>
-            <div class="flex-row">
-              <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-              <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-            </div>
-          </div>
+        </div>
       </div>
       <div class="card">
-          <div class="card-header task">
-              <a href="#">The task title</a>
+        <div class="card-header">
+          <a href="#">The task title</a>
+        </div>
+        <div class="card-block">
+          <p class="card-text">This is the task description.</p>
+          <div class="flex-row">
+            <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+            <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
           </div>
-          <div class="card-block">
-            <p class="card-text">This is the task description.</p>
-            <div class="flex-row">
-              <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-              <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-            </div>
-          </div>
+        </div>
       </div>
+      <div class="card">
+        <div class="card-header">
+          <a href="#">The task title</a>
+        </div>
+        <div class="card-block">
+          <p class="card-text">This is the task description.</p>
+          <div class="flex-row">
+            <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+            <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+          </div>
+        </div>
+      </div>
+      
     </div>
     <div class="col-md-4">
-      <form class="form-inline bottom_margin">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search Tasks">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action justify-content-between">Created by Me<span class=" badge badge-primary badge-pill">10</span></a>
-        <a href="#" class="list-group-item list-group-item-action justify-content-between">Assigned to Me<span class="badge badge-primary badge-pill">5</span></a>
-        <a href="#" class="list-group-item list-group-item-action justify-content-between">Completed by Me <span class="badge badge-primary badge-pill">2</span></a>
+      <div>
+        <form class="form-inline bottom_margin">
+          <input type="text" class="form-control col-md-10" placeholder="Search Tasks">
+          <span class="input-group-btn"><button  class="btn btn-info" type="button"> <i class="fa fa-search"></i> </button></span>
+        </form>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <font class="card-title"><strong>Tasks</strong></font>
+        </div>
+        <div class="card-block">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action justify-content-between">Created by Me<span class=" badge badge-primary badge-pill">10</span></a>
+            <a href="#" class="list-group-item list-group-item-action justify-content-between">Assigned to Me<span class="badge badge-primary badge-pill">5</span></a>
+            <a href="#" class="list-group-item list-group-item-action justify-content-between">Completed by Me <span class="badge badge-primary badge-pill">2</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <font class="card-title"><strong>Sort Tasks</strong></font>
+        </div>
+        <div class="card-block">
+          <form>
+            <div class="form-group">
+              <select class="form-control">
+                <option value="">Created</option>
+                <option value="">Due Date</option>
+                <option value="">Task Title</option>
+                <option value="">Status</option>
+                <option value="">Priority</option>
+                <option value="">Assigned</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <font class="card-title"><strong>Filter Tasks</strong></font>
+        </div>
+        <div class="card-block">
+          <p>Click on "+" to add filters to query on and "-" to remove a filter.</p>
+          <div class="form-group">
+            <form class="form-inline">
+              <select name='select' class="col-md-9 form-control">
+                <option value='Priority'>Priority</option>
+                <option value='Assigned_to'>Assigned To </option>
+                <option value='Status'>Status</option>
+                <option value='Dates'>Due Date</option>
+                <option value='Dates_created'>Created Date</option>
+              </select>
+              <span class="input-group-btn"><button  class="btn btn-default" type="button"><i class="fa fa-plus"></i></button></span>
+            </form>
+          </div>
+          <a href="#" class="btn btn-primary">Apply Filter</a>
+        </div>
       </div>
     </div>
   </div>
