@@ -2,6 +2,14 @@
 {
 	margin-top: 25px;
 }
+.font1
+{
+	font-weight: bold;
+}
+.badge
+{
+	padding:5px;
+}
 .task
 {
 	background-color: #f8f8f8;
