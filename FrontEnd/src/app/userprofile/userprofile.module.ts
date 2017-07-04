@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from 'app/shared/footer/footer.component';
+import {TaskComponent} from 'app/task/task.component';
 
 const appRoutes: Routes = [
 
@@ -16,7 +18,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent,
+    TaskComponent
   ],
   imports: [
     CommonModule,
