@@ -27,13 +27,14 @@ export class UserprofileService {
     return this.http.post('http://127.0.0.1:8000/api/auth/login/',JSON.stringify({ email: email, password: password}), options)
         .map((response: Response) => {
                     // login successful if there's a jwt token in the response
-                    let token = response.json() && response.json().token;
+                    let data = response.json();
+                    let token = response.json().token
                     if (token) {
                         // set token property
-                        this.token = token;
+                        this.token = data.token;
 
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('loggedUser', JSON.stringify({ email: email, token: token }));
+                        localStorage.setItem('loggedUser', JSON.stringify({ user: data.user, token: token }));
 
                         // return true for successful login
                         return true;
@@ -72,7 +73,7 @@ export class UserprofileService {
     }
 
     logout(){
-        localStorage.removeItem("user");        
+        localStorage.removeItem("loggedUser");        
         this._router.navigate(['home']);
     }
 }
