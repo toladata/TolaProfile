@@ -4,13 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RoutingModule} from './router/router.module';
 import {RouterModule, Routes} from '@angular/router';
+import {TaskModule} from './task/task.module';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
 import { UserprofileComponent } from './userprofile/userprofile.component';
-import { TaskComponent } from './task/task.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
@@ -18,15 +17,14 @@ import { FooterComponent } from './shared/footer/footer.component';
     AppComponent,
     LandingpageComponent,
     UserprofileComponent,
-    TaskComponent,
     HeaderComponent,
-    FooterComponent,
   ],
   imports: [
     RoutingModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    TaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
