@@ -1,11 +1,16 @@
 .content
 {
-	margin-top: 70px;
+	margin-top: 25px;
 }
 .task
 {
 	background-color: #f8f8f8;
 	font-weight: bold;
+}
+.task_main
+{
+	border-left:1px solid#f8f8f8;
+	border-right:1px solid#f8f8f8;
 }
 .edit_btn
 {
@@ -19,9 +24,9 @@
 {
 	margin-bottom: 10px;
 }
-.card-block
+.topic
 {
-	padding:5px;
+	margin-bottom: 15px;
 }
 .bottom_margin
 {
