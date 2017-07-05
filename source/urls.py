@@ -5,11 +5,12 @@ from task.views import *
 
 router = routers.DefaultRouter()
 
-router.register(r'tasks', TaskViewSet)
+router.register(r'tasks', TaskListViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/auth/', include('userprofile.urls')),
+    #url(r'^api/', include('task.urls')),
 
     #rest framework
     url(r'^api/', include(router.urls)),
