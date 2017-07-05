@@ -40,13 +40,20 @@
           </div>
       </div>
       <div class="form-group row">
+          <div class="col-md-10 col-sm-10">
+              <input type="date" id="status" value=1 class="form-control" formControlName="status" hidden>
+          </div>
+      </div>
+      <div class="form-group row">
           <label for="created_by" class="col-md-2 col-sm-2 col-form-label">Created by:</label>
           <div class="col-md-10 col-sm-10">
               <div class="form-group">
                 <select class="form-control" id="created_by" formControlName="created_by" >
-                  <option value="1">User1</option>
-                  <option value="2">User2</option>
-                  <option value="3">User3</option>
+                  <option value=1>User1</option>
+                  <option value=2>User1</option>
+                  <option value=3>User1</option>
+                  <option value=4>User2</option>
+                  <option value=5>User3</option>
                 </select>
               </div>
           </div>
@@ -56,9 +63,9 @@
           <div class="col-md-10 col-sm-10">
               <div class="form-group">
                 <select class="form-control" id="priority" formControlName="priority" >
-                  <option value="1">High</option>
-                  <option value="2">Normal</option>
-                  <option value="3">Low</option>
+                  <option value=1>High</option>
+                  <option value=2>Normal</option>
+                  <option value=3>Low</option>
                 </select>
               </div>
           </div>
@@ -68,9 +75,9 @@
           <div class="col-md-10 col-sm-10">
               <div class="form-group">
                 <select class="form-control" id="assigned_to" formControlName="assigned_to" >
-                  <option value="">user1</option>
-                  <option value="2">user2</option>
-                  <option value="3">user3</option>
+                  <option value=1>user1</option>
+                  <option value=2>user2</option>
+                  <option value=3>user3</option>
                 </select>
               </div>
           </div>
