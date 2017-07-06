@@ -34,7 +34,8 @@ export class UserprofileService {
                         this.token = data.token;
 
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('loggedUser', JSON.stringify({ user: data.user, token: token }));
+                        localStorage.setItem('id_token', token);
+                        localStorage.setItem('loggedUser', JSON.stringify(data.user));
 
                         // return true for successful login
                         return true;
@@ -73,7 +74,8 @@ export class UserprofileService {
     }
 
     logout(){
-        localStorage.removeItem("loggedUser");        
+        localStorage.removeItem("id_token");       
+        localStorage.removeItem("loggedUser");       
         this._router.navigate(['home']);
     }
 }
