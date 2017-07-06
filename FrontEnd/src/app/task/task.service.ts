@@ -32,7 +32,7 @@ export class TaskService{
 
          let options = new RequestOptions({
             headers: headers,
-    });
+         });
 
         let postData = {
                             "task": taskData.task,
@@ -42,10 +42,60 @@ export class TaskService{
                             "created_by": Number(taskData.created_by),
                             "note": taskData.note
                         };
-                        
-   return this.http.post('http://127.0.0.1:8000/api/tasks/', JSON.stringify(postData), options) 
-                         .map(res => res.json())
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
-                         .subscribe();
+
+         return this.http.post('http://127.0.0.1:8000/api/tasks/', JSON.stringify(postData), options) 
+            .map(res => res.json())
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+            .subscribe();
+    }
+
+    taskDetails(task_id){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        });
+
+        let options = new RequestOptions({
+            headers : headers,
+        });
+
+        return this.http.get('127.0.0.1:8000/api/tasks/'+Number(task_id)+'/', options)
+            .map(res=>res.json())
+            .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
+            .subscribe();
+    }
+
+    updateTask(task_id, editTaskData){
+
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        });
+
+        let options = new RequestOptions({
+            headers : headers,
+        });
+
+        return this.http.put('127.0.0.1:8000/api/tasks/'+Number(task_id)+'/', JSON.stringify(editTaskData), options)
+            .map(res=>res.json())
+            .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
+            .subscribe();
+    }
+
+    deleteTask(task_id){
+        let headers = new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        });
+
+        let options = new RequestOptions({
+            body: JSON.stringify({task_id:Number(task_id)}),
+            headers: headers,
+        });
+
+        return this.http.delete('127.0.0.1:8000/api/tasks/', options)
+            .map(res=>res.json())
+            .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
+            .subscribe();
     }
 }
