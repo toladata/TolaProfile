@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import {RoutingModule} from './router/router.module';
 import {RouterModule, Routes} from '@angular/router';
 import {TaskModule} from './task/task.module';
+import {AuthModule} from './auth.module';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
@@ -20,6 +21,7 @@ import { HeaderComponent } from './shared/header/header.component';
     HeaderComponent,
   ],
   imports: [
+    AuthModule,
     RoutingModule,
     BrowserModule,
     FormsModule,
