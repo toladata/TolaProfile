@@ -1,5 +1,5 @@
 <div class="container content">
-      <div class=" row topic">
+      <div class=" row bottom_margin">
         <div class=" col-md-2"><h4>My Tasks</h4></div>
         <div class=" col-md-8"></div>
     <div class="col-md-1" [ngStyle]="{'float':'right'}">
@@ -50,10 +50,10 @@
               <div class="form-group">
                 <select class="form-control" id="created_by" formControlName="created_by" >
                   <option value=1>User1</option>
-                  <option value=2>User1</option>
-                  <option value=3>User1</option>
-                  <option value=4>User2</option>
-                  <option value=5>User3</option>
+                  <option value=2>User2</option>
+                  <option value=3>User3</option>
+                  <option value=4>User4</option>
+                  <option value=5>User5</option>
                 </select>
               </div>
           </div>
@@ -128,10 +128,95 @@
             </table>
           </div>
         </div>
-          <div class="flex-row">
-            <a type="button" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+          <div>
+            <a type="button" data-toggle="collapse" data-target="#edit_task{{task.id}}" aria-expanded="false" class="btn edit_btn btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
             <a type="button" class="btn delete_btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
           </div>
+          <!-- The edit task collapse -->
+          <div class="collapse" id="edit_task{{task.id}}" class="edit_task">
+            <div class="card card-block">
+              <form [formGroup]="editTaskForm" (ngSubmit)="editTask(editTaskForm.value)" novalidate>
+                <div class="form-group row">
+                    <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="text" id="task" class="form-control" value="{{task.task}}" formControlName="task" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
+                    <div class="col-md-10 col-sm-10">
+                    <textarea type="text" id="note" class="form-control" formControlName="note" value="{{task.note}}"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-md-2 col-sm-2 col-form-label">Submitter Email:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="created_date" class="col-md-2 col-sm-2 col-form-label">Created Date:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="date" id="created_date" class="form-control" formControlName="created_date" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <input type="date" id="due_date" class="form-control" formControlName="due_date" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-10 col-sm-10">
+                        <input type="date" id="status" value=1 class="form-control" formControlName="status" hidden>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="created_by" class="col-md-2 col-sm-2 col-form-label">Created by:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="form-group">
+                          <select class="form-control" id="created_by" formControlName="created_by" >
+                            <option value=1>User1</option>
+                            <option value=2>User2</option>
+                            <option value=3>User3</option>
+                            <option value=4>User4</option>
+                            <option value=5>User5</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="form-group">
+                          <select class="form-control" id="priority" formControlName="priority" >
+                            <option value=1>High</option>
+                            <option value=2>Normal</option>
+                            <option value=3>Low</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="assigned_to" class="col-md-2 col-sm-2 col-form-label">Assigned to:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="form-group">
+                          <select class="form-control" id="assigned_to" formControlName="assigned_to" >
+                            <option value=1>user1</option>
+                            <option value=2>user2</option>
+                            <option value=3>user3</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                   <button class="btn btn-primary">Submit</button>   
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end edit task collapse -->
         </div>
       </div>
       
