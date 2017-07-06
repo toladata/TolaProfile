@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import {RoutingModule} from './router/router.module';
 import {RouterModule, Routes} from '@angular/router';
 import {TaskModule} from './task/task.module';
-import {AuthModule} from './auth.module';
+import { provideAuth }    from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
@@ -21,14 +21,18 @@ import { HeaderComponent } from './shared/header/header.component';
     HeaderComponent,
   ],
   imports: [
-    AuthModule,
     RoutingModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    TaskModule
+    TaskModule,
+    
   ],
-  providers: [],
+  providers: [
+    provideAuth({
+      headerPrefix: 'JWT'
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
