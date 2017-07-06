@@ -7,20 +7,22 @@ import 'rxjs/add/operator/catch'
 import 'rxjs/add/observable/throw';
 
 const TOLAPOFILE_TASK_SERVER = 'http://127.0.0.1:8000/api/tasks/';
+const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json',});
+const  options = new RequestOptions({ headers : headers,});
 
 
 @Injectable()
 export class TaskService{
     constructor(private http: Http, private _authHttp: AuthHttp) { }
     getTasks(){
-        let headers = new Headers({
-            'Accept':'application/json',
-            'Content-Type':'application/json',
+        let jwtHelper: JwtHelper = new JwtHelper();
 
-        });
-        let options = new RequestOptions({
-            headers: headers,
-        });
+        var token = localStorage.getItem('id_token');
+        console.log(
+            jwtHelper.decodeToken(token),
+            jwtHelper.getTokenExpirationDate(token),
+            jwtHelper.isTokenExpired(token)
+        );
         return this._authHttp.get(TOLAPOFILE_TASK_SERVER, options)
         .map(function(response){
             return response.json();
@@ -28,15 +30,6 @@ export class TaskService{
     }
 
     createTask(taskData){
-
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
-
-         let options = new RequestOptions({
-            headers: headers,
-         });
 
         let postData = {
                             "task": taskData.task,
@@ -54,15 +47,7 @@ export class TaskService{
     }
 
     taskDetails(task_id){
-        let headers = new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        });
-
-        let options = new RequestOptions({
-            headers : headers,
-        });
-
+        
         return this._authHttp.get(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', options)
             .map(res=>res.json())
             .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
@@ -70,15 +55,6 @@ export class TaskService{
     }
 
     updateTask(task_id, editTaskData){
-
-        let headers = new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        });
-
-        let options = new RequestOptions({
-            headers : headers,
-        });
 
          let postEditData = {
                             "task": editTaskData.task,
@@ -96,14 +72,6 @@ export class TaskService{
     }
 
     deleteTask(task_id){
-        let headers = new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        });
-
-        let options = new RequestOptions({
-            headers: headers,
-        });
 
         return this._authHttp.delete(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', options)
             .map(res=>res.json())
