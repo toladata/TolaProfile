@@ -13,9 +13,22 @@ import {Router} from '@angular/router';
 export class TaskComponent implements OnInit {
   tasks;
   private createTaskForm: FormGroup;
+  private editTaskForm: FormGroup;
 
   constructor(private _service: TaskService,private fb: FormBuilder, private _router: Router) {
      this.createTaskForm = fb.group({
+      task: ['', Validators.required ],
+      note: ['' ],
+      created_by: [''  ],
+      created_date: [''],
+      due_date: [''],
+      submitter_email: ['', Validators.required],
+      assigned_to: [''],
+      priority: [''],
+      status: ['']
+
+    })
+    this.editTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
       created_by: [''  ],
@@ -43,5 +56,7 @@ export class TaskComponent implements OnInit {
     }
 
   }
+  editTask(formData){
 
+  }
 }
