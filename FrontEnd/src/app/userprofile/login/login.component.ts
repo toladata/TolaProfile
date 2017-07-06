@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
     this._service.login(loginForm.email, loginForm.password)
             .subscribe(result => {
                 if (result === true) {
+                    console.log(localStorage.getItem('id_token'));
+                    
                     this.router.navigate(['task']);
                 } else {
                   console.log("There was a problem");

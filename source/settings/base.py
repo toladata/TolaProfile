@@ -48,6 +48,13 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+#Configure django-rest-framework permissions to accept JSON Web tokens by default.
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+  ),
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -100,4 +107,5 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER':
     #'rest_framework_jwt.utils.jwt_response_payload_handler',
     'source.utils.jwt_response_payload_handler',
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
