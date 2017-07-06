@@ -76,7 +76,16 @@ export class TaskService{
             headers : headers,
         });
 
-        return this.http.put('127.0.0.1:8000/api/tasks/'+Number(task_id)+'/', JSON.stringify(editTaskData), options)
+         let postEditData = {
+                            "task": editTaskData.task,
+                            "priority": Number(editTaskData.priority),
+                            "status": 1,
+                            "submitter_email": editTaskData.submitter_email,
+                            "created_by": Number(editTaskData.created_by),
+                            "note": editTaskData.note
+                        };
+
+        return this.http.put('127.0.0.1:8000/api/tasks/'+Number(task_id)+'/', JSON.stringify(postEditData), options)
             .map(res=>res.json())
             .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
             .subscribe();
@@ -89,11 +98,10 @@ export class TaskService{
         });
 
         let options = new RequestOptions({
-            body: JSON.stringify({task_id:Number(task_id)}),
             headers: headers,
         });
 
-        return this.http.delete('127.0.0.1:8000/api/tasks/', options)
+        return this.http.delete('127.0.0.1:8000/api/tasks/'+Number(task_id)+'/', options)
             .map(res=>res.json())
             .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
             .subscribe();
