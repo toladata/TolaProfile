@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import {RoutingModule} from './router/router.module';
 import {RouterModule, Routes} from '@angular/router';
 import {TaskModule} from './task/task.module';
-import { provideAuth }    from 'angular2-jwt';
+import {AuthConfig, AuthHttp } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { HeaderComponent } from './shared/header/header.component';
 
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp( new AuthConfig({headerPrefix: 'JWT'}), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -29,9 +32,11 @@ import { HeaderComponent } from './shared/header/header.component';
     
   ],
   providers: [
-    provideAuth({
-      headerPrefix: 'JWT'
-    })
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions ]
+    }
   ],
   bootstrap: [AppComponent]
 })
