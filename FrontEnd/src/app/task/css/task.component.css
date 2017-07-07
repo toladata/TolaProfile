@@ -6,6 +6,10 @@
 {
 	font-weight: bold;
 }
+.font2
+{
+	color: #fff;
+}
 .badge
 {
 	padding:5px;
@@ -23,6 +27,7 @@
 .edit_btn
 {
 	background-color: #6CB7F0;
+	color:#fff;
 }
 .delete_btn
 {
