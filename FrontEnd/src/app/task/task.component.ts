@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class TaskComponent implements OnInit {
   tasks;
+  user = JSON.parse(localStorage.getItem('loggedUser'));
   private createTaskForm: FormGroup;
   private editTaskForm: FormGroup;
  
@@ -21,22 +22,19 @@ export class TaskComponent implements OnInit {
      this.createTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
-      created_by: [''  ],
-      created_date: [''],
+      created_by: [this.user.id],
       due_date: [''],
-      submitter_email: ['', Validators.required],
+      submitter_email: [this.user.email],
       assigned_to: [''],
       priority: [''],
-      status: ['']
 
     })
     this.editTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
-      created_by: [''  ],
-      created_date: [''],
+      created_by: [this.user.id],
       due_date: [''],
-      submitter_email: ['', Validators.required],
+      submitter_email: [this.user.email],
       assigned_to: [''],
       priority: [''],
       status: ['']
@@ -47,7 +45,7 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
       this._service.getTasks().subscribe(
-        tasks => this.tasks=tasks
+        tasks => this.tasks=tasks,
         );
   }
 
