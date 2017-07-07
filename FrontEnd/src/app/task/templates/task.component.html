@@ -2,12 +2,18 @@
       <div class=" row bottom_margin">
         <div class=" col-md-2"><h4>My Tasks</h4></div>
         <div class=" col-md-8"></div>
-    <div class="col-md-1" [ngStyle]="{'float':'right'}">
-      <button class="btn btn-success " type="button" data-toggle="collapse" data-target="#add_task" aria-expanded="false" aria-controls="add_task" ><i class="fa fa-plus"></i> New Task</button>
-    </div>
-  </div>
-<div class="collapse" id="add_task">
-  <div class="card card-block">
+        
+<div id="createModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title font3">Add Task</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="card card-block">
     <form [formGroup]="createTaskForm" (ngSubmit)="createTask(createTaskForm.value)" novalidate>
       <div class="form-group row">
           <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
@@ -22,37 +28,9 @@
           </div>
       </div>
       <div class="form-group row">
-          <label for="email" class="col-md-2 col-sm-2 col-form-label">Submitter Email:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="text" id="email" class="form-control" formControlName="submitter_email" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="created_date" class="col-md-2 col-sm-2 col-form-label">Created Date:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="date" id="created_date" class="form-control" formControlName="created_date" >
-          </div>
-      </div>
-      <div class="form-group row">
           <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
           <div class="col-md-10 col-sm-10">
               <input type="date" id="due_date" class="form-control" formControlName="due_date" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <div class="col-md-10 col-sm-10">
-              <input type="date" id="status" value=1 class="form-control" formControlName="status" hidden>
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="created_by" class="col-md-2 col-sm-2 col-form-label">Created by:</label>
-          <div class="col-md-10 col-sm-10">
-              <div class="form-group">
-                <select class="form-control" id="created_by" formControlName="created_by" >
-                  <option value=4>user1</option>
-                  <option value=5>user2</option>
-                </select>
-              </div>
           </div>
       </div>
       <div class="form-group row">
@@ -81,9 +59,22 @@
       <div class="text-center">
          <button class="btn btn-primary">Submit</button>   
       </div>
+      <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>   
+      <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>     
     </form>
   </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
+    <div class="col-md-1" [ngStyle]="{'float':'right'}">
+      <button class="btn btn-success " type="button" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> New Task</button>
+    </div>
+  </div>
   <div class=" row">
     <div class="col-md-8 col-xs-6 task_main">
       <div class="card"  *ngFor="let task of tasks">
@@ -178,7 +169,6 @@
                    <button class="btn btn-primary">Submit</button>   
                 </div>
                 <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email">
-                <input type="date" id="created_date" class="form-control" formControlName="created_date" value="{{task.created_date}}">
                 <input type="text" id="status" value=1 class="form-control" formControlName="status" value="{{task.status}}">
                 <select class="form-control" id="created_by" formControlName="created_by" >
                   <option value="4">User1</option>
