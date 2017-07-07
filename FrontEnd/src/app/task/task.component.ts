@@ -4,6 +4,7 @@ import {TaskService} from './task.service';
 import {TaskModule} from './task.module';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-task',
   templateUrl: './templates/task.component.html',
@@ -14,6 +15,7 @@ export class TaskComponent implements OnInit {
   tasks;
   private createTaskForm: FormGroup;
   private editTaskForm: FormGroup;
+ 
 
   constructor(private _service: TaskService,private fb: FormBuilder, private _router: Router) {
      this.createTaskForm = fb.group({
@@ -50,13 +52,21 @@ export class TaskComponent implements OnInit {
   }
 
   createTask(formData){
-    let task = this._service.createTask(formData)
+    let task = this._service.createTask(formData);
     if (task){
       window.location.reload();
     }
 
   }
-  editTask(formData){
+  editTask(task_id, editFormData){
+    let task = this._service.updateTask(task_id, editFormData);
+    if (task){
+      window.location.reload();
+    }
+  }
+  deleteTask(task_id){
+    this._service.deleteTask(task_id);
+    window.location.reload();
 
   }
 }
