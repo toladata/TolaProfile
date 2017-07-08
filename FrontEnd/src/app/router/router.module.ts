@@ -4,10 +4,11 @@ import {RouterModule, Routes} from '@angular/router';
 import { TaskComponent } from "app/task/task.component";
 import {UserprofileModule} from "app/userprofile/userprofile.module";
 import {LandingpageComponent} from "app/landingpage.component";
+import { AuthGuard } from "../auth-guard";
 
 const appRoutes: Routes = [
 
-  { path: 'task', component: TaskComponent, data:{requiresLogin: true} },
+  { path: 'task', component: TaskComponent, canActivate: [AuthGuard] },
   {path: 'home', component: LandingpageComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
