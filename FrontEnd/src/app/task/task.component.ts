@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./css/task.component.css'],
   providers: [TaskService,TaskModule,FormBuilder]
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit{
   tasks;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   private editTaskForm: FormGroup;

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
             .subscribe(result => {
                 if (result === true) {
                     console.log(localStorage.getItem('id_token'));
-                    
+                    window.location.reload();
                     this.router.navigate(['task']);
                 } else {
                   console.log("There was a problem");

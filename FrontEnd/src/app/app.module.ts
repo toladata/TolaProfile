@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { HeaderComponent } from './shared/header/header.component';
+import {AuthGuard} from './auth-guard';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({headerPrefix: 'JWT'}), http, options);
@@ -37,7 +38,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
-    }
+    },
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
