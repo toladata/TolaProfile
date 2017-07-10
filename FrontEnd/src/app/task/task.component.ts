@@ -15,9 +15,20 @@ export class TaskComponent implements OnInit{
   tasks;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   private editTaskForm: FormGroup;
+  private createTaskForm: FormGroup;
  
 
   constructor(private _service: TaskService,private fb: FormBuilder, private _router: Router) {
+     this.createTaskForm = fb.group({
+      task: ['', Validators.required ],
+      note: ['' ],
+      created_by: [this.user.id],
+      due_date: [''],
+      submitter_email: [this.user.email],
+      assigned_to: [''],
+      priority: [''],
+
+    })
    
     this.editTaskForm = fb.group({
       task: ['', Validators.required ],
@@ -37,6 +48,10 @@ export class TaskComponent implements OnInit{
       this._service.getTasks().subscribe(
         tasks => this.tasks=tasks,
         );
+  }
+
+  createTask(formData){
+    this._service.createTask(formData).subscribe(task => this.tasks.push(task));
   }
 
   editTask(task_id, editFormData){
