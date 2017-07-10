@@ -41,9 +41,10 @@ export class TaskService{
                         };
 
          return this._authHttp.post(TOLAPOFILE_TASK_SERVER, JSON.stringify(postData), options) 
-            .map(res => res.json())
+            .map(function(res){
+                return res.json();
+            })
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
-            .subscribe();
     }
 
     taskDetails(task_id){
