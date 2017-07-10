@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./css/task.component.css'],
   providers: [TaskService,TaskModule,FormBuilder]
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit{
   tasks;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   private createTaskForm: FormGroup;
@@ -50,11 +50,7 @@ export class TaskComponent implements OnInit {
   }
 
   createTask(formData){
-    let task = this._service.createTask(formData);
-    if (task){
-      window.location.reload();
-    }
-
+    this._service.createTask(formData).subscribe(task => this.tasks.push(task));
   }
   editTask(task_id, editFormData){
     let task = this._service.updateTask(task_id, editFormData);
