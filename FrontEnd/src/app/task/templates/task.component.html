@@ -7,67 +7,7 @@
   <div class="modal-dialog modal-lg ">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title font3">Add Task</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="card card-block">
-    <form [formGroup]="createTaskForm" (ngSubmit)="createTask(createTaskForm.value)" novalidate>
-      <div class="form-group row">
-          <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="text" id="task" class="form-control" formControlName="task" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
-          <div class="col-md-10 col-sm-10">
-          <textarea type="text" id="note" class="form-control" formControlName="note" rows="5"></textarea>
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="date" id="due_date" class="form-control" formControlName="due_date" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
-          <div class="col-md-10 col-sm-10">
-              <div class="form-group">
-                <select class="form-control" id="priority" formControlName="priority" >
-                  <option value=1>High</option>
-                  <option value=2>Normal</option>
-                  <option value=3>Low</option>
-                </select>
-              </div>
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="assigned_to" class="col-md-2 col-sm-2 col-form-label">Assigned to:</label>
-          <div class="col-md-10 col-sm-10">
-              <div class="form-group">
-                <select class="form-control" id="assigned_to" formControlName="assigned_to" >
-                  <option value=4>user1</option>
-                  <option value=5>user2</option>
-                </select>
-              </div>
-          </div>
-      </div>
-      <div class="text-center">
-         <button class="btn btn-primary">Submit</button>   
-      </div>
-      <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>   
-      <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>     
-    </form>
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+    <create-task></create-task>
 
   </div>
 </div>
