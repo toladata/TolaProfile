@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from 'app/shared/footer/footer.component';
 import {TaskComponent} from 'app/task/task.component';
+import {CreateTaskComponent} from 'app/task/createTask.component';
 
 const appRoutes: Routes = [
 
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    TaskComponent
+    TaskComponent,
+    CreateTaskComponent
   ],
   imports: [
     CommonModule,
