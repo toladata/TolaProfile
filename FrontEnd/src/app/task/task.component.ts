@@ -14,12 +14,11 @@ import {Router} from '@angular/router';
 })
 export class TaskComponent implements OnInit{
   tasks;
+  task;
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   private createTaskForm: FormGroup;
-  private editTaskForm: FormGroup;
  
-
   constructor(
     private _service: TaskService,
     private fb: FormBuilder, 
@@ -36,18 +35,6 @@ export class TaskComponent implements OnInit{
       priority: [''],
 
     })
-    this.editTaskForm = fb.group({
-      task: ['', Validators.required ],
-      note: ['' ],
-      created_by: [this.user.id],
-      due_date: [''],
-      submitter_email: [this.user.email],
-      assigned_to: [''],
-      priority: [''],
-      status: ['']
-
-    })
-  
    }
 
   ngOnInit() {
@@ -64,10 +51,11 @@ export class TaskComponent implements OnInit{
   }
 
   editTask(task_id, editFormData){
+    console.log(editFormData);
     let task = this._service.updateTask(task_id, editFormData);
-    if (task){
-      window.location.reload();
-    }
+    // if (task){
+    //   window.location.reload();
+    // }
   }
 
   deleteTask(task_id){
@@ -77,6 +65,13 @@ export class TaskComponent implements OnInit{
       this._service.deleteTask(task_id);
       this.tasks = this.tasks.filter(x => x.id !== task_id);
     }
+    
+  }
+
+  getTasksDetails(task_id){
+    this._service.taskDetails(task_id).subscribe(function(response){
+        let task =response;
+      });
     
   }
 }

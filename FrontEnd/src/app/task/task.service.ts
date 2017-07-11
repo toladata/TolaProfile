@@ -50,9 +50,10 @@ export class TaskService{
     taskDetails(task_id){
         
         return this._authHttp.get(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', options)
-            .map(res=>res.json())
+            .map(function(response){
+                return response.json()}
+            )
             .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
-            .subscribe();
     }
 
     updateTask(task_id, editTaskData){
