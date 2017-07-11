@@ -45,6 +45,7 @@ export class TaskComponent implements OnInit{
       submitter_email: [this.user.email],
       assigned_to: [''],
       priority: [''],
+      status: [''],
 
     })
    }
