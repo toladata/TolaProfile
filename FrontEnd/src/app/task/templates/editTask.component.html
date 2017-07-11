@@ -1,0 +1,54 @@
+<div class="card card-block">
+    <form [formGroup]="editTaskForm" (ngSubmit)="editTask(task.id,editTaskForm.value)" novalidate>
+    <div class="form-group row">
+        <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
+        <div class="col-md-10 col-sm-10">
+            <input type="text" id="task" class="form-control" value="{{task.task}}" formControlName="task" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
+        <div class="col-md-10 col-sm-10">
+        <textarea type="text" id="note" class="form-control" formControlName="note" rows="5" value="{{task.note}}"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
+        <div class="col-md-10 col-sm-10">
+            <input type="date" id="due_date" class="form-control" formControlName="due_date" value="{{task.due_date}}">
+        </div>
+    </div>  
+    <div class="form-group row">
+        <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
+        <div class="col-md-10 col-sm-10">
+            <div class="form-group">
+                <select class="form-control" id="priority" formControlName="priority" >
+                <option value=1>High</option>
+                <option value=2>Normal</option>
+                <option value=3>Low</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="assigned_to" class="col-md-2 col-sm-2 col-form-label">Assigned to:</label>
+        <div class="col-md-10 col-sm-10">
+            <div class="form-group">
+                <select class="form-control" id="assigned_to" formControlName="assigned_to" >
+                <option value=4>user1</option>
+                <option value=5>user2</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary">Submit</button>   
+    </div>
+    <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email">
+    <input type="text" id="status" value=1 class="form-control" formControlName="status" value="{{task.status}}">
+    <select class="form-control" id="created_by" formControlName="created_by" >
+        <option value="4">User1</option>
+        <option value="5">User2</option>
+    </select>
+    </form>
+</div>
