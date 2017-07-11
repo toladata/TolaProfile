@@ -62,15 +62,21 @@ export class TaskComponent implements OnInit{
   createTask(formData){
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
   }
+
   editTask(task_id, editFormData){
     let task = this._service.updateTask(task_id, editFormData);
     if (task){
       window.location.reload();
     }
   }
-  deleteTask(task_id){
-    this._service.deleteTask(task_id);
-    window.location.reload();
 
+  deleteTask(task_id){
+    let confirm_delete = confirm("Are you sure you want to delete task #"+task_id+ " ?");
+    
+    if(confirm_delete == true){
+      this._service.deleteTask(task_id);
+      this.tasks = this.tasks.filter(x => x.id !== task_id);
+    }
+    
   }
 }
