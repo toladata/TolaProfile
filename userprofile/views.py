@@ -13,6 +13,7 @@ from rest_framework.pagination import PageNumberPagination
 import django_filters
 from rest_framework import status
 from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 class CountryViewSet(viewsets.ModelViewSet):
 
@@ -21,15 +22,15 @@ class CountryViewSet(viewsets.ModelViewSet):
 
 
 class OrganizationViewset(viewsets.ModelViewSet):
-
 	queryset = Organization.objects.all()
 	serializer_class = OrganizationSerializer
 
 
 class TolaUserViewset(viewsets.ModelViewSet):
-
-	queryset = TolaUser.objects.all()
-	serializer_class = TolaUserSerializer
+    permision_classes = (IsAuthenticated,)    
+    queryset = TolaUser.objects.all()
+    serializer_class = TolaUserSerializer
+    
 
 class UserRegister(APIView):
     """
