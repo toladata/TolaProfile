@@ -118,14 +118,20 @@
           </div>
         </div>
           <div>
-          <a  class="btn edit_btn btn-sm" data-toggle="collapse" href="#edit_task{{task.id}}" aria-expanded="false" aria-controls="edit_task"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+            <button type="button" class="btn edit_btn btn-sm" data-toggle="modal" data-target="#edit_task"><i class="fa fa-edit" aria-hidden="true"></i> Edit</button>
             <button type="button" class="btn delete_btn btn-sm" (click)="deleteTask(task.id)"> <font class="font2"><i class="fa fa-trash" aria-hidden="true"></i> Delete</font></button>
-
           </div>
-          <!-- The edit task collapse -->
-        <div class="collapse edit_task" id="edit_task{{task.id}}">
-            <div class="card card-block">
-              <form [formGroup]="editTaskForm" (ngSubmit)="editTask(task.id,editTaskForm.value)" novalidate>
+        </div>
+      <!-- edit task Modal -->
+          <div class="modal fade" id="edit_task" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Edit Task</h4>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="editTaskForm" (ngSubmit)="editTask(task.id,editTaskForm.value)" novalidate>
                 <div class="form-group row">
                     <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
                     <div class="col-md-10 col-sm-10">
@@ -169,18 +175,22 @@
                 <div class="text-center">
                    <button class="btn btn-primary">Submit</button>   
                 </div>
-                <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email">
-                <input type="text" id="status" value=1 class="form-control" formControlName="status" value="{{task.status}}">
-                <select class="form-control" id="created_by" formControlName="created_by" >
+                <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email" hidden>
+                <input type="text" id="status" value=1 class="form-control" formControlName="status" value="{{task.status}}" hidden>
+                <select class="form-control" id="created_by" formControlName="created_by" hidden >
                     <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
                 </select>
               </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
             </div>
           </div>
-          <!-- end edit task collapse -->
-        </div>
+          <!-- end edit task Modal -->
       </div>
-      
     </div>
     <div class="col-md-4">
       <div>
