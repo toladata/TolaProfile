@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import {RoutingModule} from './router/router.module';
 import {RouterModule, Routes} from '@angular/router';
@@ -29,6 +29,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RoutingModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     TaskModule,
     

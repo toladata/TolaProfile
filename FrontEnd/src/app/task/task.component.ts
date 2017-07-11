@@ -17,8 +17,8 @@ export class TaskComponent implements OnInit{
   task;
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
-  private createTaskForm: FormGroup;
   private editTaskForm: FormGroup;
+  private createTaskForm: FormGroup;
  
   constructor(
     private _service: TaskService,
@@ -36,6 +36,7 @@ export class TaskComponent implements OnInit{
       priority: [''],
 
     })
+   
     this.editTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
