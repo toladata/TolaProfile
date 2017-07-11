@@ -50,8 +50,7 @@
           <div class="col-md-10 col-sm-10">
               <div class="form-group">
                 <select class="form-control" id="assigned_to" formControlName="assigned_to" >
-                  <option value=4>user1</option>
-                  <option value=5>user2</option>
+                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
                 </select>
               </div>
           </div>
@@ -159,8 +158,7 @@
                     <div class="col-md-10 col-sm-10">
                         <div class="form-group">
                           <select class="form-control" id="assigned_to" formControlName="assigned_to" >
-                            <option value=4>user1</option>
-                            <option value=5>user2</option>
+                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
                           </select>
                         </div>
                     </div>
@@ -171,8 +169,7 @@
                 <input type="text" id="email" class="form-control" value="{{task.submitter_email}}" formControlName="submitter_email">
                 <input type="text" id="status" value=1 class="form-control" formControlName="status" value="{{task.status}}">
                 <select class="form-control" id="created_by" formControlName="created_by" >
-                  <option value="4">User1</option>
-                  <option value="5">User2</option>
+                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
                 </select>
               </form>
             </div>

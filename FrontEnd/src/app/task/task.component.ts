@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {TaskService} from './task.service';
+import {SharedService} from '../shared/services/shared.service';
 import {TaskModule} from './task.module';
 import {Router} from '@angular/router';
 
@@ -13,13 +14,19 @@ import {Router} from '@angular/router';
 })
 export class TaskComponent implements OnInit{
   tasks;
+  tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   private createTaskForm: FormGroup;
   private editTaskForm: FormGroup;
  
 
-  constructor(private _service: TaskService,private fb: FormBuilder, private _router: Router) {
-     this.createTaskForm = fb.group({
+  constructor(
+    private _service: TaskService,
+    private fb: FormBuilder, 
+    private _router: Router,
+    private _sharedService: SharedService
+    ){
+    this.createTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
       created_by: [this.user.id],
@@ -47,6 +54,9 @@ export class TaskComponent implements OnInit{
       this._service.getTasks().subscribe(
         tasks => this.tasks=tasks,
         );
+      this._sharedService.getTolaUsers().subscribe(
+        tolausers => this.tolausers=tolausers,
+      );
   }
 
   createTask(formData){
