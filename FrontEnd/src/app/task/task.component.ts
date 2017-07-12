@@ -14,7 +14,6 @@ import {Router} from '@angular/router';
 })
 export class TaskComponent implements OnInit{
   tasks;
-  task;
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
 
@@ -66,15 +65,14 @@ export class TaskComponent implements OnInit{
 
   editTask(task_id, editFormData){
     console.log(editFormData);
-    let task = this._service.updateTask(task_id, editFormData);
-    // if (task){
-    //   window.location.reload();
-    // }
+    this._service.updateTask(task_id, editFormData).subscribe(
+      task =>this.tasks.push(task),
+    );
+    this.tasks = this.tasks.filter(x => x.id !== task_id);  
   }
 
   deleteTask(task_id){
     let confirm_delete = confirm("Are you sure you want to delete task #"+task_id+ " ?");
-    
     if(confirm_delete == true){
       this._service.deleteTask(task_id);
       this.tasks = this.tasks.filter(x => x.id !== task_id);

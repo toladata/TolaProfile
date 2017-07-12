@@ -68,9 +68,10 @@ export class TaskService{
                         };
 
         return this._authHttp.put(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', JSON.stringify(postEditData), options)
-            .map(res=>res.json())
+            .map(function(response){
+                return response.json()})
             .catch((error:any)=>Observable.throw(error.json().error || 'Server error'))
-            .subscribe();
+            
     }
 
     deleteTask(task_id){
