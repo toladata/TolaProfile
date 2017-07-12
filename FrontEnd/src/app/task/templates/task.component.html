@@ -110,7 +110,9 @@
               </tr>
               <tr>
                 <td class="font1">Assigned to</td>
-                <td>{{task.assigned_to_id}}</td>
+                <div *ngFor="let user of tolausers">
+                <td *ngIf="task.assigned_to == user.id">{{user.username}}</td>
+                </div>
                 <td class="font1">Due Date</td>
                 <td>{{task.due_date | date}}</td>
               </tr>
