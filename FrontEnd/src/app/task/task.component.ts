@@ -17,6 +17,7 @@ export class TaskComponent implements OnInit{
   task;
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
+
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
  
@@ -81,10 +82,25 @@ export class TaskComponent implements OnInit{
     
   }
 
-  getTasksDetails(task_id){
+  getTaskDeatils(task_id){
     this._service.taskDetails(task_id).subscribe(function(response){
-        let task =response;
+        return response;
       });
     
+  }
+  //A method to autofill the edit task form
+  fillInEditTaskForm(task_id): void{
+        let editedTask = this.tasks.filter(x => x.id === task_id)[0];
+
+        this.editTaskForm.setValue({
+          task: editedTask.task,
+          note: editedTask.note,
+          created_by: editedTask.created_by,
+          due_date: editedTask.due_date,
+          submitter_email: editedTask.submitter_email,
+          assigned_to: editedTask.assigned_to,
+          priority: editedTask.priority,
+          status: editedTask.status
+        });
   }
 }
