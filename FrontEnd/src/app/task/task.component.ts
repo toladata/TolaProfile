@@ -66,7 +66,7 @@ export class TaskComponent implements OnInit{
   editTask(task_id, editFormData){
     console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
-      task =>this.tasks.push(task),
+      task =>this.tasks.unshift(task),
     );
     this.tasks = this.tasks.filter(x => x.id !== task_id);  
   }
