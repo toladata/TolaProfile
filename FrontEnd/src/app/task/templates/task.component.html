@@ -1,25 +1,31 @@
 <div class="container content">
       <div class=" row bottom_margin">
-        <div class="d-flex justify-content-end col-md-8">
+        <div class="d-flex col-md-12">
         <div class="mr-auto p-2"> <h4>My Tasks</h4></div>
           <div class="p-2">
-              <select class="form-control">
+              <select class="form-control" #status (change)= "filterTask('status',status.value)">
               <option disabled>Status</option>
-              <option>High</option>
+              <option [value]=1>Active</option>
+              <option [value]=2>Reopened</option>
+              <option [value]=3>Completed</option>
               </select>
           </div>
           <div class="p-2">
-            <select class="form-control">
+            <select class="form-control" #priority (change)= "filterTask('priority',priority.value)">
               <option disabled>Priority</option>
-              <option>High</option>
+              <option [value]=1>High</option>
+              <option [value]=2>Normal</option>
+              <option [value]=3>Low</option>
             </select>
           </div>
-          <div class="p-2"> <select class="form-control">
+          <div class="p-2"> 
+            <select class="form-control" #assigned (change)= "filterTask('assigned',assigned.value)">
               <option disabled>Assignee</option>
-              <option>User1</option>
+              <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
             </select>
           </div>
-          <div class="p-2"><button class="btn btn-success " type="button" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> New Task</button></div>
+          <div class="mr-auto p-2"><button class="btn btn-warning btn-sm reset_btn" (click)="getAllTasks()" type="button"><i class="fa fa-refresh"></i> Reset Filter(s)</button></div>
+          <div class="ml-auto p-2"><button class="btn btn-success " type="button" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> New Task</button></div>
         </div>
 
         <div class=" col-md-8"></div>
@@ -96,6 +102,9 @@
   </div>
   <div class=" row">
     <div class="col-md-8 col-xs-6 task_main">
+      <div class="alert alert-info" role="alert" *ngIf= "tasks?.length == 0">
+        No tasks were found!
+      </div>
       <div class="card"  *ngFor="let task of tasks">
         <div class="card-header">
           <a href="#">{{task.task}}</a>
@@ -168,7 +177,19 @@
                     <div class="col-md-10 col-sm-10">
                         <input type="date" id="due_date" class="form-control" formControlName="due_date">
                     </div>
-                </div>  
+                </div> 
+                <div class="form-group row">
+                    <label for="priority" class="col-md-2 col-sm-2 col-form-label">Status:</label>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="form-group">
+                          <select class="form-control" id="status" value=1 class="form-control" formControlName="status">
+                            <option value=1>Active</option>
+                            <option value=2>Reopened</option>
+                            <option value=3>Completed</option>
+                          </select>
+                        </div>
+                    </div>
+                </div> 
                 <div class="form-group row">
                     <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
                     <div class="col-md-10 col-sm-10">
@@ -195,7 +216,6 @@
                    <button class="btn btn-primary" data-dismiss="modal" (click)="editTask(task.id,editTaskForm.value)">Save Changes</button>   
                 </div>
                 <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
-                <input type="text" id="status" value=1 class="form-control" formControlName="status" hidden>
                 <select class="form-control" id="created_by" formControlName="created_by" hidden >
                     <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
                 </select>
@@ -228,9 +248,9 @@
         </div>
         <div class="card-block">
           <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action justify-content-between">Created by Me<span class=" badge badge-primary badge-pill">10</span></a>
-            <a href="#" class="list-group-item list-group-item-action justify-content-between">Assigned to Me<span class="badge badge-primary badge-pill">5</span></a>
-            <a href="#" class="list-group-item list-group-item-action justify-content-between">Completed by Me <span class="badge badge-primary badge-pill">2</span></a>
+            <a class= "list-group-item list-group-item-action justify-content-between" (click)= "filterTask('created',user.id)"><font class="make_link">Created by Me</font><span class=" badge badge-primary badge-pill">10</span></a>
+            <a class="list-group-item list-group-item-action justify-content-between" (click)= "filterTask('assigned',user.id)"><font class="make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">5</span></a>
+            <a class="list-group-item list-group-item-action justify-content-between" (click)= "filterTask('completed',user.id)"><font class="make_link">Completed by Me </font><span class="badge badge-primary badge-pill">2</span></a>
           </div>
         </div>
       </div>

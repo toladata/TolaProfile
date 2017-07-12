@@ -51,12 +51,18 @@ export class TaskComponent implements OnInit{
    }
 
   ngOnInit() {
-      this._service.getTasks().subscribe(
-        tasks => this.tasks=tasks,
-        );
+
+      this.getAllTasks();
       this._sharedService.getTolaUsers().subscribe(
         tolausers => this.tolausers=tolausers,
       );
+  }
+
+  //get all tasks
+  getAllTasks(){
+    this._service.getTasks().subscribe(
+        tasks => this.tasks=tasks,
+        );
   }
 
   //Create a task
@@ -104,5 +110,30 @@ export class TaskComponent implements OnInit{
           priority: editedTask.priority,
           status: editedTask.status
         });
+  }
+
+  //Filter tasks
+  filterTask(option,value){
+    if (option === "status"){
+      this.tasks =  this.tasks.filter(x => x.status === Number(value));
+    }
+
+    if (option === "priority"){    
+      this.tasks =  this.tasks.filter(x => x.priority === Number(value));
+    }
+
+    if (option === "assigned"){     
+      this.tasks =  this.tasks.filter(x => x.assigned_to === Number(value));
+    }
+
+    if (option === "created"){
+      console.log(value);     
+      this.tasks =  this.tasks.filter(x => x.created_by === Number(value));
+    }
+
+    if (option === "completed"){
+      console.log(value);     
+      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
+    }
   }
 }

@@ -37,6 +37,10 @@
 {
 	background-color: #E15F4F;
 }
+.reset_btn
+{
+	margin-top: 5px;
+}
 .card
 {
 	margin-bottom: 10px;
@@ -48,4 +52,10 @@
 .bottom_margin
 {
 	margin-bottom: 15px;
+}
+.make_link
+{
+	cursor:pointer;
+	color:blue;
+
 }

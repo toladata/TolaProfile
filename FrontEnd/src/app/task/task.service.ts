@@ -61,7 +61,7 @@ export class TaskService{
          let postEditData = {
                             "task": editTaskData.task,
                             "priority": Number(editTaskData.priority),
-                            "status": 1,
+                            "status": Number(editTaskData.status),
                             "submitter_email": editTaskData.submitter_email,
                             "created_by": Number(editTaskData.created_by),
                             "note": editTaskData.note,
