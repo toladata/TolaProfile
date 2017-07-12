@@ -59,10 +59,12 @@ export class TaskComponent implements OnInit{
       );
   }
 
+  //Create a task
   createTask(formData){
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
   }
-
+  
+  //Edit task
   editTask(task_id, editFormData){
     console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
@@ -71,6 +73,7 @@ export class TaskComponent implements OnInit{
     this.tasks = this.tasks.filter(x => x.id !== task_id);  
   }
 
+  //Delete Task
   deleteTask(task_id){
     let confirm_delete = confirm("Are you sure you want to delete task #"+task_id+ " ?");
     if(confirm_delete == true){
@@ -80,16 +83,17 @@ export class TaskComponent implements OnInit{
     
   }
 
+  //Fetch Specific Task Details
   getTaskDeatils(task_id){
     this._service.taskDetails(task_id).subscribe(function(response){
         return response;
       });
     
   }
+
   //A method to autofill the edit task form
   fillInEditTaskForm(task_id): void{
         let editedTask = this.tasks.filter(x => x.id === task_id)[0];
-
         this.editTaskForm.setValue({
           task: editedTask.task,
           note: editedTask.note,

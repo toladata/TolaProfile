@@ -64,7 +64,9 @@ export class TaskService{
                             "status": 1,
                             "submitter_email": editTaskData.submitter_email,
                             "created_by": Number(editTaskData.created_by),
-                            "note": editTaskData.note
+                            "note": editTaskData.note,
+                            "assigned_to": Number(editTaskData.assigned_to),
+                            "due_date": new Date(editTaskData.due_date)
                         };
 
         return this._authHttp.put(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', JSON.stringify(postEditData), options)
