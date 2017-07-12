@@ -1,81 +1,98 @@
 <div class="container content">
       <div class=" row bottom_margin">
-        <div class=" col-md-2"><h4>My Tasks</h4></div>
+        <div class="d-flex justify-content-end col-md-8">
+        <div class="mr-auto p-2"> <h4>My Tasks</h4></div>
+          <div class="p-2">
+              <select class="form-control">
+              <option disabled>Status</option>
+              <option>High</option>
+              </select>
+          </div>
+          <div class="p-2">
+            <select class="form-control">
+              <option disabled>Priority</option>
+              <option>High</option>
+            </select>
+          </div>
+          <div class="p-2"> <select class="form-control">
+              <option disabled>Assignee</option>
+              <option>User1</option>
+            </select>
+          </div>
+          <div class="p-2"><button class="btn btn-success " type="button" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> New Task</button></div>
+        </div>
+
         <div class=" col-md-8"></div>
         
-<div id="createModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg ">
+        <div id="createModal" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg ">
 
-    <!-- Modal content-->
+            <!-- Modal content-->
 
-    <!--<create-task></create-task>-->
+            <!--<create-task></create-task>-->
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title font3">Add Task</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="card card-block">
-    <form [formGroup]="createTaskForm" novalidate>
-      <div class="form-group row">
-          <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="text" id="task" class="form-control" formControlName="task" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
-          <div class="col-md-10 col-sm-10">
-          <textarea type="text" id="note" class="form-control" formControlName="note" rows="5"></textarea>
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
-          <div class="col-md-10 col-sm-10">
-              <input type="date" id="due_date" class="form-control" formControlName="due_date" >
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
-          <div class="col-md-10 col-sm-10">
-              <div class="form-group">
-                <select class="form-control" id="priority" formControlName="priority" >
-                  <option value=1>High</option>
-                  <option value=2>Normal</option>
-                  <option value=3>Low</option>
-                </select>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title font3">Add Task</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
-          </div>
-      </div>
-      <div class="form-group row">
-          <label for="assigned_to" class="col-md-2 col-sm-2 col-form-label">Assigned to:</label>
-          <div class="col-md-10 col-sm-10">
-              <div class="form-group">
-                <select class="form-control" id="assigned_to" formControlName="assigned_to" >
-                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
-                </select>
+              <div class="modal-body">
+                <div class="card card-block">
+            <form [formGroup]="createTaskForm" novalidate>
+              <div class="form-group row">
+                  <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
+                  <div class="col-md-10 col-sm-10">
+                      <input type="text" id="task" class="form-control" formControlName="task" >
+                  </div>
               </div>
+              <div class="form-group row">
+                  <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
+                  <div class="col-md-10 col-sm-10">
+                  <textarea type="text" id="note" class="form-control" formControlName="note" rows="5"></textarea>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
+                  <div class="col-md-10 col-sm-10">
+                      <input type="date" id="due_date" class="form-control" formControlName="due_date" >
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="priority" class="col-md-2 col-sm-2 col-form-label">Priority:</label>
+                  <div class="col-md-10 col-sm-10">
+                      <div class="form-group">
+                        <select class="form-control" id="priority" formControlName="priority" >
+                          <option value=1>High</option>
+                          <option value=2>Normal</option>
+                          <option value=3>Low</option>
+                        </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="assigned_to" class="col-md-2 col-sm-2 col-form-label">Assigned to:</label>
+                  <div class="col-md-10 col-sm-10">
+                      <div class="form-group">
+                        <select class="form-control" id="assigned_to" formControlName="assigned_to" >
+                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
+                        </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="text-center">
+                 <button class="btn btn-primary" data-dismiss="modal" (click)="createTask(createTaskForm.value)">Submit</button>   
+              </div>
+              <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>   
+              <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>     
+            </form>
           </div>
-      </div>
-      <div class="text-center">
-         <button class="btn btn-primary" data-dismiss="modal" (click)="createTask(createTaskForm.value)">Submit</button>   
-      </div>
-      <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>   
-      <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>     
-    </form>
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-
   </div>
-</div>
-    <div class="col-md-1" [ngStyle]="{'float':'right'}">
-      <button class="btn btn-success " type="button" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> New Task</button>
-    </div>
   </div>
   <div class=" row">
     <div class="col-md-8 col-xs-6 task_main">
@@ -195,10 +212,14 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div>
+      <div class="">
         <form class="form-inline bottom_margin">
-          <input type="text" class="form-control col-md-10" placeholder="Search Tasks">
-          <span class="input-group-btn"><button  class="btn btn-info" type="button"> <i class="fa fa-search"></i> </button></span>
+          <div class="input-group col-md-12">
+      <input type="text" class="form-control" placeholder="Search Tasks...">
+      <span class="input-group-btn">
+        <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i></button>
+      </span>
+    </div>
         </form>
       </div>
       <div class="card">
@@ -230,27 +251,6 @@
               </select>
             </div>
           </form>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <font class="card-title"><strong>Filter Tasks</strong></font>
-        </div>
-        <div class="card-block">
-          <p>Click on "+" to add filters to query on and "-" to remove a filter.</p>
-          <div class="form-group">
-            <form class="form-inline">
-              <select name='select' class="col-md-9 form-control">
-                <option value='Priority'>Priority</option>
-                <option value='Assigned_to'>Assigned To </option>
-                <option value='Status'>Status</option>
-                <option value='Dates'>Due Date</option>
-                <option value='Dates_created'>Created Date</option>
-              </select>
-              <span class="input-group-btn"><button  class="btn btn-default" type="button"><i class="fa fa-plus"></i></button></span>
-            </form>
-          </div>
-          <a href="#" class="btn btn-primary">Apply Filter</a>
         </div>
       </div>
     </div>
