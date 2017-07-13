@@ -10,6 +10,7 @@ import { FooterComponent } from 'app/shared/footer/footer.component';
 import {TaskComponent} from 'app/task/task.component';
 import {CreateTaskComponent} from 'app/task/createTask.component';
 import { FilterPipe } from '../shared/components/filter.pipe';
+import { SortItemsPipe } from '../shared/components/sort.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
@@ -21,12 +22,13 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    FilterPipe,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
     TaskComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    FilterPipe,
+    SortItemsPipe,
   ],
   imports: [
     CommonModule,
