@@ -105,7 +105,7 @@
       <div class="alert alert-info" role="alert" *ngIf= "tasks?.length == 0">
         No tasks were found!
       </div>
-      <div class="card"  *ngFor="let task of (tasks | itemsFilter: searchText)">
+      <div class="card"  *ngFor="let task of (tasks | paginate: { itemsPerPage: 2, currentPage: p } | itemsFilter: searchText)">
         <div class="card-header">
           <a href="#">{{task.task}}</a>
           <div [ngStyle]="{'float':'right'}">
@@ -230,6 +230,7 @@
           </div>
           <!-- end edit task Modal -->
       </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
     <div class="col-md-4">
       <div class="">

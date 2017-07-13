@@ -16,6 +16,7 @@ export class TaskComponent implements OnInit{
   tasks;
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
+  p: number = 1;
 
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
