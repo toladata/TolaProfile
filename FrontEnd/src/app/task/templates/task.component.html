@@ -105,7 +105,7 @@
       <div class="alert alert-info" role="alert" *ngIf= "tasks?.length == 0">
         No tasks were found!
       </div>
-      <div class="card"  *ngFor="let task of tasks">
+      <div class="card"  *ngFor="let task of (tasks | itemsFilter: searchText)">
         <div class="card-header">
           <a href="#">{{task.task}}</a>
           <div [ngStyle]="{'float':'right'}">
@@ -235,11 +235,11 @@
       <div class="">
         <form class="form-inline bottom_margin">
           <div class="input-group col-md-12">
-      <input type="text" class="form-control" placeholder="Search Tasks...">
-      <span class="input-group-btn">
-        <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i></button>
-      </span>
-    </div>
+          <input type="text" class="form-control" [(ngModel)]="searchText" name="searchText" placeholder="Search Tasks...">
+          <span class="input-group-btn">
+            <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i></button>
+          </span>
+        </div>
         </form>
       </div>
       <div class="card">
