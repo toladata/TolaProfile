@@ -39,7 +39,7 @@
 
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title font3">Add Task</h4>
+                <h4 class="modal-title offset-md-5 font3">Add Task</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
@@ -86,15 +86,13 @@
                   </div>
               </div>
               <div class="text-center">
-                 <button class="btn btn-primary" data-dismiss="modal" (click)="createTask(createTaskForm.value)">Submit</button>   
+                 <button class="btn btn-primary" data-dismiss="modal" (click)="createTask(createTaskForm.value)">Submit</button> 
+                 <button class="btn btn-default" type="reset">Reset</button>   
               </div>
               <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>   
               <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>     
             </form>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -107,7 +105,7 @@
       </div>
       <div class="card"  *ngFor="let task of tasks">
         <div class="card-header">
-          <a href="#">{{task.task}}</a>
+          <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
           <div [ngStyle]="{'float':'right'}">
             <span class="badge badge-primary" *ngIf="task.status == 1">Active</span> 
             <span class="badge badge-info" *ngIf="task.status == 2">Reopened</span> 
@@ -155,8 +153,8 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
+                  <h4 class="modal-title  offset-md-5 font3">Edit Task</h4>  
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Edit Task</h4>
                 </div>
                 <div class="modal-body">
                   <form [formGroup]="editTaskForm" novalidate>
@@ -213,16 +211,14 @@
                     </div>
                 </div>
                 <div class="text-center">
-                   <button class="btn btn-primary" data-dismiss="modal" (click)="editTask(task.id,editTaskForm.value)">Save Changes</button>   
+                   <button class="btn btn-primary" data-dismiss="modal" (click)="editTask(task.id,editTaskForm.value)">Save Changes</button>
+                   <button class="btn delete_btn font2 " type="button" data-dismiss="modal">Discard Changes</button>   
                 </div>
                 <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
                 <select class="form-control" id="created_by" formControlName="created_by" hidden >
                     <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option> 
                 </select>
               </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </div>
               
