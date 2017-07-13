@@ -103,7 +103,7 @@
       <div class="alert alert-info" role="alert" *ngIf= "tasks?.length == 0">
         No tasks were found!
       </div>
-      <div class="card"  *ngFor="let task of tasks">
+      <div class="card"  *ngFor="let task of (tasks | paginate: { itemsPerPage: 2, currentPage: p } | itemsFilter: searchText)">
         <div class="card-header">
           <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
           <div [ngStyle]="{'float':'right'}">
@@ -226,16 +226,17 @@
           </div>
           <!-- end edit task Modal -->
       </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
     <div class="col-md-4">
       <div class="">
         <form class="form-inline bottom_margin">
           <div class="input-group col-md-12">
-      <input type="text" class="form-control" placeholder="Search Tasks...">
-      <span class="input-group-btn">
-        <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i></button>
-      </span>
-    </div>
+          <input type="text" class="form-control" [(ngModel)]="searchText" name="searchText" placeholder="Search Tasks...">
+          <span class="input-group-btn">
+            <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i></button>
+          </span>
+        </div>
         </form>
       </div>
       <div class="card">

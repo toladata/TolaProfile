@@ -9,6 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from 'app/shared/footer/footer.component';
 import {TaskComponent} from 'app/task/task.component';
 import {CreateTaskComponent} from 'app/task/createTask.component';
+import { FilterPipe } from '../shared/components/filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 const appRoutes: Routes = [
 
@@ -18,6 +21,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    FilterPipe,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
@@ -30,7 +34,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    NgxPaginationModule
   ],
   providers: [Validators],
 })
