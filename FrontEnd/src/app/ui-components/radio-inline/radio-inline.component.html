@@ -1,0 +1,12 @@
+<div class="form-group row" [ngClass]="{'form-group--border': border === true}">
+  <label for="{{labelFor}}" class="col-form-label {{labelClass}}">{{labelText}}</label>
+  <div class="{{radioClass}}">
+    <div *ngFor="let radio of radioData; index as i" class="form-check" [ngClass]="{'form-check--inline': inline}">
+      <label class="custom-control custom-radio">
+        <input id="{{forIds[i]}}" name="radio" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{radio}}</span>
+      </label>
+    </div>
+  </div>
+</div>

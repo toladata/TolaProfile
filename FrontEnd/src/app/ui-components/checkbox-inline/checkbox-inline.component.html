@@ -1,0 +1,12 @@
+<div class="form-group row" [ngClass]="{'form-group--border': border === true}">
+  <label for="{{labelFor}}" class="col-form-label {{labelClass}}">{{labelText}}</label>
+  <div class="{{checkboxClass}}">
+    <div *ngFor="let checkbox of checkboxData" class="form-check" [ngClass]="{'form-check--inline': inline}">
+      <label class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{checkbox}}</span>
+      </label>
+    </div>
+  </div>
+</div>

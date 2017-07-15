@@ -1,0 +1,6 @@
+<div class="form-group row" [ngClass]="{'form-group--border': border === true}">
+  <label for="{{labelFor}}" class="col-form-label {{labelClass}}">{{labelText}}</label>
+  <div class="{{selectWrapClass}}">
+    <select class="form-control {{selectClass}}"><ng-content></ng-content></select>
+  </div>
+</div>
