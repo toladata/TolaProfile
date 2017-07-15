@@ -1,0 +1,107 @@
+<section>
+  Searching block
+</section>
+
+<div class="card list">
+
+
+  <div class="card-header list__header d-flex align-items-center justify-content-end flex-nowrap">
+    <div class="list__header_title short-text mr-auto">
+      <span class="list__icon_drag icon-drag-icon"></span>
+      Emergency support program for IDPs and refugees
+    </div>
+    <div class="list__header_stage">
+      Stage
+    </div>
+    <div class="list__header_owner">
+      Owner
+    </div>
+    <div class="list__header_date">
+      Start Date
+    </div>
+    <div class="list__header_budget">
+      Budget
+    </div>
+    <div class="list__header_status">
+      Status
+    </div>
+    <div class="list__header_icon"></div>
+    <div class="list__header_icon"></div>
+  </div>
+
+
+  <div class="card-block list__card-block d-flex flex-column">
+    <div class="d-flex flex-column" *ngFor="let project of projects">
+      <div class="d-flex flex-column list__border" [ngClass]="{'list__item_active': project.active}">
+        <div class="d-flex flex-row flex-nowrap align-items-center justify-content-end list__item_row">
+          <div class="list__item_title d-flex justify-content-center mr-auto short-text">
+            <span class="list__icon_drag icon-drag-icon"></span>
+            {{ project.title }}
+          </div>
+          <div class="list__item_stage">
+            {{ project.stage }}
+          </div>
+          <div class="list__item_owner">
+            {{ project.owner }}
+          </div>
+          <div class="list__item_date">
+            {{ project.start_date }}
+          </div>
+          <div class="list__item_budget">
+            {{ project.budget }}
+          </div>
+          <div class="list__item_status d-flex justify-content-center">
+            <span class="list__dot" ngClass="list__dot_red"></span>
+          </div>
+          <div class="list__item_icon icon-combined-shape"></div>
+          <div class="list__item_icon icon-drop-icon"></div>
+        </div>
+        <div class="list__indicators" *ngIf="project.indicators && project.indicators.length">
+            <p class="list__indicator_title">Indicators</p>
+            <div class="list__indicator" *ngFor="let indicator of project.indicators">
+              {{indicator.title}}
+            </div>
+        </div>
+      </div>
+      <div *ngIf="project.items && project.items.length">
+        <div class="d-flex flex-column list__subitem" *ngFor="let item of project.items">
+          <div class="d-flex flex-row flex-nowrap align-items-center justify-content-end list__subitem_row list__border">
+            <div class="list__item_title short-text d-flex justify-content-center mr-auto">
+              <span class="list__icon_drag icon-drag-icon"></span>
+              {{ item.title }}
+            </div>
+            <div class="list__item_stage">
+              {{ item.stage }}
+            </div>
+            <div class="list__item_owner">
+              {{ item.owner }}
+            </div>
+            <div class="list__item_date">
+              {{ item.start_date }}
+            </div>
+            <div class="list__item_budget">
+              {{ item.budget }}
+            </div>
+            <div class="list__item_status d-flex justify-content-center">
+              <span class="list__dot" ngClass="list__dot_green"></span>
+            </div>
+            <div class="list__item_icon icon-combined-shape"></div>
+            <div class="list__item_icon icon-drop-icon"></div>
+          </div>
+          <div *ngIf="false">progresss</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+
+<!--<pre>
+  <code>
+    {{ projects | json }}
+  </code>
+</pre>-->

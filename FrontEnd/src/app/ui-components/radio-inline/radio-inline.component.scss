@@ -1,0 +1,17 @@
+@import "../../../assets/scss/config/_config";
+
+.form-check{
+  padding-top: rem-calc(7);
+  &--inline{
+    display: inline-flex;
+    & + .form-check--inline{
+      margin-left: rem-calc(6);
+    }
+  }
+}
+.custom-control-indicator{
+  border: 1px solid $gray-light;
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+  border: 1px solid $orange;
+}
