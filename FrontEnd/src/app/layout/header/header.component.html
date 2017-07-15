@@ -1,0 +1,43 @@
+<header class="header">
+    <nav class="header__navbar navbar header-enav-wrap navbar-toggleable-sm navbar-light">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="header__navbar__brand">
+            <img src="../assets/img/logo.svg" onerror="this.src='../assets/img/logo.png';this.onerror=null;" alt="Tola Logo">
+        </a>
+        <div class="collapse navbar-collapse" id="main-nav">
+            <form class="header__navbar__search form-inline mr-auto">
+                <div class="header__navbar__input-group input-group">
+                <span class="input-group-btn">
+                    <button class="header__navbar__search__button btn btn-secondary plain" type="button"><i class="icon-loupe"></i></button>
+                </span>
+                    <input type="text" class="header__navbar__search__field form-control plain" placeholder="Search ...">
+                </div>
+            </form>
+            <ul class="header__nav navbar-nav">
+                <li class="header__nav__item nav-item">
+                    <a class="header__nav__link nav-link" href="#" tooltip="Activity" placement="bottom"><i class="header__nav__link__activity-icon icon-activity"></i></a>
+                </li>
+                <li class="header__nav__item nav-item">
+                    <a class="header__nav__link nav-link" href="#" tooltip="Tables" placement="bottom"><i class="header__nav__link__tables-icon icon-tables"></i></a>
+                </li>
+                <li class="header__nav__item nav-item active">
+                    <a class="header__nav__link nav-link" href="#" tooltip="Styleguide" placement="bottom"><i class="icon-brush"></i></a>
+                </li>
+            </ul>
+            <div class="header__navbar__user-drop dropdown" dropdown>
+                <a dropdownToggle class="header__navbar__user-drop__link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="header__navbar__user-drop__circle"><i class="icon-user"></i></span>
+                    <span class="header__navbar__user-drop__link__badge badge badge-pill badge-danger">5</span>
+                </a>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">AF</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <tola-sub-nav></tola-sub-nav>
+</header>
