@@ -103,7 +103,7 @@
       <div class="alert alert-info" role="alert" *ngIf= "tasks?.length == 0">
         No tasks were found!
       </div>
-      <div class="card"  *ngFor="let task of (tasks | paginate: { itemsPerPage: 5, currentPage: p } | itemsFilter: searchText)">
+      <div class="card"  *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 2, currentPage: p } )">
         <div class="card-header">
           <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
           <div [ngStyle]="{'float':'right'}">
@@ -256,15 +256,15 @@
           <font class="card-title"><strong>Sort Tasks</strong></font>
         </div>
         <div class="card-block">
-          <form>
+          <form #sortForm="ngForm">
             <div class="form-group">
-              <select class="form-control">
-                <option value="">Created</option>
-                <option value="">Due Date</option>
-                <option value="">Task Title</option>
-                <option value="">Status</option>
-                <option value="">Priority</option>
-                <option value="">Assigned</option>
+              <select class="form-control"[(ngModel)]="task_attribute" name="task_attribute">
+                <option value="created_date">Created</option>
+                <option value="due_date">Due Date</option>
+                <option value="task">Task Title</option>
+                <option value="status">Status</option>
+                <option value="priority">Priority</option>
+                <option value="assigned_to">Assigned</option>
               </select>
             </div>
           </form>
