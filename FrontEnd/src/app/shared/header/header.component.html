@@ -27,7 +27,7 @@
               <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{user.username}}</a>
               <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
                   <a class="dropdown-item" (click)="logout()"><i class="fa fa-arrow-circle-left"></i> Logout</a>
-                  <a class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+                  <a class="dropdown-item" routerLink="/profile"><i class="fa fa-user"></i> Profile</a>
               </div>
             </li>
           </ul>
