@@ -1,0 +1,54 @@
+<h2 class="page-title">{{pageTitle}}</h2>
+<form class="">
+    <div class="card">
+        <div class="card-block">
+            <h5 class="card-title">Collected Data</h5>
+            <div class="row">
+                <div class="col-6 col-md-4 form-group">
+                    <label for="targeted">Targeted</label>
+                    <input type="number" class="form-control" id="targeted" placeholder="Enter target">
+                </div>
+                <div class="col-6 col-md-4 form-group">
+                    <label for="achieved">Achieved</label>
+                    <input type="number" class="form-control" id="achieved" placeholder="Enter numer">
+                </div>
+                <div class="col-12 col-md-4 form-group">
+                    <label for="date-c">Date Collected*</label>
+                    <input type="datetime-local" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" id="date-c" placeholder="Enter Date">
+                </div>
+            </div>
+            <div class="row mb-4 form-group">
+                <div class="col">
+                    <label for="targeted">Remarks / Comments</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+            </div>
+            <h5 class="card-title">Evidence</h5>
+            <div class="row mb-5">
+                <div class="col-6 col-md-4 form-group">
+                    <label>Project Initiation</label>
+                    <select class="form-control">
+                        <option>Default select</option>
+                        <option>Project 1</option>
+                        <option>Project 2</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-4 form-group">
+                    <label for="achieved">Achieved</label>
+                    <input type="number" class="form-control" id="achieved" placeholder="Enter numer">
+                </div>
+                <div class="col-12 col-md-4 form-group">
+                    <label for="date-c">Date Collected*</label>
+                    <input type="datetime-local" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" id="date-c" placeholder="Enter Date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col actions d-flex justify-content-end">
+                    <tola-button-component buttonText="name"></tola-button-component>
+                    <tola-button-component buttonClass="btn-cancel" buttonText="Cancel"></tola-button-component>
+                    <tola-button-component></tola-button-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
