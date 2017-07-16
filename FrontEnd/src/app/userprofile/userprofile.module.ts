@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from 'app/shared/footer/footer.component';
 import {TaskComponent} from 'app/task/task.component';
-import  {ProfileComponent} from './profile/profile.component';
+import  {UserprofileComponent} from './userprofile.component';
 import {CreateTaskComponent} from 'app/task/createTask.component';
 import { FilterPipe } from '../shared/components/filter.pipe';
 import { SortItemsPipe } from '../shared/components/sort.pipe';
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: UserprofileComponent },
 ];
 
 @NgModule({
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     CreateTaskComponent,
     FilterPipe,
     SortItemsPipe,
-    ProfileComponent,
+    UserprofileComponent,
   ],
   imports: [
     CommonModule,

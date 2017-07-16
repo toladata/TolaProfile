@@ -9,7 +9,6 @@ import {AuthConfig, AuthHttp } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { LandingpageComponent } from "./landingpage.component";
-import { UserprofileComponent } from './userprofile/userprofile.component';
 import { HeaderComponent } from './shared/header/header.component';
 import {AuthGuard} from './auth-guard';
 import {SharedService} from './shared/services/shared.service';
@@ -22,7 +21,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   declarations: [
     AppComponent,
     LandingpageComponent,
-    UserprofileComponent,
     HeaderComponent,
   ],
   imports: [
