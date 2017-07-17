@@ -1,25 +1,18 @@
-import { Routes } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { NgxDatatableComponent } from './ui-components/tables/ngx-datatable/ngx-datatable.component';
-import { BootstrapFormComponent } from './pages/forms/bootstrap-form/bootstrap-form.component';
-import { EnketoFormComponent } from './pages/forms/enketo-form/enketo-form.component';
-import { MaterialFormComponent } from './pages/forms/material-form/material-form.component';
-import { Ng2DragulaComponent } from './ui-components/sorting/ng2-dragula/ng2-dragula.component';
-import { StyleGuideComponent } from './pages/style-guide/style-guide.component';
-import { DemoPageComponent } from './pages/demo-page/demo-page.component';
-import {ListComponent} from './pages/list/list.component';
-
+import { Routes, RouterModule } from '@angular/router';
+import { LandingpageComponent } from "app/landingpage.component";
+import { TaskComponent } from "app/pages/task/task.component";
+import { AuthGuard } from "app/auth-guard";
+import { RegisterComponent } from "app/pages/userprofile/register/register.component";
+import { LoginComponent } from "app/pages/userprofile/login/login.component";
+import { UserprofileComponent } from "app/pages/userprofile/userprofile.component";
 
 const appRoutes: Routes = [
-  {path: '', component: EnketoFormComponent},
-  {path: 'form-enketo', component: EnketoFormComponent},
-  {path: 'form-bootstrap', component: BootstrapFormComponent},
-  {path: 'form-material', component: MaterialFormComponent},
-  {path: 'table-ngx-datatable', component: NgxDatatableComponent},
-  {path: 'sorting-dragula', component: Ng2DragulaComponent},
-  {path: 'style-guide', component: StyleGuideComponent},
-  {path: 'demo', component: DemoPageComponent},
-  {path: 'list', component: ListComponent}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'task', component: TaskComponent, canActivate: [AuthGuard] },
+  {path: 'home', component: LandingpageComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserprofileComponent },
 ];
 
 export const Routing = RouterModule.forRoot(appRoutes);
