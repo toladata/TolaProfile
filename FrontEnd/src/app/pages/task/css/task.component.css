@@ -1,0 +1,65 @@
+.content
+{
+	margin-top: 25px;
+}
+.font1
+{
+	font-weight: bold;
+}
+.font2
+{
+	color: #fff;
+}
+.font3
+{
+	float: center;
+}
+.badge
+{
+	padding:5px;
+}
+.task
+{
+	background-color: #f8f8f8;
+	font-weight: bold;
+}
+.task_main
+{
+	border:1px solid#f8f8f8;
+	padding-top:10px;
+}
+.edit_btn
+{
+	background-color: #6CB7F0;
+	color:#fff;
+}
+.delete_btn
+{
+	background-color: #E15F4F;
+}
+.reset_btn
+{
+	margin-top: 5px;
+}
+.card
+{
+	margin-bottom: 10px;
+}
+.edit_task
+{
+	margin-top: 15px;
+}
+.bottom_margin
+{
+	margin-bottom: 15px;
+}
+.make_link
+{
+	cursor:pointer;
+	color:blue;
+
+}
+.search_btn
+{
+	margin-left:15px;
+}
