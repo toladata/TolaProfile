@@ -1,0 +1,57 @@
+// Start with assigning color names to specific hex values.
+$red:    #C94456 !default;
+$orange: #DD6E42 !default;
+$green:  #4A968A !default;
+$blue:   #15A0B2 !default;
+$brand-primary:             $orange !default;
+
+$body-bg:       $body-bg-color !default;
+// Body
+$body-color:    $gray !default;
+
+
+// Navbar
+$navbar-padding-x: 0 !default;
+$navbar-padding-y: 0 !default;
+$navbar-light-color:                $navy-darker !default;
+$navbar-light-hover-color:          $navy-darker !default;
+$navbar-light-active-color:         $navy-darker !default;
+$navbar-light-disabled-color:       $navy-lighter !default;
+
+// Typography
+$headings-color:         $navy-darker !default;
+
+// Components
+$border-radius:          rem-calc(3) !default;
+$border-radius-lg:       rem-calc(3) !default;
+$border-radius-sm:       rem-calc(3) !default;
+
+// Buttons
+$btn-padding-x:                  1rem !default;
+$btn-padding-y:                  .5rem !default;
+$btn-line-height:                1.25 !default;
+$btn-border-radius:              20px !default;
+
+// Cards
+$card-spacer-x:            30px !default;
+$card-spacer-y:            30px !default;
+
+// Dropdowns
+$dropdown-margin-top:            0 !default;
+
+// Tooltips
+$tooltip-color:               $navy-darker !default;
+$tooltip-bg:                  $white !default;
+$tooltip-opacity:             .9 !default;
+$tooltip-padding-y:           3px !default;
+$tooltip-padding-x:           8px !default;
+$tooltip-margin:              3px !default;
+$tooltip-arrow-width:         5px !default;
+$tooltip-arrow-color:         $tooltip-bg !default;
+
+// Forms
+$form-check-margin-bottom:  0 !default;
+
+$custom-control-indicator-size:       rem-calc(17) !default;
+$custom-control-focus-indicator-box-shadow: none !default;
+$custom-control-indicator-bg:         #fff !default;

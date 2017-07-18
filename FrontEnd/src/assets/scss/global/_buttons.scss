@@ -1,0 +1,39 @@
+.btn {
+  cursor: pointer;
+}
+.button{
+  &--cancel{
+    @include button-variant($gray-light, $gray-vary-light, $gray-vary-light);
+  }
+  &--submit{
+    padding-left: rem-calc(26);
+    padding-right: rem-calc(26);
+  }
+  &--navy{
+    @include button-variant($white, $navy, $navy);
+  }
+  &--secondary-orange{
+    @include button-variant($orange, $white, $orange);
+    &:hover, &:focus{
+      background-color: rgba($orange, 0.1);
+    }
+  }
+  &--plain{
+    @include button-variant($gray, $white, $white);
+    color: $orange;
+    &:hover, &:focus{
+      background: transparent;
+      border-color: $white;
+    }
+  }
+  &--action{
+    @include button-variant($white, $orange, $orange);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: rem-calc(38);
+    width: rem-calc(38);
+    padding: 0;
+    font-size: rem-calc(20);
+  }
+}

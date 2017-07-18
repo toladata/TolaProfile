@@ -1,0 +1,111 @@
+// Bg Colors
+.bg{
+  &--orange{
+    background-color: $orange;
+    &--darker{
+      background-color: $orange-darker;
+    }
+    &--lighter{
+      background-color: $orange-lighter;
+    }
+  }
+  &--navy{
+    background-color: $navy;
+    &--darker{
+      background-color: $navy-darker;
+    }
+    &--lighter{
+      background-color: $navy-lighter;
+    }
+  }
+  &--red{
+    background-color: $red;
+    &--darker{
+      background-color: $red-darker;
+    }
+    &--lighter{
+      background-color: $red-lighter;
+    }
+  }
+  &--blue{
+    background-color: $blue;
+    &--darker{
+      background-color: $blue-darker;
+    }
+    &--lighter{
+      background-color: $blue-lighter;
+    }
+  }
+  &--green{
+    background-color: $green;
+    &--darker{
+      background-color: $green-darker;
+    }
+    &--lighter{
+      background-color: $green-lighter;
+    }
+  }
+  &--pearl{
+    background-color: $pearl;
+    &--darker{
+      background-color: $pearl-darker;
+    }
+    &--lighter{
+      background-color: $pearl-lighter;
+    }
+  }
+  &--sky{
+    background-color: $sky;
+    &--darker{
+      background-color: $sky-darker;
+    }
+    &--lighter{
+      background-color: $sky-lighter;
+    }
+  }
+  &--beige{
+    background-color: $beige;
+    &--darker{
+      background-color: $beige-darker;
+    }
+    &--lighter{
+      background-color: $beige-lighter;
+    }
+  }
+  &--yellow{
+    background-color: $yellow;
+    &--darker{
+      background-color: $yellow-darker;
+    }
+    &--lighter{
+      background-color: $yellow-lighter;
+    }
+  }
+}
+
+// Text Colors
+.color{
+  &--white{
+    color: $white;
+  }
+}
+// Other
+.status-dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%!important;
+    margin-left: 5px;
+    margin-right: 5px;
+    &.large{
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+    }
+}
+
+.short-text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

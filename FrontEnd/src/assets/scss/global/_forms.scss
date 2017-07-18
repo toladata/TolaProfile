@@ -1,0 +1,99 @@
+// Bootstrap overwrites and extras
+.col-form-label{
+  //align-self: center;
+  padding-top: rem-calc(11);
+  text-transform: uppercase;
+  font-size: rem-calc(12);
+  font-weight: 700;
+}
+
+.form-control{
+    &.plain{
+        border: none;
+    }
+}
+
+.form-group{
+  &--border{
+    border-bottom: 1px solid $gray-lighter;
+    margin: rem-calc(0 0 20 0);
+    padding-bottom: rem-calc(20);
+  }
+}
+// Custom Printed Style Form
+.card-form{
+    margin-bottom: 30px;
+    .card-group{
+        margin-bottom: -1px;
+        .card{
+            border-radius: 0;
+          & + .card{
+            margin-top: rem-calc(-1);
+          }
+        }
+        &:first-child{
+            .card:first-child{
+                border-top-left-radius: $radius-default;
+            }
+            .card:last-child{
+                border-top-right-radius: $radius-default;
+            }
+        }
+        &:last-child{
+            .card:first-child{
+                border-bottom-left-radius: $radius-default;
+            }
+            .card:last-child{
+                border-bottom-right-radius: $radius-default;
+            }
+        }
+    }
+    .card:not(.actions, .title){
+        transition: background-color 0.2s;
+        &:hover, &:focus{
+            background-color: #F3F8FC;
+        }
+    }
+    label{
+        margin-bottom: 0;
+        color: $gray;
+        font-size: rem-calc(12);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .form-control{
+        border: none;
+        padding: rem-calc(15 0);
+        background-color: transparent;
+        &:focus{
+            background-color: transparent;
+        }
+        option{
+            padding-left: 0;
+        }
+    }
+    select{
+        margin-left: -9px;
+    }
+    .card-block{
+        padding: rem-calc(15 0 6 0);
+    }
+    .actions{
+        text-align: center;
+        .card-block{
+            padding: rem-calc(30 0);
+        }
+    }
+}
+
+.actions{
+    text-align: center;
+    .btn{
+        font-size: rem-calc(18);
+        padding: rem-calc(10 40);
+        margin-right: 14px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
