@@ -1,21 +1,26 @@
 <!doctype html>
+<!--<html lang="en" manifest="./cache.manifest">-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>TolaProfile</title>
+  <title>Tola V2 - Angular Prototype</title>
   <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-	<script src="./front_end_assets/js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-  <app-root>
-    <div class="loader_image">
-      <img src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif"/>
-    </div>   
-  </app-root>
+  <!-- Enable bootstrap 4 theme -->
+  <script>window.__theme = 'bs4';</script>
+  <app-root></app-root>
+  <!-- Register Service Workers Uncomment to use Service workers-->
+  <script>
+//    if ('serviceWorker' in navigator) {
+//      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+//        console.log('Service Worker registered');
+//      }).catch(function(err) {
+//        console.log('Service Worker registration failed: ', err);
+//      });
+//    }
+  </script>
 </body>
-	<script src="./front_end_assets/js/tether.min.js"></script>
-	<script src="./front_end_assets/js/bootstrap.min.js"></script>
 </html>
