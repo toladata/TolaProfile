@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {TaskService} from './task.service';
-import {SharedService} from '../shared/services/shared.service';
-import {TaskModule} from './task.module';
+import {SharedService} from 'app/shared/services/shared.service';
 import {Router} from '@angular/router';
-
 
 @Component({
   selector: 'app-task',
   templateUrl: './templates/task.component.html',
   styleUrls: ['./css/task.component.css'],
-  providers: [TaskService,TaskModule,FormBuilder]
+  providers: [TaskService,FormBuilder, SharedService]
 })
 export class TaskComponent implements OnInit{
   tasks;
@@ -20,10 +18,10 @@ export class TaskComponent implements OnInit{
 
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
- 
+
   constructor(
     private _service: TaskService,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private _router: Router,
     private _sharedService: SharedService
     ){
@@ -37,7 +35,7 @@ export class TaskComponent implements OnInit{
       priority: [''],
 
     })
-   
+
     this.editTaskForm = fb.group({
       task: ['', Validators.required ],
       note: ['' ],
@@ -70,14 +68,14 @@ export class TaskComponent implements OnInit{
   createTask(formData){
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
   }
-  
+
   //Edit task
   editTask(task_id, editFormData){
     console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
       task =>this.tasks.unshift(task),
     );
-    this.tasks = this.tasks.filter(x => x.id !== task_id);  
+    this.tasks = this.tasks.filter(x => x.id !== task_id);
   }
 
   //Delete Task
@@ -87,7 +85,7 @@ export class TaskComponent implements OnInit{
       this._service.deleteTask(task_id);
       this.tasks = this.tasks.filter(x => x.id !== task_id);
     }
-    
+
   }
 
   //Fetch Specific Task Details
@@ -95,7 +93,7 @@ export class TaskComponent implements OnInit{
     this._service.taskDetails(task_id).subscribe(function(response){
         return response;
       });
-    
+
   }
 
   //A method to autofill the edit task form
@@ -119,21 +117,21 @@ export class TaskComponent implements OnInit{
       this.tasks =  this.tasks.filter(x => x.status === Number(value));
     }
 
-    if (option === "priority"){    
+    if (option === "priority"){
       this.tasks =  this.tasks.filter(x => x.priority === Number(value));
     }
 
-    if (option === "assigned"){     
+    if (option === "assigned"){
       this.tasks =  this.tasks.filter(x => x.assigned_to === Number(value));
     }
 
     if (option === "created"){
-      console.log(value);     
+      console.log(value);
       this.tasks =  this.tasks.filter(x => x.created_by === Number(value));
     }
 
     if (option === "completed"){
-      console.log(value);     
+      console.log(value);
       this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
     }
   }
