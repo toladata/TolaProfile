@@ -14,7 +14,6 @@ import reducer from './shared/reducers/index';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
-import {ListComponent} from './pages/list/list.component';
 import { LandingpageComponent } from './landingpage.component';
 import {AuthConfig, AuthHttp } from 'angular2-jwt';
 
@@ -32,7 +31,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
     LandingpageComponent
   ],
   imports: [
