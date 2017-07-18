@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserprofileService } from './userprofile/userprofile.service';
+import { UserprofileService } from './pages/userprofile/userprofile.service';
 import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-landing',
-  providers: [FormBuilder, UserprofileService],
   templateUrl: './landingpage.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -14,7 +13,7 @@ export class LandingpageComponent implements OnInit {
 
   private loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) { 
+  constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) {
 
     this.loginForm = fb.group({
       email: ['', Validators.required],
@@ -29,7 +28,7 @@ export class LandingpageComponent implements OnInit {
             .subscribe(result => {
                 if (result === true) {
                     console.log(localStorage.getItem('id_token'));
-                    
+
                     this.router.navigate(['task']);
                 } else {
                   console.log("There was a problem");
