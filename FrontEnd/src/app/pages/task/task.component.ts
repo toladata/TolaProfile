@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {TaskService} from './task.service';
 import {SharedService} from 'app/shared/services/shared.service';
 import {Router} from '@angular/router';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-task',
@@ -16,6 +17,20 @@ export class TaskComponent implements OnInit{
   user = JSON.parse(localStorage.getItem('loggedUser'));
   p: number = 1;
 
+  @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
+  public isModalShown:boolean = false;
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.editTaskModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
 
@@ -71,11 +86,11 @@ export class TaskComponent implements OnInit{
 
   //Edit task
   editTask(task_id, editFormData){
-    console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
       task =>this.tasks.unshift(task),
     );
     this.tasks = this.tasks.filter(x => x.id !== task_id);
+    this.hideModal();
   }
 
   //Delete Task
@@ -109,6 +124,7 @@ export class TaskComponent implements OnInit{
           priority: editedTask.priority,
           status: editedTask.status
         });
+        this.showModal();
   }
 
   //Filter tasks

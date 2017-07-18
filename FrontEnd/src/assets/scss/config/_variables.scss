@@ -1,0 +1,57 @@
+// Color Palette
+$white: #fff;
+$black: #000;
+
+$gray-dark: #222;
+$gray: #333333;
+$gray-light: #9B9B9B;
+$gray-lighter: #E7E7E7;
+$gray-vary-light: #F7F7F7;
+
+$orange: #dc6f48;
+$orange-darker: #b25c3b;
+$orange-lighter: #df8a68;
+
+$navy-darker: #425962;
+$navy: #526f7e;
+$navy-lighter: #6f868f;
+
+$green-darker: #407c6f;
+$green: #4b958d;
+$green-lighter: #6aa699;
+
+$blue-darker: #117e8e;
+$blue: #1696a6;
+$blue-lighter: #33a7b8;
+
+$sky-darker: #9fadb9;
+$sky: #bfd7e0;
+$sky-lighter: #cddae7;
+
+$pearl-darker: #bfbfbf;
+$pearl: #e9e9e9;
+$pearl-lighter: #ededed;
+
+$beige-darker: #c1b498;
+$beige: #e7dbb7;
+$beige-lighter: #ebdec2;
+
+$red-darker: #b03941;
+$red: #cc474d;
+$red-lighter: #d9636b;
+
+$yellow-darker: #af9245;
+$yellow: #d5b251;
+$yellow-lighter: #d9bc6e;
+// Component Colors
+$body-bg-color: $gray-vary-light;
+$navbar-bg: $gray-lighter;
+$navbar-brand-bg: $orange;
+
+$radius-default: 3px;
+$card-headings: darken($gray-vary-light, 2%);
+
+$container-fluid-max-width: rem-calc(1440);
+
+// Margins
+$global-margin: rem-calc(28);

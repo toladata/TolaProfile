@@ -1,0 +1,25 @@
+.tooltip-inner{
+    border: 1px solid $navy;
+    border-radius: $radius-default;
+}
+
+.tooltip.bs-tether-element-attached-top .tooltip-inner::before, .tooltip.tooltip-bottom .tooltip-inner::before{
+    top: -1px;
+    margin-left: -7px;
+    content: "";
+    border-width: 0 7px 7px;
+    border-bottom-color: $navy;
+}
+.tooltip.bs-tether-element-attached-top .tooltip-inner::after, .tooltip.tooltip-bottom .tooltip-inner::after{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    top: 1px;
+    left: 50%;
+    margin-left: -5px;
+    content: "";
+    border-width: 0 5px 5px;
+    border-bottom-color: $white;
+}

@@ -1,0 +1,8 @@
+@import "functions/_functions";
+@import "mixins/_mixins";
+@import "variables";
+@import "custom-bootstrap";
+// Core bootstrap variables and mixins
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/custom";

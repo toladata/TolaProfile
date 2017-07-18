@@ -1,0 +1,30 @@
+@include font-face("icons", fonts/toladata-icons);
+
+[class^="icon-"],
+[class*=" icon-"] {
+  @include icon;
+}
+
+// Listing all the icons§
+$icons: (
+  activity : "\61",
+  tables : "\62",
+  globe-grid : "\63",
+  loupe : "\64",
+  question : "\65",
+  plus : "\66",
+  user : "\68",
+  arrow-down-b : "\67",
+  brush : "\69",
+  dots: "\6c",
+  graph: "\6d",
+  drag: "\6a",
+  arrow-up: "\6b",
+  arrow-down: "\6e"
+);
+// Setup a class name for each icon
+@each $name, $char in $icons {
+  .icon-#{$name}:before {
+    content: $char;
+  }
+}

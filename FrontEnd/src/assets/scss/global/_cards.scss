@@ -1,0 +1,32 @@
+.card-form{
+    .card{
+      margin: 0;
+        &.title{
+            background-color: $card-headings;
+            .card-block{
+                padding: rem-calc(10 0);
+            }
+            h4, h5{
+                margin: 0;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.card{
+  margin-bottom: $global-margin;
+  &--color{
+    border: none;
+    *{
+      margin: 0;
+    }
+    .card-header{
+      color: $white;
+    }
+  }
+  &__sub-color{
+    margin-top: rem-calc(-1);
+    padding: rem-calc(15 15 15 30);
+  }
+}
