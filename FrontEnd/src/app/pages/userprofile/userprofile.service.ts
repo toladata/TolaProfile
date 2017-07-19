@@ -23,7 +23,7 @@ export class UserprofileService {
          let options = new RequestOptions({
             headers: headers,
     });
-    
+
     return this.http.post('http://127.0.0.1:8000/api/auth/login/',JSON.stringify({ email: email, password: password}), options)
         .map((response: Response) => {
                     // login successful if there's a jwt token in the response
@@ -58,7 +58,7 @@ export class UserprofileService {
          let options = new RequestOptions({
             headers: headers,
     });
-    
+
     return this.http.post('http://127.0.0.1:8000/api/auth/register/',JSON.stringify(userData), options)
         .map((response: Response) => {
 
@@ -74,8 +74,8 @@ export class UserprofileService {
     }
 
     logout(){
-        localStorage.removeItem("id_token");       
-        localStorage.removeItem("loggedUser");       
+        localStorage.removeItem("id_token");
+        localStorage.removeItem("loggedUser");
         this._router.navigate(['home']);
     }
 }
