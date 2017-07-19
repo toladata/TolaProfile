@@ -5,12 +5,13 @@ import { TaskComponent } from "./pages/task/task.component";
 import { LoginComponent } from "./pages/userprofile/login/login.component";
 import { RegisterComponent } from "./pages/userprofile/register/register.component";
 import { UserprofileComponent } from "./pages/userprofile/userprofile.component";
+import { AuthGuard } from './auth.guard';
 
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'home', component: LandingpageComponent },
-  { path: 'task', component: TaskComponent },
+  { path: 'task', component: TaskComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: UserprofileComponent }

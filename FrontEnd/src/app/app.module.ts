@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { LandingpageComponent } from './landingpage.component';
 import {AuthConfig, AuthHttp } from 'angular2-jwt';
+import { AuthGuard } from './auth.guard'
 
 
 // AoT requires an exported function for factories
@@ -58,6 +59,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
     },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
