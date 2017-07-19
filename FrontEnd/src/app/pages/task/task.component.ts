@@ -18,6 +18,8 @@ export class TaskComponent implements OnInit{
   p: number = 1;
 
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
+  @ViewChild('createTaskModal') public createTaskModal:ModalDirective;
+
   public isModalShown:boolean = false;
 
   public showModal():void {
@@ -26,6 +28,9 @@ export class TaskComponent implements OnInit{
 
   public hideModal():void {
     this.editTaskModal.hide();
+  }
+  public hideCreateModal():void {
+    this.createTaskModal.hide();
   }
 
   public onHidden():void {
@@ -82,6 +87,7 @@ export class TaskComponent implements OnInit{
   //Create a task
   createTask(formData){
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
+    this.hideCreateModal();
   }
 
   //Edit task
@@ -142,12 +148,10 @@ export class TaskComponent implements OnInit{
     }
 
     if (option === "created"){
-      console.log(value);
       this.tasks =  this.tasks.filter(x => x.created_by === Number(value));
     }
 
     if (option === "completed"){
-      console.log(value);
       this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
     }
   }

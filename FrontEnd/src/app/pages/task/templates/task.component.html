@@ -27,12 +27,12 @@
             </select>
             </div>
             <div class="mr-auto p-2"><button class="btn btn-warning btn-sm reset_btn" (click)="getAllTasks()" type="button"><i class="fa fa-refresh"></i> Reset Filter(s)</button></div>
-            <div class="ml-auto p-2"><button class="btn btn-success" (click)="createTask.show()"><i class="fa fa-plus"></i> New Task</button></div>
+            <div class="ml-auto p-2"><button class="btn btn-success" (click)="createTaskModal.show()"><i class="fa fa-plus"></i> New Task</button></div>
         </div>
 
         <div class=" col-md-8"></div>
 
-        <div  bsModal #createTask="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div bsModal #createTaskModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg ">
 
                 <!-- Modal content-->
@@ -42,7 +42,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title offset-md-5 font3">Add Task</h4>
-                         <button type="button" class="close pull-right" aria-label="Close" (click)="createTask.hide()">
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="createTaskModal.hide()">
                           <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -107,7 +107,7 @@
             <div class="alert alert-info" role="alert" *ngIf="tasks?.length == 0">
                 No tasks were found!
             </div>
-            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 2, currentPage: p } )">
+            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 5, currentPage: p } )">
                 <div class="card-header">
                     <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
                     <div [ngStyle]="{'float':'right'}">
@@ -217,7 +217,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button class="btn btn-primary" data-dismiss="modal" (click)="editTask(task.id,editTaskForm.value)">Save Changes</button>
+                                        <button class="btn btn-primary" (click)="editTask(task.id,editTaskForm.value)">Save Changes</button>
                                         <button class="btn delete_btn font2 " type="button" data-dismiss="modal">Discard Changes</button>
                                     </div>
                                     <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
