@@ -16,7 +16,7 @@ export class TaskComponent implements OnInit{
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   p: number = 1;
-
+  //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
   public isModalShown:boolean = false;
 
@@ -31,6 +31,18 @@ export class TaskComponent implements OnInit{
   public onHidden():void {
     this.isModalShown = false;
   }
+
+  //collapse
+  public isCollapsed:boolean = true;
+
+   public collapsed(event:any):void {
+    this.isCollapsed = false;
+  }
+ 
+  public expanded(event:any):void {
+    this.isCollapsed = true;
+  }
+
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
 

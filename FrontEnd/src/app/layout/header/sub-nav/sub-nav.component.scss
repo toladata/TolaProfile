@@ -1,15 +1,24 @@
 @import "../../../../assets/scss/config/_config";
 .sub-nav {
-  background-color: $navy;
+  background-color: $green;
   height: 50px;
   &__cont{
     max-width: $container-fluid-max-width;
-    padding: rem-calc(0 28);
+    
   }
   &__link {
-    padding: rem-calc(13 30 13 0);
+    padding: rem-calc(13 30 0 0);
     color: $white;
     font-weight: 500;
     cursor: pointer;
   }
+  &__link--right{
+    right:90px;
+    position:absolute;
+  }
+  &__link--far_right{
+    right:0px;
+    position:absolute
+  }
+
 }
