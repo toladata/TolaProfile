@@ -10,7 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { ModalModule,CollapseModule } from 'ngx-bootstrap';
+import { ModalModule,CollapseModule, AccordionModule } from 'ngx-bootstrap';
 
 /* Import prismjs core for code hughlits */
 import 'prismjs/prism';
@@ -31,7 +31,7 @@ import { FilterPipe } from "app/shared/helpers/filter.pipe";
     Ng2PageScrollModule.forRoot(),
     NgxPaginationModule,
     ModalModule.forRoot(),
-    CollapseModule.forRoot()
+    AccordionModule.forRoot()
   ],
   declarations: [
     FooterComponent,
