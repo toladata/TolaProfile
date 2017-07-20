@@ -26,8 +26,8 @@
               <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
             </select>
             </div>
-            <div class="mr-auto p-2"><tola-button-component buttonClass="button--cancel btn" (click)="getAllTasks()" type="button">Reset Filter(s)</tola-button-component></div>
-            <div class="ml-auto p-2"><tola-button-component buttonClass="button--navy btn" (click)="createTask.show()">New Task</tola-button-component></div>
+            <div class="mr-auto p-2"><tola-button-component buttonClass="button--cancel btn" (click)="getAllTasks()">Reset Filter(s)</tola-button-component></div>
+            <div class="ml-auto p-2"><tola-button-component buttonClass="button--navy btn" (click)="createTaskModal.show()">New Task</tola-button-component></div>
         </div>
 
         <div class=" col-md-8"></div>
@@ -36,9 +36,6 @@
             <div class="modal-dialog modal-lg ">
 
                 <!-- Modal content-->
-
-                <!--<create-task></create-task>-->
-
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title offset-md-5 font3">Add Task</h4>
@@ -72,10 +69,10 @@
                                     <div class="col-md-10 col-sm-10">
                                         <div class="form-group">
                                             <select class="form-control" id="priority" formControlName="priority">
-                          <option value=1>High</option>
-                          <option value=2>Normal</option>
-                          <option value=3>Low</option>
-                        </select>
+                                              <option value=1>High</option>
+                                              <option value=2>Normal</option>
+                                              <option value=3>Low</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -84,14 +81,14 @@
                                     <div class="col-md-10 col-sm-10">
                                         <div class="form-group">
                                             <select class="form-control" id="assigned_to" formControlName="assigned_to">
-                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                        </select>
+                                                <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center">
                                     <tola-button-component buttonClass="btn-secondary" (click)="createTask(createTaskForm.value)">Submit</tola-button-component>
-                                    <tola-button-component buttonClass="button--cancel btn" type="reset">Reset</tola-button-component>
+                                    <button class="button--cancel btn" type="reset">Reset</button>
                                 </div>
                                 <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
                                 <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>
@@ -186,10 +183,10 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="status" value=1 class="form-control" formControlName="status">
-                            <option value=1>Active</option>
-                            <option value=2>Reopened</option>
-                            <option value=3>Completed</option>
-                          </select>
+                                                    <option value=1>Active</option>
+                                                    <option value=2>Reopened</option>
+                                                    <option value=3>Completed</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -198,10 +195,10 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="priority" formControlName="priority">
-                            <option value=1>High</option>
-                            <option value=2>Normal</option>
-                            <option value=3>Low</option>
-                          </select>
+                                                    <option value=1>High</option>
+                                                    <option value=2>Normal</option>
+                                                    <option value=3>Low</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -210,8 +207,8 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="assigned_to" formControlName="assigned_to">
-                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                          </select>
+                                                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -221,8 +218,8 @@
                                     </div>
                                     <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
                                     <select class="form-control" id="created_by" formControlName="created_by" hidden>
-                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                </select>
+                                        <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                    </select>
                                 </form>
                             </div>
                         </div>
