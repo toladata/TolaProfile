@@ -77,10 +77,10 @@
                                     <div class="col-md-10 col-sm-10">
                                         <div class="form-group">
                                             <select class="form-control" id="priority" formControlName="priority">
-                          <option value=1>High</option>
-                          <option value=2>Normal</option>
-                          <option value=3>Low</option>
-                        </select>
+                                              <option value=1>High</option>
+                                              <option value=2>Normal</option>
+                                              <option value=3>Low</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,8 @@
                                     <div class="form-group row">
                                         <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
                                         <div class="col-md-10 col-sm-10">
-                                            <input type="date" id="due_date" class="form-control" formControlName="due_date">
+                                            <!-- <input type="date" id="due_date" class="form-control" formControlName="due_date"> -->
+                                            <datepicker [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled" formControlName="due_date"></datepicker>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -194,10 +195,10 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="status" value=1 class="form-control" formControlName="status">
-                            <option value=1>Active</option>
-                            <option value=2>Reopened</option>
-                            <option value=3>Completed</option>
-                          </select>
+                                                  <option value=1>Active</option>
+                                                  <option value=2>Reopened</option>
+                                                  <option value=3>Completed</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -206,10 +207,10 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="priority" formControlName="priority">
-                            <option value=1>High</option>
-                            <option value=2>Normal</option>
-                            <option value=3>Low</option>
-                          </select>
+                                                  <option value=1>High</option>
+                                                  <option value=2>Normal</option>
+                                                  <option value=3>Low</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
