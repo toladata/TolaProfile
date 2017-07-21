@@ -16,14 +16,16 @@ export class TaskComponent implements OnInit{
   tolausers;
   user = JSON.parse(localStorage.getItem('loggedUser'));
   p: number = 1;
+  task_id;
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
   @ViewChild('createTaskModal') public createTaskModal:ModalDirective;
 
-  public isModalShown:boolean = false;
+  public isCreateModalShown:boolean = false;
+  public isEditModalShown:boolean = false;
 
-  public showModal():void {
-    this.isModalShown = true;
+  public showEditModal():void {
+    this.isEditModalShown = true;
   }
 
   public hideModal():void {
@@ -33,8 +35,11 @@ export class TaskComponent implements OnInit{
     this.createTaskModal.hide();
   }
 
-  public onHidden():void {
-    this.isModalShown = false;
+  public onCreateHidden():void {
+    this.isCreateModalShown = false;
+  }
+  public onEditHidden():void {
+    this.isEditModalShown = false;
   }
 
   //collapse
@@ -43,7 +48,7 @@ export class TaskComponent implements OnInit{
    public collapsed(event:any):void {
     this.isCollapsed = false;
   }
- 
+
   public expanded(event:any):void {
     this.isCollapsed = true;
   }
@@ -130,8 +135,8 @@ export class TaskComponent implements OnInit{
   }
 
   //A method to autofill the edit task form
-  fillInEditTaskForm(task_id): void{
-        let editedTask = this.tasks.filter(x => x.id === task_id)[0];
+  fillInEditTaskForm(task__id): void{
+        let editedTask = this.tasks.filter(x => x.id === task__id)[0];
         this.editTaskForm.setValue({
           task: editedTask.task,
           note: editedTask.note,
@@ -142,7 +147,8 @@ export class TaskComponent implements OnInit{
           priority: editedTask.priority,
           status: editedTask.status
         });
-        this.showModal();
+        this.task_id = task__id
+        this.showEditModal();
   }
 
   //Filter tasks
