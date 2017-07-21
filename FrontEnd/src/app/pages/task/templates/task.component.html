@@ -27,7 +27,7 @@
             </select>
             </div>
             <div class="mr-auto p-2">
-                <tola-button-component buttonClass="button--cancel btn" (click)="getAllTasks()" type="button">Reset Filter(s)</tola-button-component>
+                <tola-button-component buttonClass="button--cancel btn" (click)="getAllTasks()">Reset Filter(s)</tola-button-component>
             </div>
             <div class="ml-auto p-2">
                 <tola-button-component buttonClass="button--navy btn" (click)="createTaskModal.show()">New Task</tola-button-component>
@@ -40,9 +40,6 @@
             <div class="modal-dialog modal-lg ">
 
                 <!-- Modal content-->
-
-                <!--<create-task></create-task>-->
-
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title offset-md-5 font3">Add Task</h4>
@@ -89,14 +86,14 @@
                                     <div class="col-md-10 col-sm-10">
                                         <div class="form-group">
                                             <select class="form-control" id="assigned_to" formControlName="assigned_to">
-                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                        </select>
+                                                <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center">
                                     <tola-button-component buttonClass="btn-secondary" (click)="createTask(createTaskForm.value)">Submit</tola-button-component>
-                                    <tola-button-component buttonClass="button--cancel btn" type="reset">Reset</tola-button-component>
+                                    <button class="button--cancel btn" type="reset">Reset</button>
                                 </div>
                                 <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
                                 <input type="text" id="created_by" class="form-control" formControlName="created_by" hidden>
@@ -112,7 +109,7 @@
             <div class="alert alert-info" role="alert" *ngIf="tasks?.length == 0">
                 No tasks were found!
             </div>
-            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 5, currentPage: p } )">
+            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 4, currentPage: p } )">
                 <div class="card-header">
                     <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
                     <div [ngStyle]="{'float':'right'}">
@@ -187,7 +184,7 @@
                                         <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
                                         <div class="col-md-10 col-sm-10">
                                             <!-- <input type="date" id="due_date" class="form-control" formControlName="due_date"> -->
-                                            <datepicker [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled" formControlName="due_date"></datepicker>
+                                            <datepicker [(ngModel)]="due_date" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled" formControlName="due_date"></datepicker>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -219,8 +216,8 @@
                                         <div class="col-md-10 col-sm-10">
                                             <div class="form-group">
                                                 <select class="form-control" id="assigned_to" formControlName="assigned_to">
-                            <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                          </select>
+                                                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -230,8 +227,8 @@
                                     </div>
                                     <input type="text" id="email" class="form-control" formControlName="submitter_email" hidden>
                                     <select class="form-control" id="created_by" formControlName="created_by" hidden>
-                    <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
-                </select>
+                                        <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
+                                    </select>
                                 </form>
                             </div>
                         </div>
@@ -285,6 +282,36 @@
                             </select>
                         </div>
                     </form>
+                </div>
+            </div>
+            <!-- This is Tickets sections (Tickets assigned to a user) -->
+            <div class="card">
+                <div class="card-header">
+                    <font class="card-title"><strong>Your Urgent Tickets</strong></font>
+                </div>
+                <div class="card-block">
+                    <ol>
+                        <li> [122-TW] Task Title one</li>
+                        <li> [345-TA] Another task title number 1</li>
+                        <li> [342-TT] Ticket tittle on this</li>
+                        <li> [346-TW] Another TolaWork ticket</li>
+                        <li> [456-TA] This is final task</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- This is Project Initiations Awaiting Your approval -->
+            <div class="card">
+                <div class="card-header">
+                    <font class="card-title"><strong>Initiations Awaiting Approval</strong></font>
+                </div>
+                <div class="card-block">
+                    <ol>
+                        <li> [122] Project initiation 1</li>
+                        <li> [345] Project initiation 2</li>
+                        <li> [342] Project initiation 3</li>
+                        <li> [346] Project initiation 4</li>
+                        <li> [456] Project initiation 5</li>
+                    </ol>
                 </div>
             </div>
         </div>
