@@ -1,25 +1,18 @@
-
-	<div class="container"> 
-		<div class="col-md-12 clear-fix"></div>
-	    <div class="card col-md-6 col-sm-6 offset-md-3">
+<div class="container"> 
+	    <div class="card login col-md-6 col-sm-6 offset-md-3">
 	        <div class="card-block">
 	            <div class="text-center">
 	                <h3 class="topic"><i class="fa fa-lock"></i> Login</h3>
 	            </div>
 	            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" novalidate>
-	                <!--Body-->
-	                <div class="form-group row">
-						<label class="col-md-2 col-sm-2 col-form-label">Email</label>
-						<div class="col-md-10 col-sm-10">
-							<input type="text" id="form2" class="form-control" formControlName="email">
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="form4" class="col-md-2 col-sm-2 col-form-label">Password</label>
-						<div class="col-md-10 col-sm-10">
-							<input type="password" id="form4" class="form-control" formControlName="password">
-						</div>
-					</div>
+	            	<div class="form-group">
+	                    <label for="email">Email</label>
+	                    <input type="text" id="email" class="form-control" formControlName="email" placeholder="Enter your email">
+	                </div>
+	                <div class="form-group">
+	                    <label for="password">Password</label>
+	                    <input type="password" id="form4" class="form-control" formControlName="password" placeholder="Password">
+	                </div>
 	                <div class="text-center">
 	                    <button class="btn btn-primary">Login</button>
 	                    <div class="options">
@@ -27,8 +20,7 @@
 				            <p>Forgot <a href="#">Password?</a></p>
 				        </div>
 	                </div>
-	            </form>
+                </form>
 	        </div>
 	    </div>
-		<div class="col-md-12 clear-fix"></div>
-	</div>
+</div>
