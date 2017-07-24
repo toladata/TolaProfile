@@ -37,6 +37,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'rest_framework',
     'corsheaders',
+    'django_celery_results',
 )
 
 # Apps specific for this project go here.
@@ -104,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 from datetime import timedelta
+
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER':
     #'rest_framework_jwt.utils.jwt_response_payload_handler',
@@ -111,3 +113,6 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
     'JWT_EXPIRATION_DELTA': timedelta(hours=4),
 }
+
+########## Celery CONFIGURATION
+CELERY_RESULT_BACKEND = 'django-db'
