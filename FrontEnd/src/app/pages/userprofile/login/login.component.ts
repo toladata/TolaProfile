@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   selector: 'app-login',
   providers: [FormBuilder, UserprofileService],
   templateUrl: '../templates/login.component.html',
-  styleUrls: ['../css/login.component.css']
+  styleUrls: ['../css/userprofile.component.scss']
 })
 export class LoginComponent implements OnInit {
 
