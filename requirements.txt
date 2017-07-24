@@ -41,3 +41,4 @@ django_admin_report
 pyyaml
 djangorestframework-jwt
 django-cors-headers
+celery>=4.0.2
