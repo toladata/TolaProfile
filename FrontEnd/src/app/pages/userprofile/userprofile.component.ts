@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-userprofile',
   templateUrl: './templates/userprofile.component.html',
-  styleUrls: ['./css/userprofile.component.css'],
+  styleUrls: ['./css/userprofile.component.scss'],
   providers: [UserprofileService, FormBuilder],
 })
 export class UserprofileComponent implements OnInit {
