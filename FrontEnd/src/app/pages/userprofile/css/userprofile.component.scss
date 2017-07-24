@@ -1,0 +1,23 @@
+@import "~daemonite-material/assets/sass/mixins";
+//variables
+@import "../../forms/material-form/variables/variables";
+$brand-color:                   #DD6E42 !default;
+$brand-color-dark:              $palette-purple-700 !default;
+$brand-color-light:             $palette-purple-100 !default;
+$textfield-border-color-focus: #DD6E42 !default;
+// material components
+@import "~daemonite-material/assets/sass/material/button-flat";
+@import "~daemonite-material/assets/sass/material/button-float";
+@import "~daemonite-material/assets/sass/material/card";
+@import "~daemonite-material/assets/sass/material/text-field";
+@import "~daemonite-material/assets/sass/material/text-field-input-group";
+// utilities
+@import "~daemonite-material/assets/sass/utilities";
+ 
+.registerForm{
+	margin-top:60px;
+}
+
+.loginForm{
+	margin-top:100px;
+}
