@@ -16,6 +16,10 @@ def sync_with_tolawork(data, url){
 
     api_response = requests.post(tola_work_url,json.dumps(data),headers=header)
 
+    if api_response.status_code == 200 || 201:
+        return True,
+    return false
+
 }
 
 @shared_task
@@ -25,6 +29,9 @@ def sync_with_activity(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.post(url,json.dumps(data),headers=header)
 
+    if api_response.status_code == 200 || 201:
+        return True,
+    return false
 }
 
 @shared_task
@@ -33,4 +40,7 @@ def sync_with_table(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.post(url,json.dumps(data),headers=header)
 
+    if api_response.status_code == 200 || 201:
+        return True,
+    return false
 }
