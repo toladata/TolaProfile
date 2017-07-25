@@ -49,7 +49,7 @@ def sync_delete_with_tolawork(data, url){
     token = ''
     header = {'Authorization': 'token %s' % token}
 
-    api_response = requests.delete(tola_work_url,json.dumps(data),headers=header)
+    api_response = requests.delete(tola_work_url+'/'+data.id,headers=header)
 
     if api_response.status_code // 100 == 2:
         return True,
@@ -87,7 +87,7 @@ def sync_delete_with_activity(data, url){
 
     token = ''
     header = {'Authorization': 'token %s' % token}
-    api_response = requests.delete(url,json.dumps(data),headers=header)
+    api_response = requests.delete(url+'/'+data.id,headers=header)
 
     if api_response.status_code // 100 == 2:
         return True,
@@ -110,7 +110,7 @@ def sync_create_with_table(data, url){
 def sync_delete_with_table(data, url){
     token = ''
     header = {'Authorization': 'token %s' % token}
-    api_response = requests.delete(url,json.dumps(data),headers=header)
+    api_response = requests.delete(url+'/'+data.id,headers=header)
 
     if api_response.status_code // 100 == 2:
         return True,
