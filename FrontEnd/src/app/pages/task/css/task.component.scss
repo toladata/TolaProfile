@@ -1,6 +1,13 @@
+@import "~daemonite-material/assets/sass/mixins";
+@import "../../forms/material-form/variables/variables";
+@import "~daemonite-material/assets/sass/material/card";
+@import "~daemonite-material/assets/sass/material/picker";
+@import "~daemonite-material/assets/sass/material/text-field-input-group";
+@import "~daemonite-material/assets/sass/utilities";
 .content
 {
 	background-color: #fff;
+	padding-top:20px;
 }
 .font1
 {
@@ -59,7 +66,7 @@
 	color:blue;
 
 }
-.search_btn
+.search
 {
-	margin-left:15px;
+	margin-bottom:10px;
 }

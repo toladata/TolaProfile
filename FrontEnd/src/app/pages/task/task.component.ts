@@ -8,7 +8,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-task',
   templateUrl: './templates/task.component.html',
-  styleUrls: ['./css/task.component.css'],
+  styleUrls: ['./css/task.component.scss'],
   providers: [TaskService,FormBuilder, SharedService]
 })
 export class TaskComponent implements OnInit{
