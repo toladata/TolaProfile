@@ -17,7 +17,7 @@ def sync_create_with_tolawork(data, url){
 
     api_response = requests.post(tola_work_url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 
@@ -34,7 +34,7 @@ def sync_update_with_tolawork(data, url){
 
     api_response = requests.post(tola_work_url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code == // 100 == 2:
         return True,
     return false
 
@@ -51,7 +51,7 @@ def sync_delete_with_tolawork(data, url){
 
     api_response = requests.delete(tola_work_url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 
@@ -65,7 +65,7 @@ def sync_create_with_activity(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.post(url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 }
@@ -77,7 +77,7 @@ def sync_update_with_activity(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.post(url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 }
@@ -89,7 +89,7 @@ def sync_delete_with_activity(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.delete(url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 }
@@ -101,7 +101,7 @@ def sync_create_with_table(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.post(url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 }
@@ -112,7 +112,7 @@ def sync_delete_with_table(data, url){
     header = {'Authorization': 'token %s' % token}
     api_response = requests.delete(url,json.dumps(data),headers=header)
 
-    if api_response.status_code == 200 || 201:
+    if api_response.status_code // 100 == 2:
         return True,
     return false
 }
