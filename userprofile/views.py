@@ -14,6 +14,12 @@ import django_filters
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
+from rest_auth.registration.views import SocialLoginView
+from rest_auth.views import LoginView
+from rest_auth.social_serializers import TwitterLoginSerializer
+
 
 class CountryViewSet(viewsets.ModelViewSet):
 
@@ -46,5 +52,10 @@ class UserRegister(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
 
+class TwitterLogin(LoginView):
+    serializer_class = TwitterLoginSerializer
+    adapter_class = TwitterOAuthAdapter
 	
