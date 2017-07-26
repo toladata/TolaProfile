@@ -36,6 +36,16 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.google',
     'corsheaders',
     'django_celery_results',
 )
@@ -46,6 +56,9 @@ LOCAL_APPS = (
     'userprofile',
     'task',
 )
+
+#Django-allauth site_id
+SITE_ID = 1
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -103,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+REST_USE_JWT = True
 
 from datetime import timedelta
 
