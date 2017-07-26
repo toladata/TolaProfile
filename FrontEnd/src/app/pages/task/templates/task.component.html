@@ -1,14 +1,12 @@
-<div class="container content">
-    <div class="row justify-content-between bottom_margin">
-            <div class="col-7">
-                <h4>My Tasks</h4>
-            </div>
-            <div class="col-2">
-                <tola-button-component buttonClass="button--navy btn" (click)="createTaskModal.show()">New Task</tola-button-component>
-            </div>
-
-        <div class=" col-md-8"></div>
-
+<div class="container task">
+    <div class="row justify-content-between task__margin">
+        <div class="col-3 ">
+            <h4>My Tasks</h4>
+        </div>
+        <div class="col-4">
+            <tola-button-component buttonClass="button--navy btn" (click)="createTaskModal.show()">New Task</tola-button-component>
+        </div>
+        <!-- create task modal -->
         <div bsModal #createTaskModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg ">
 
@@ -75,8 +73,8 @@
         </div>
     </div>
     <div class=" row">
-        <div class="col-md-8 col-xs-6 task_main">
-            <div class="row align-items-start bottom_margin">
+        <div class="col-md-8 col-xs-6 task__main">
+            <div class="row align-items-start task__margin">
                 <div class="col">
                     <select class="form-control" #status (change)="filterTask('status',status.value)">
                   <option disabled>Status</option>
@@ -100,9 +98,9 @@
                 </select>
                 </div>
                 <div class="col">
-                    <tola-button-component buttonClass="button--cancel btn" (click)="getAllTasks()">Reset Filter(s)</tola-button-component>
+                    <tola-button-component buttonClass="button--cancel btn-sm btn" (click)="getAllTasks()">Reset Filter(s)</tola-button-component>
                 </div>
-          </div>
+            </div>
             <div class="alert alert-info" role="alert" *ngIf="tasks?.length == 0">
                 No tasks were found!
             </div>
@@ -121,38 +119,12 @@
                 </div>
                 <div class="card-block">
                     <p class="card-text">{{task.note}}</p>
-                    <p *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
-                    <p>Submitted by <strong><i>{{task.submitter_email}}</i> </strong>on <strong>{{task.created_date | date}}.</strong> <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers">
-                                                <strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong>
-                                            </i> </font></p>
-                    <!-- <accordion>
-                        <accordion-group heading="More Details"> -->
-                            <!-- <div>
-                                <div class="card card-block">
-                                    <table class="table table-striped table-condensed">
-                                        <tr>
-                                            <td class="font1">Submitter Email</td>
-                                            <td>{{task.submitter_email}}</td>
-                                            <td class="font1">Submission Date</td>
-                                            <td>{{task.created_date | date}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font1">Assigned to</td>
-                                            <div *ngFor="let user of tolausers">
-                                                <td *ngIf="task.assigned_to == user.id">{{user.username}}</td>
-                                            </div>
-                                            <td class="font1">Due Date</td>
-                                            <td>{{task.due_date | date}}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div> -->
-                       <!--  </accordion-group>
-                    </accordion> -->
+                    <p class="task__main__comment" *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
+                    <p class="task__main__comment">Submitted by <strong><i>{{task.submitter_email}}</i> </strong>on <strong>{{task.created_date | date}}.</strong> <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers"><strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong></i> </font></p>
 
                     <div>
                         <tola-button-component buttonClass="btn" (click)="fillInEditTaskForm(task.id)">Edit</tola-button-component>
-                        <tola-button-component buttonClass="btn-primary" (click)="deleteTask(task.id)">Delete</tola-button-component>
+                        <button class="btn task__delete_btn " type="button" (click)="deleteTask(task.id)">Delete</button>
                     </div>
                 </div>
             </div>
@@ -163,7 +135,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title  offset-md-5 font3">Edit Task</h4>
+                        <h4 class="modal-title  offset-md-5">Edit Task</h4>
                         <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -228,8 +200,8 @@
                                         <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
                                     </select>
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary" (click)="editTask(task_id,editTaskForm.value)">Save Changes</button>
-                                <button class="btn delete_btn font2 " type="button" data-dismiss="modal">Discard Changes</button>
+                                <tola-button-component buttonClass="btn-primary"(click)="editTask(task_id,editTaskForm.value)">Save Changes</tola-button-component>
+                                <button class="btn task__delete_btn " type="button" (click)="hideModal()">Discard Changes</button>
                             </div>
 
                         </form>
@@ -256,11 +228,11 @@
                 <div class="card-block">
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('created',user.id)">
-                            <font class="make_link">Created by Me</font><span class=" badge badge-primary badge-pill">10</span></a>
+                            <font class="task__make_link">Created by Me</font><span class=" badge badge-primary badge-pill">10</span></a>
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('assigned',user.id)">
-                            <font class="make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">5</span></a>
+                            <font class="task__make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">5</span></a>
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('completed',user.id)">
-                            <font class="make_link">Completed by Me </font><span class="badge badge-primary badge-pill">2</span></a>
+                            <font class="task__make_link">Completed by Me </font><span class="badge badge-primary badge-pill">2</span></a>
                     </div>
                 </div>
             </div>

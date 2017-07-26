@@ -1,65 +1,54 @@
+@import "../../../../assets/scss/config/_config";
 @import "~daemonite-material/assets/sass/mixins";
 @import "../../forms/material-form/variables/variables";
 @import "~daemonite-material/assets/sass/material/card";
 @import "~daemonite-material/assets/sass/material/picker";
 @import "~daemonite-material/assets/sass/material/text-field-input-group";
 @import "~daemonite-material/assets/sass/utilities";
-.content
+$red: #cc474d;
+$orange: #DD6E42;
+.task
 {
 	background-color: #fff;
 	padding-top:20px;
+	&__margin{
+		margin-bottom: 15px
+	}
+	&__main{
+		border:1px solid#f8f8f8;
+		padding-top:10px;
+		&__comment{
+			font-size:12px;
+		}
+	}
+	&__delete_btn{
+		background-color: $red;
+		color:#fff;
+	}
+	&__make_link{
+		cursor:pointer;
+		color:$orange;
+
+	}
+}
+.card-header
+{
+	padding-bottom:10px
 }
 .font1
 {
 	font-weight: bold;
 }
-.font2
-{
-	color: #fff;
-}
-.font3
-{
-	float: center;
-}
 .badge
 {
 	padding:5px;
 }
-.task
-{
-	background-color: #f8f8f8;
-	font-weight: bold;
-}
-.task_main
-{
-	border:1px solid#f8f8f8;
-	padding-top:10px;
-}
-.edit_btn
-{
-	background-color: #6CB7F0;
-	color:#fff;
-}
-.delete_btn
-{
-	background-color: #E15F4F;
-}
-.reset_btn
-{
-	margin-top: 5px;
-}
+
 .card
 {
 	margin-bottom: 10px;
 }
-.edit_task
-{
-	margin-top: 15px;
-}
-.bottom_margin
-{
-	margin-bottom: 15px;
-}
+
 .make_link
 {
 	cursor:pointer;
