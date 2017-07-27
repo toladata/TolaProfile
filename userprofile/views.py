@@ -48,51 +48,67 @@ class UserRegister(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 @psa()
 def auth_by_token(request, backend):
-    """Decorator that creates/authenticates a user with an access_token"""
-    token = request.DATA.get('access_token')
-    user = request.user
-    user = request.backend.do_auth(
-            access_token=request.DATA.get('access_token')
-        )
-    if user:
-        return user
+
+    """
+    This decorator that creates a new user orauthenticates a user with an access_token
+
+    """
+
+    access_token = request.DATA.get('access_token')
+    get_user = request.user
+    user = request.backend.do_auth(access_token=access_token)
+
+    if get_user:
+        return get_user
     else:
         return None
 
 class FacebookView(APIView):
-    """View to authenticate users through Facebook."""
+
+    """
+    View to authenticate users through Facebook.
+
+    """
 
     permission_classes = (AllowAny,)
 
     def post(self, request, format=None):
-        auth_token = request.DATA.get('access_token', None)
+
+        token = request.DATA.get('access_token', None)
         backend = request.DATA.get('backend', None)
-        if auth_token and backend:
+
+        if token and backend:
             try:
                 # Try to authenticate the user using python-social-auth
-                user = auth_by_token(request, backend)
+                get_user = auth_by_token(request, backend)
+
             except Exception,e:
                 return Response({
                         'status': 'Bad request',
                         'message': 'Could not authenticate with the provided token.'
                     }, status=status.HTTP_400_BAD_REQUEST)
-            if user:
-                if not user.is_active:
+
+            if get_user:
+
+                if not get_user.is_active:
+
                     return Response({
                         'status': 'Unauthorized',
                         'message': 'The user account is disabled.'
                     }, status=status.HTTP_401_UNAUTHORIZED)
 
-                # This is the part that differs from the normal python-social-auth implementation.
                 # Return the JWT instead.
 
-                # Get the JWT payload for the user.
-                payload = jwt_payload_handler(user)
+                # Get the JWT payload for the get_user object.
+                
+                payload = jwt_payload_handler(get_user)
 
-                # Include original issued at time for a brand new token,
-                # to allow token refresh
+                # Include original issued at time for a brand new token to allow token refresh
+
                 if settings.JWT_ALLOW_REFRESH:
                     payload['orig_iat'] = timegm(
                         datetime.utcnow().utctimetuple()
