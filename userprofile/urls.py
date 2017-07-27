@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^token-refresh/', refresh_jwt_token),
     url(r'^token-verify/', verify_jwt_token),
     url(r'^register/$', UserRegister.as_view()),
+    url(r'^facebook/$', FacebookView.as_view()),
 ]
