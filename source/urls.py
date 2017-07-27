@@ -11,12 +11,11 @@ router.register(r'tolausers', TolaUserViewset)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^api/auth/', include('userprofile.urls')),
     #url(r'^api/', include('task.urls')),
 
     #rest framework
     url(r'^api/', include(router.urls)),
-    url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 
 ]
