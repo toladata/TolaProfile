@@ -17,6 +17,8 @@ export class TaskComponent implements OnInit{
   user = JSON.parse(localStorage.getItem('loggedUser'));
   p: number = 1;
   task_id;
+  tasks_completed;
+
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
   @ViewChild('createTaskModal') public createTaskModal:ModalDirective;
@@ -95,10 +97,12 @@ export class TaskComponent implements OnInit{
   }
 
   //get all tasks
-  getAllTasks(){
-    this._service.getTasks().subscribe(
-        tasks => this.tasks=tasks,
-        );
+  getAllTasks(): void{
+    this._service.getTasks().subscribe((tasks) => {
+      this.tasks = tasks;
+      this.tasks_completed = tasks.filter(x => x.created_by === Number(this.user.id) && x.status === 3);
+    }
+    );
   }
 
   //Create a task
