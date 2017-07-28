@@ -43,5 +43,5 @@ djangorestframework-jwt
 django-cors-headers
 celery>=4.0.2
 django-celery-results>=1.0.1
-django-rest-auth>=0.9.1
-django-rest-auth[with_social]
+python-social-auth>=0.2.12
+social-auth-app-django>=1.2.0

@@ -36,16 +36,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.google',
+    'social.apps.django_app.default',
     'corsheaders',
     'django_celery_results',
 )
@@ -57,14 +48,14 @@ LOCAL_APPS = (
     'task',
 )
 
-#Django-allauth site_id
-SITE_ID = 1
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 #Configure django-rest-framework permissions to accept JSON Web tokens by default.
 REST_FRAMEWORK = {
   'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.TokenAuthentication',
     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
   ),
 }
@@ -79,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'social.apps.django_app.context_processors.backends',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -116,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-REST_USE_JWT = True
 
 from datetime import timedelta
 
