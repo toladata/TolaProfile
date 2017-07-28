@@ -72,6 +72,31 @@ export class UserprofileService {
             });
 
     }
+    //update user
+    updateUser(user_id,userData){
+
+        let headers = new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+         });
+
+         let options = new RequestOptions({
+            headers: headers,
+    });
+
+    return this.http.post('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
+        .map((response: Response) => {
+
+                    let data = response.json();
+                    if (data) {
+                        return true;
+                    } else {
+                        console.log("there was an error");
+                        return false;
+                    }
+            });
+
+    }
 
 //login in wit facebook
 login_with_facebook(response){

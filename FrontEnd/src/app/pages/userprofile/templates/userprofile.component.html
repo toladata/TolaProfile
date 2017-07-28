@@ -17,9 +17,9 @@
 					  <p class="list-group-item justify-content-between">Email:<span class="font1">
 					  {{user.email}}</span></p>
 					  <p class="list-group-item justify-content-between">Organization:<span class="font1">
-					  {{user.organization_id}}</span></p>
+					  {{user.organization}}</span></p>
 					  <p class="list-group-item justify-content-between">Country:<span class="font1">
-					  {{user.country_id}}</span></p>
+					  {{user.country}}</span></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
 				  </div>
@@ -56,18 +56,18 @@
 		                        <input type="text" id="email" class="form-control" formControlName="email" value="{{user.email}}">
 		                    </div>
 		                </div>
-		                <!--<div class="form-group row">
+		                <div class="form-group row">
 		                    <label for="organization" class="col-md-3 col-sm-3 col-form-label">Organization</label>
 		                    <div class="col-md-9 col-sm-9">
-		                        <input type="text" id="organization" class="form-control" formControlName="organization" value="{{user.organization_id}}">
+		                        <input type="text" id="organization" class="form-control" formControlName="organization" value="{{user.organization}}">
 		                    </div>
 		                </div> 
 		                <div class="form-group row">
 		                    <label for="country" class="col-md-3 col-sm-3 col-form-label">Country</label>
 		                    <div class="col-md-9 col-sm-9">
-		                        <input type="text" id="country" class="form-control" formControlName="organization" value="{{user.country_id}}">
+		                        <input type="text" id="country" class="form-control" formControlName="organization" value="{{user.country}}">
 		                    </div>
-		                </div>  -->
+		                </div>  
 		                <div class="text-center">
 		                   <button class="btn btn-primary" (click)="editProfile(user.id,editUserForm.value)">Save Changes</button>   
 		                </div>

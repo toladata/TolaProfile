@@ -19,8 +19,8 @@ export class UserprofileComponent implements OnInit {
         email: ['', Validators.required],
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
-        //organization: ['', Validators.required],
-        //country: ['', Validators.required],
+        organization: ['', Validators.required],
+        country: ['', Validators.required],
        });
     }
 
@@ -29,21 +29,20 @@ export class UserprofileComponent implements OnInit {
   }
 
   editProfile(user_id,editUserForm){
-    console.log(user_id,editUserForm);
+    this._service.updateUser(user_id,editUserForm).subscribe();
 
   }
 
   //fill edit user form
   fillEditUser(user_id): void{
     let editedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    console.log(editedUser);
     this.editUserForm.setValue({
        username:editedUser.username,
        email:editedUser.email,
        firstname:editedUser.firstname,
        lastname:editedUser.lastname,
-      //  organization:editedUser.organization,
-       //country:editedUser.country,
+      organization:editedUser.organization,
+       country:editedUser.country,
           });
     this.isCollapsed = false;
   }
