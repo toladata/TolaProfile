@@ -29,9 +29,9 @@
 	    <div class="card col-md-8 offset-md-2">
 	        <div class="card-block">
 	            <button type="button" type="button" class="btn btn-primary"
-        		(click)="isCollapsed = !isCollapsed"><i class="fa fa-edit" aria-hidden="true"></i> Edit Profile</button>
+        		(click)="fillEditUser(user.id)" ><i class="fa fa-edit" aria-hidden="true"></i> Edit Profile</button>
 	            <div [collapse]="isCollapsed" class="profile__edit_form">
-		            <form [formGroup]="editForm" novalidate>
+		            <form [formGroup]="editUserForm" novalidate>
 		            	<div class="form-group row">
 		                    <label for="FirstName" class="col-md-3 col-sm-3 col-form-label">First Name</label>
 		                    <div class="col-md-9 col-sm-9">
@@ -56,7 +56,7 @@
 		                        <input type="text" id="email" class="form-control" formControlName="email" value="{{user.email}}">
 		                    </div>
 		                </div>
-		                <div class="form-group row">
+		                <!--<div class="form-group row">
 		                    <label for="organization" class="col-md-3 col-sm-3 col-form-label">Organization</label>
 		                    <div class="col-md-9 col-sm-9">
 		                        <input type="text" id="organization" class="form-control" formControlName="organization" value="{{user.organization_id}}">
@@ -67,9 +67,9 @@
 		                    <div class="col-md-9 col-sm-9">
 		                        <input type="text" id="country" class="form-control" formControlName="organization" value="{{user.country_id}}">
 		                    </div>
-		                </div>  
+		                </div>  -->
 		                <div class="text-center">
-		                   <button class="btn btn-primary" (click)="editProfile(user.id,editForm.value)">Save Changes</button>   
+		                   <button class="btn btn-primary" (click)="editProfile(user.id,editUserForm.value)">Save Changes</button>   
 		                </div>
 	                </form>
 	            </div>

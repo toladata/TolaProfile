@@ -12,15 +12,15 @@ export class UserprofileComponent implements OnInit {
 
   	user;
     public isCollapsed:boolean = true;
-  	private editForm: FormGroup;
+  	private editUserForm: FormGroup;
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
-       this.editForm = fb.group({
+       this.editUserForm = fb.group({
         username: ['', Validators.required],
         email: ['', Validators.required],
         firstname: ['', Validators.required],
         lastname: ['', Validators.required],
-        organization: ['', Validators.required],
-        country: ['', Validators.required],
+        //organization: ['', Validators.required],
+        //country: ['', Validators.required],
        });
     }
 
@@ -28,10 +28,24 @@ export class UserprofileComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
 
-  editProfile(user_id,editForm){
-    console.log(user_id,editForm);
+  editProfile(user_id,editUserForm){
+    console.log(user_id,editUserForm);
 
   }
 
+  //fill edit user form
+  fillEditUser(user_id): void{
+    let editedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    console.log(editedUser);
+    this.editUserForm.setValue({
+       username:editedUser.username,
+       email:editedUser.email,
+       firstname:editedUser.firstname,
+       lastname:editedUser.lastname,
+      //  organization:editedUser.organization,
+       //country:editedUser.country,
+          });
+    this.isCollapsed = false;
+  }
 
 }

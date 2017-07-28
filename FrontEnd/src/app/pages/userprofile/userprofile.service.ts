@@ -77,6 +77,7 @@ export class UserprofileService {
         localStorage.removeItem("id_token");
         localStorage.removeItem("loggedUser");
         this._router.navigate(['home']);
+        window.location.reload();
     }
 }
 
