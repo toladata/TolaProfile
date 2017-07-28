@@ -73,6 +73,41 @@ export class UserprofileService {
 
     }
 
+//login in wit facebook
+login_with_facebook(response){
+        let headers = new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+         });
+
+         let options = new RequestOptions({
+            headers: headers,
+    });
+
+    return this.http.post('http://127.0.0.1:8000/api/auth/facebook/',JSON.stringify({"access_token": response.authResponse.accessToken,
+        "backend": "facebook" }), options)
+        .map((response: Response) => {
+                    // login successful if there's a jwt token in the response
+                    let data = response.json();
+                    let token = response.json().token
+                    if (token) {
+                        // set token property
+                        this.token = data.token;
+
+                        // store username and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('id_token', token);
+                        localStorage.setItem('loggedUser', JSON.stringify(data.user));
+
+                        // return true for successful login
+                        return true;
+                    } else {
+                        // return false for failed login
+                        console.log("there was an error");
+                        return false;
+                    }
+            });
+    }
+
     logout(){
         localStorage.removeItem("id_token");
         localStorage.removeItem("loggedUser");
