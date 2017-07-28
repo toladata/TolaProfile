@@ -119,7 +119,9 @@
                 </div>
                 <div class="card-block">
                     <p class="card-text">{{task.note}}</p>
-                    <p class="task__main__comment">Submitted by <strong><i>{{task.submitter_email}}</i> </strong>on <strong>{{task.created_date | date}}.</strong> <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers"><strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong></i> </font></p>
+                    <p class="task__main__comment">Submitted by <strong><i>{{task.submitter_email}}</i> </strong>on <strong>{{task.created_date | date}}.</strong>
+                        <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers"><strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong></i> </font>
+                    </p>
                     <p class="task__main__comment" *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
 
                     <div>
@@ -200,7 +202,7 @@
                                         <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
                                     </select>
                             <div class="text-center">
-                                <tola-button-component buttonClass="btn-primary"(click)="editTask(task_id,editTaskForm.value)">Save Changes</tola-button-component>
+                                <tola-button-component buttonClass="btn-primary" (click)="editTask(task_id,editTaskForm.value)">Save Changes</tola-button-component>
                                 <button class="btn task__delete_btn " type="button" (click)="hideModal()">Discard Changes</button>
                             </div>
 
@@ -219,7 +221,7 @@
                     <span class="input-group-btn">
                       <button class="btn btn-info" type="button" disabled><i class="fa fa-search"></i>GO</button>
                     </span>
-                </div>      
+                </div>
             </div>
             <div class="card">
                 <div class="card-header">
@@ -232,14 +234,14 @@
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('assigned',user.id)">
                             <font class="task__make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">5</span></a>
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('completed',user.id)">
-                            <font class="task__make_link">Completed by Me </font><span class="badge badge-primary badge-pill">2</span></a>
+                            <font class="task__make_link">Completed by Me </font><span *ngIf="tasks_completed" class="badge badge-primary badge-pill">{{tasks_completed.length}}</span></a>
                     </div>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <font><strong>Sort Tasks</strong></font>
-                </div> 
+                </div>
                 <div class="card-block">
                     <form #sortForm="ngForm">
                         <div class="form-group">
