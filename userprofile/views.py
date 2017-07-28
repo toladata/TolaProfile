@@ -16,8 +16,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from social_django.utils import load_strategy, load_backend, psa, setting, BackendWrapper
 
-
-
 class CountryViewSet(viewsets.ModelViewSet):
 
 	queryset = Country.objects.all()
@@ -104,7 +102,7 @@ class FacebookView(APIView):
                 # Return the JWT instead.
 
                 # Get the JWT payload for the get_user object.
-                
+                w
                 payload = jwt_payload_handler(get_user)
 
                 # Include original issued at time for a brand new token to allow token refresh

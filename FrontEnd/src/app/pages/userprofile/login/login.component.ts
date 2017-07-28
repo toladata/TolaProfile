@@ -3,8 +3,6 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UserprofileService } from '../userprofile.service';
 import { Router } from "@angular/router";
 
-
-
 @Component({
   selector: 'app-login',
   providers: [FormBuilder, UserprofileService],
@@ -15,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   private loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) { 
+  constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) {
 
     this.loginForm = fb.group({
       email: ['', Validators.required],
@@ -31,11 +29,12 @@ export class LoginComponent implements OnInit {
             .subscribe(result => {
                 if (result === true) {
                     console.log(localStorage.getItem('id_token'));
-                    window.location.reload();
                     this.router.navigate(['task']);
+                    window.location.reload();
                 } else {
                   console.log("There was a problem");
                 }
             });
   }
+
 }

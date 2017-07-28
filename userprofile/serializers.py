@@ -4,14 +4,14 @@ from models import *
 
 class OrganizationSerializer(serializers.HyperlinkedModelSerializer):
 
-	class meta:
+	class Meta:
 		model = Organization
 		fields = '__all__'
 
 
 class CountrySerializer(serializers.HyperlinkedModelSerializer):
 
-	class meta:
+	class Meta:
 		model = Country
 		fields = '__all__'
 		
@@ -23,7 +23,7 @@ class TolaUserSerializer(serializers.ModelSerializer):
 
     class  Meta:
         model = TolaUser
-        fields = ('id', 'email', 'username', 'date_created', 'date_modified','firstname', 'lastname', 'password', 'confirm_password')
+        fields = ('id', 'email', 'username', 'date_created', 'date_modified','firstname', 'lastname', 'password', 'organization', 'country', 'confirm_password')
         read_only_fields = ('date_created', 'date_modified')
 
     def create(self, validated_data):

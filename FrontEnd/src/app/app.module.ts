@@ -17,6 +17,7 @@ import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { LandingpageComponent } from './landingpage.component';
 import {AuthConfig, AuthHttp } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard'
+import { Angular2SocialLoginModule } from "angular2-social-login";
 
 
 // AoT requires an exported function for factories
@@ -28,6 +29,22 @@ export function HttpLoaderFactory(http: Http) {
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({headerPrefix: 'JWT'}), http, options);
 }
+
+//angular2-social-login credentials
+
+// let providers = {
+//     "google": {
+//       "clientId": "GOOGLE_CLIENT_ID"
+//     },
+//     "linkedin": {
+//       "clientId": "LINKEDIN_CLIENT_ID"
+//     },
+//     "facebook": {
+//       "clientId": "FACEBOOK_CLIENT_ID",
+//       "apiVersion": "<version>" //like v2.4
+//     }
+// };
+
 
 @NgModule({
   declarations: [
@@ -42,6 +59,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     UiComponentsModule,
     Routing,
     EffectsModule,
+    Angular2SocialLoginModule,
     EffectsModule.run(UserEffects),
     StoreModule.provideStore( reducer ),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
@@ -64,4 +82,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//Angular2SocialLoginModule.loadProvidersScripts(providers);
+
 
