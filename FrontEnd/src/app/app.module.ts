@@ -18,6 +18,7 @@ import { LandingpageComponent } from './landingpage.component';
 import {AuthConfig, AuthHttp } from 'angular2-jwt';
 import { AuthGuard } from './auth.guard'
 import { Angular2SocialLoginModule } from "angular2-social-login";
+import { AppService } from './app.service';
 
 
 // AoT requires an exported function for factories
