@@ -21,3 +21,9 @@ $textfield-border-color-focus: #DD6E42 !default;
 .loginForm{
 	margin-top:100px;
 }
+.profile{
+	&__edit_form
+	{
+		margin-top:15px;
+	}
+}

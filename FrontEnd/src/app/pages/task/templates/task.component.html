@@ -119,8 +119,8 @@
                 </div>
                 <div class="card-block">
                     <p class="card-text">{{task.note}}</p>
-                    <p class="task__main__comment" *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
                     <p class="task__main__comment">Submitted by <strong><i>{{task.submitter_email}}</i> </strong>on <strong>{{task.created_date | date}}.</strong> <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers"><strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong></i> </font></p>
+                    <p class="task__main__comment" *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
 
                     <div>
                         <tola-button-component buttonClass="btn" (click)="fillInEditTaskForm(task.id)">Edit</tola-button-component>
@@ -239,11 +239,12 @@
             <div class="card">
                 <div class="card-header">
                     <font><strong>Sort Tasks</strong></font>
-                </div>
+                </div> 
                 <div class="card-block">
                     <form #sortForm="ngForm">
                         <div class="form-group">
                             <select class="form-control" [(ngModel)]="task_attribute" name="task_attribute">
+                            <option disabled>Sort</option>
                               <option value="created_date">Created</option>
                               <option value="due_date">Due Date</option>
                               <option value="task">Task Title</option>

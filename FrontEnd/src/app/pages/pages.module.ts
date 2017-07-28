@@ -32,7 +32,8 @@ import { FilterPipe } from "app/shared/helpers/filter.pipe";
     NgxPaginationModule,
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
-    DatepickerModule.forRoot()
+    DatepickerModule.forRoot(),
+    CollapseModule.forRoot(),
   ],
   declarations: [
     FooterComponent,
