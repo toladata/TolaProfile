@@ -8,6 +8,8 @@ router = routers.DefaultRouter()
 
 router.register(r'tasks', TaskListViewSet)
 router.register(r'tolausers', TolaUserViewset)
+router.register(r'countries', CountryViewSet)
+router.register(r'organizations', OrganizationViewset)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

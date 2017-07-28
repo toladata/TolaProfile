@@ -4,14 +4,14 @@ from models import *
 
 class OrganizationSerializer(serializers.HyperlinkedModelSerializer):
 
-	class meta:
+	class Meta:
 		model = Organization
 		fields = '__all__'
 
 
 class CountrySerializer(serializers.HyperlinkedModelSerializer):
 
-	class meta:
+	class Meta:
 		model = Country
 		fields = '__all__'
 		
