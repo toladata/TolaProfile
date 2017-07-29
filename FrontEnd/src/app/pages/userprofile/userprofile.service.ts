@@ -15,7 +15,11 @@ export class UserprofileService {
         // set token if saved in local storage
         var loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
         this.token = loggedUser && loggedUser.token;
-        this.isLogged = false;
+
+        if(typeof loggedUser === 'undefined'){
+          this.isLogged = false;
+        }
+         this.isLogged = true;
     }
 
     login(email:string, password: string){

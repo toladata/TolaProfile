@@ -11,14 +11,14 @@ export class SubNavComponent implements OnInit {
   isLogged;
   _sub;
   constructor(private _userService: UserprofileService) {
-      this.user = _userService.isLogged;
+      this.isLogged = _userService.isLogged;
       this. _sub = _userService.userChange.subscribe((value) => {
       this.isLogged = value;
     });
   }
 
   ngOnInit() {
-    console.log(this.user);
+    console.log(this.isLogged);
   }
 
   ngOnDestroy() {

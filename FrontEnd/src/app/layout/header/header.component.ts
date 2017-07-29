@@ -21,8 +21,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
 
   ngOnInit() {
-    //this.user = JSON.parse(localStorage.getItem('loggedUser'));
-    console.log(this.user);
   }
 
   logout(){
@@ -30,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-   //prevent memory leak when component destroyed
+   //prevent memory leak when this component destroyed
     this._sub.unsubscribe();
   }
 }
