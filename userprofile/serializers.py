@@ -42,7 +42,7 @@ class TolaUserSerializer(serializers.ModelSerializer):
         return data
 
 class TolaUserUpdateSerializer(serializers.ModelSerializer):
-     """
+    """
     Serializer for user profile data update endpoint.
     """
 

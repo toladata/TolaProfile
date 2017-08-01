@@ -68,8 +68,9 @@ export class UserprofileService {
             });
 
     }
+
     //update user
-    updateUser(user_id,userData){
+    updateUser(user_id, userData){
 
         return this.http.post(TOLAPOFILE_USER_SERVER+'/tolausers/'+ user_id + '/', JSON.stringify(userData), options)
         .map((response: Response) => {
@@ -81,6 +82,24 @@ export class UserprofileService {
                         console.log("there was an error");
                         return false;
                     }
+            });
+
+    }
+
+
+    //update user password
+    updatePassword(passData) {
+
+        return this.http.put(TOLAPOFILE_USER_SERVER + '/auth/update-password/', JSON.stringify(passData), options)
+            .map((response: Response) => {
+
+                let data = response.json();
+                if (data) {
+                    return true;
+                } else {
+                    console.log("there was an error");
+                    return false;
+                }
             });
 
     }
