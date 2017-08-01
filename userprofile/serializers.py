@@ -34,12 +34,11 @@ class TolaUserSerializer(serializers.ModelSerializer):
         '''
         Compare the passwords to ensure that they are same
         '''
-        if self.request.method == 'POST':
-            if data['password']:
-                if data['password'] != data['confirm_password']:
-                    raise serializers.ValidationError(
-                        "The passwords must be the same"
-                    )
+        if data['password']:
+            if data['password'] != data['confirm_password']:
+                raise serializers.ValidationError(
+                    "The passwords must be the same"
+                )
         return data
 
 class TolaUserUpdateSerializer(serializers.ModelSerializer):
@@ -74,8 +73,15 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+    confirm_new_password = serializers.CharField(required=True)
 
     def validate_new_password(self, value):
+
+        if data['new_password'] != data['confirm_new_password']:
+                raise serializers.ValidationError(
+                    "The new passwords do not match (Must be the same)"
+                )
+
         validate_password(value)
         return value
 

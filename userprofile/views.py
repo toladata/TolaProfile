@@ -15,6 +15,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from social_django.utils import load_strategy, load_backend, psa, setting, BackendWrapper
+from django.contrib.auth import update_session_auth_hash
 
 class CountryViewSet(viewsets.ModelViewSet):
 
@@ -83,6 +84,10 @@ class UpdatePasswordView(APIView):
             # Otherwise set the new_password
             self.object.set_password(new_password)
             self.object.save()
+
+            # keep the user logged after password change
+            update_session_auth_hash(request, self.object)
+
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
