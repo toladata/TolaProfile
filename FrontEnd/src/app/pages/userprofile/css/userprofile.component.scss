@@ -16,6 +16,9 @@ $textfield-border-color-focus: #DD6E42 !default;
  
 .registerForm{
 	margin-top:60px;
+	&__social{
+		float:right;
+	}
 }
 
 .loginForm{
@@ -25,5 +28,34 @@ $textfield-border-color-focus: #DD6E42 !default;
 	&__edit_form
 	{
 		margin-top:15px;
+	}
+}
+//social
+.btn_social{
+	&__icon
+	{
+		position:relative;
+		text-align:center;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		height:34px;
+		width:34px;
+		padding:0;
+		margin_left:10px;
+		color:#fff;
+		border-color:rgba(0,0,0,0.2)
+	}
+	&__facebook
+	{
+		background-color:#3b5998;
+	}
+	&__google
+	{
+		background-color: #dd4b39;
+	}
+	&__linkedIn
+	{
+		background-color: #007bb6;
 	}
 }
