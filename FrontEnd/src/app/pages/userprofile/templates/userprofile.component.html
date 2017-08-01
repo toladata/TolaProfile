@@ -6,7 +6,7 @@
 	    <div class="card col-md-8 offset-md-2">
 	        <div class="card-block">
 	        <div class="text-center heading">
-	        	<h5 class="mt-0">{{user.country_id}}Details</h5>
+	        	<h5 class="mt-0">Details</h5>
 	        </div> 
 	            <div class="media">
 				  <img class="d-flex mr-3" src="front_end_assets/img/user.jpg" alt="Generic placeholder image">
@@ -28,6 +28,8 @@
 	    </div>	
 	    <div class="card col-md-8 offset-md-2">
 	        <div class="card-block">
+	        	<p *ngFor="let country of companies">{{country.country}}</p>
+				
 	            <button type="button" type="button" class="btn btn-primary"
         		(click)="fillEditUser(user.id)" ><i class="fa fa-edit" aria-hidden="true"></i> Edit Profile</button>
 	            <div [collapse]="isCollapsed" class="profile__edit_form">

@@ -13,6 +13,7 @@ export class UserprofileComponent implements OnInit {
   	user;
     public isCollapsed:boolean = true;
   	private editUserForm: FormGroup;
+    countries;
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
         username: ['', Validators.required],
@@ -26,6 +27,8 @@ export class UserprofileComponent implements OnInit {
 
     ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
+    this._service.getCountry().subscribe((countries) =>{this.countries = countries;});
+    console.log(this.countries);
   }
 
   editProfile(user_id,editUserForm){

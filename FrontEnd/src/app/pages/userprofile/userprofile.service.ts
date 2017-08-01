@@ -3,12 +3,13 @@ import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular/http';
+import { AuthHttp } from "angular2-jwt/angular2-jwt";
 
 @Injectable()
 export class UserprofileService {
     public token: string;
 
-    constructor (private http: Http, private _router: Router){
+    constructor (private http: Http, private _router: Router,private _authHttp: AuthHttp){
         // set token if saved in local storage
         var loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
         this.token = loggedUser && loggedUser.token;
@@ -98,7 +99,7 @@ export class UserprofileService {
 
     }
 
-//login in wit facebook
+//login in with facebook
 login_with_facebook(response){
         let headers = new Headers({
                 'Accept': 'application/json',
@@ -138,6 +139,22 @@ login_with_facebook(response){
         localStorage.removeItem("loggedUser");
         this._router.navigate(['home']);
         window.location.reload();
+    }
+    //get companies
+    getCountry(){
+        let headers = new Headers({
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+         });
+
+         let options = new RequestOptions({
+            headers: headers,
+    });
+        return this._authHttp.get('http://127.0.0.1:8000/api/countries/', options)
+        .map(function(response){
+            console.log(response);
+            return response.json();
+        });
     }
 }
 
