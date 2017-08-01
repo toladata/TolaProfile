@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^token-verify/', verify_jwt_token),
     url(r'^register/$', UserRegister.as_view()),
     url(r'^facebook/$', FacebookView.as_view()),
+    url(r'^update-password/$', UpdatePasswordView.as_view()),
 ]

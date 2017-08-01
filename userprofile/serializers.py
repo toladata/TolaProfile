@@ -1,6 +1,7 @@
 from django.contrib.auth import update_session_auth_hash
 from rest_framework import serializers
 from models import *
+from django.contrib.auth.password_validation import validate_password
 
 class OrganizationSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -29,7 +30,28 @@ class TolaUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return TolaUser.objects.create_user(**validated_data)
 
-    def update(self, instance, validated_data):
+    def validate(self, data):
+        '''
+        Compare the passwords to ensure that they are same
+        '''
+        if data['password']:
+            if data['password'] != data['confirm_password']:
+                raise serializers.ValidationError(
+                    "The passwords must be the same"
+                )
+        return data
+
+class TolaUserUpdateSerializer(serializers.ModelSerializer):
+    """
+    Serializer for user profile data update endpoint.
+    """
+
+    class  Meta:
+        model = TolaUser
+        fields = ('id', 'email', 'username', 'date_created', 'date_modified','firstname', 'lastname', 'organization', 'country')
+        read_only_fields = ('date_created', 'date_modified')
+
+    def put(self, instance, validated_data):
         instance.email = validated_data.get('email', instance.email)
         instance.username = validated_data.get('username',instance.username)
         instance.firstname = validated_data.get('firstname',instance.firstname)
@@ -42,17 +64,24 @@ class TolaUserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         instance.save()
+        
         return instance
 
-    def validate(self, data):
-        '''
-        Compare the passwords to ensure that they are same
-        '''
-        if data['password']:
-            if data['password'] != data['confirm_password']:
-                raise serializers.ValidationError(
-                    "The passwords must be the same"
-                )
-        return data
+class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Serializer for user password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+    confirm_new_password = serializers.CharField(required=True)
 
+    def validate_new_password(self, value):
+
+        if data['new_password'] != data['confirm_new_password']:
+                raise serializers.ValidationError(
+                    "The new passwords do not match (Must be the same)"
+                )
+
+        validate_password(value)
+        return value
 

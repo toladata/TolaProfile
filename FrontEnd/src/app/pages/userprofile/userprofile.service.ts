@@ -5,6 +5,10 @@ import 'rxjs/add/operator/map';
 import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { AuthHttp } from "angular2-jwt/angular2-jwt";
 
+const TOLAPOFILE_USER_SERVER = 'http://127.0.0.1:8000/api/';
+const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json', });
+const options = new RequestOptions({ headers: headers, });
+
 @Injectable()
 export class UserprofileService {
     public token: string;
@@ -24,16 +28,8 @@ export class UserprofileService {
     }
 
     login(email:string, password: string){
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
 
-         let options = new RequestOptions({
-            headers: headers,
-    });
-
-    return this.http.post('http://127.0.0.1:8000/api/auth/login/',JSON.stringify({ email: email, password: password}), options)
+         return this.http.post(TOLAPOFILE_USER_SERVER+'auth/login/', JSON.stringify({ email: email, password: password }), options)
         .map((response: Response) => {
                     // login successful if there's a jwt token in the response
                     let data = response.json();
@@ -59,18 +55,8 @@ export class UserprofileService {
     }
 
     register(userData){
-        console.log(JSON.stringify(userData));
-
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
-
-         let options = new RequestOptions({
-            headers: headers,
-    });
-
-    return this.http.post('http://127.0.0.1:8000/api/auth/register/',JSON.stringify(userData), options)
+       
+        return this.http.post(TOLAPOFILE_USER_SERVER+'auth/register/', JSON.stringify(userData), options)
         .map((response: Response) => {
 
                     let data = response.json();
@@ -83,17 +69,9 @@ export class UserprofileService {
             });
 
     }
+
     //update user
-    updateUser(user_id,userData){
-
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
-
-         let options = new RequestOptions({
-            headers: headers,
-    });
+    updateUser(user_id, userData){
 
     return this._authHttp.put('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
         .map((response: Response) => {
@@ -109,18 +87,28 @@ export class UserprofileService {
 
     }
 
+//update user password
+updatePassword(passData) {
+
+    return this.http.put(TOLAPOFILE_USER_SERVER + '/auth/update-password/', JSON.stringify(passData), options)
+        .map((response: Response) => {
+
+            let data = response.json();
+            if (data) {
+                return true;
+            } else {
+                console.log("there was an error");
+                return false;
+            }
+        });
+
+}
+
 //login in with facebook
 login_with_facebook(response){
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
 
-         let options = new RequestOptions({
-            headers: headers,
-    });
-
-    return this.http.post('http://127.0.0.1:8000/api/auth/facebook/',JSON.stringify({"access_token": response.authResponse.accessToken,
+    return this.http.post(TOLAPOFILE_USER_SERVER+'/auth/facebook/', JSON.stringify({
+        "access_token": response.authResponse.accessToken,
         "backend": "facebook" }), options)
         .map((response: Response) => {
                     // login successful if there's a jwt token in the response
@@ -151,7 +139,7 @@ login_with_facebook(response){
         this.userChange.next(this.isLogged);
         this._router.navigate(['home']);
     }
-    //get companies
+    //get countries
     getCountry(){
         let headers = new Headers({
                 'Accept': 'application/json',
