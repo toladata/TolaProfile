@@ -16,7 +16,7 @@
                     <a class="header__nav__link nav-link" href="#" tooltip="Tables" placement="bottom"><i class="header__nav__link__tables-icon icon-tables"></i></a>
                 </li>
             </ul>
-            <div *ngIf="user" class="header__navbar__user-drop dropdown" dropdown>
+            <div *ngIf="isLogged" class="header__navbar__user-drop dropdown" dropdown>
                 <a dropdownToggle class="header__navbar__user-drop__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <span class="header__navbar__user-drop__circle"><i class="icon-user"></i></span>
                     <span class="header__navbar__user-drop__link__badge badge badge-pill badge-danger">5</span>

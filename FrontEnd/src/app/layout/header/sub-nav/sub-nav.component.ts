@@ -8,10 +8,21 @@ import { UserprofileService } from 'app/pages/userprofile/userprofile.service';
 export class SubNavComponent implements OnInit {
 
   user;
-  constructor(private _userService: UserprofileService) { }
-
-  ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('loggedUser'));
+  isLogged;
+  _sub;
+  constructor(private _userService: UserprofileService) {
+      this.isLogged = _userService.isLogged;
+      this. _sub = _userService.userChange.subscribe((value) => {
+      this.isLogged = value;
+    });
   }
 
+  ngOnInit() {
+    console.log(this.isLogged);
+  }
+
+  ngOnDestroy() {
+   //prevent memory leak when component destroyed
+    this._sub.unsubscribe();
+  }
 }

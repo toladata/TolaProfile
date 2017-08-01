@@ -2,15 +2,12 @@
     <div class="sub-nav__cont container-fluid">
         <ul class="nav">
             <li class="sub-nav__item nav-item">
-                <a class="sub-nav__link nav-link" routerLink="/home"><span class="glyphicons glyphicons-dice-5"></span>Home</a>
+                <a class="sub-nav__link nav-link" routerLink="/home"><span class="glyphicons glyphicons-dice-5"></span>TolaProfile</a>
             </li>
-            <li class="sub-nav__item nav-item">
+            <li *ngIf="isLogged" class="sub-nav__item nav-item">
                 <a class="sub-nav__link nav-link" routerLink="/task">Tasks</a>
             </li>
-            <li *ngIf="!user" class="sub-nav__item nav-item">
-                <a class="sub-nav__link nav-link" routerLink="/login">Login</a>
-            </li>
-            <li *ngIf="!user" class="sub-nav__item nav-item">
+            <li *ngIf="!isLogged" class="sub-nav__item nav-item">
                 <a class="sub-nav__link nav-link" routerLink="/register">Register</a>
             </li>
         </ul>

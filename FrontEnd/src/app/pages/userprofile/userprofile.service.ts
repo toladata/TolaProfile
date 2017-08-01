@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular/http';
 import { AuthHttp } from "angular2-jwt/angular2-jwt";
@@ -8,11 +8,19 @@ import { AuthHttp } from "angular2-jwt/angular2-jwt";
 @Injectable()
 export class UserprofileService {
     public token: string;
+    isLogged: boolean;
+
+    userChange: Subject<boolean> = new Subject<boolean>();
 
     constructor (private http: Http, private _router: Router,private _authHttp: AuthHttp){
         // set token if saved in local storage
         var loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
         this.token = loggedUser && loggedUser.token;
+
+        if(typeof loggedUser === 'undefined'){
+          this.isLogged = false;
+        }
+         this.isLogged = true;
     }
 
     login(email:string, password: string){
@@ -37,6 +45,8 @@ export class UserprofileService {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('id_token', token);
                         localStorage.setItem('loggedUser', JSON.stringify(data.user));
+                        this.isLogged = true;
+                        this.userChange.next(this.isLogged);
 
                         // return true for successful login
                         return true;
@@ -137,8 +147,9 @@ login_with_facebook(response){
     logout(){
         localStorage.removeItem("id_token");
         localStorage.removeItem("loggedUser");
+        this.isLogged = false;
+        this.userChange.next(this.isLogged);
         this._router.navigate(['home']);
-        window.location.reload();
     }
     //get companies
     getCountry(){
