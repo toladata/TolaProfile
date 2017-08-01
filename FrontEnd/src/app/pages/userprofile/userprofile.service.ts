@@ -95,7 +95,7 @@ export class UserprofileService {
             headers: headers,
     });
 
-    return this.http.post('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
+    return this._authHttp.put('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
         .map((response: Response) => {
 
                     let data = response.json();

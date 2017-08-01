@@ -16,18 +16,18 @@ export class UserprofileComponent implements OnInit {
     countries;
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
-        username: ['', Validators.required],
-        email: ['', Validators.required],
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        organization: ['', Validators.required],
-        country: ['', Validators.required],
+        username: [''],
+        email: [''],
+        firstname: [''],
+        lastname: [''],
+        organization: [''],
+        country: [''],
        });
     }
 
     ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
-    this._service.getCountry().subscribe((countries) =>{this.countries = countries;});
+    this.countries = this._service.getCountry().subscribe();
     console.log(this.countries);
   }
 
