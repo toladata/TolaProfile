@@ -63,6 +63,16 @@
                 }
             }
         }
+        &__register{
+            margin-top:18px;
+            margin-left:30px;
+            &__link{
+                padding: rem-calc(13 30 0 0);
+                color: $navy-darker;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
     }
     &__nav {
         position: relative;
