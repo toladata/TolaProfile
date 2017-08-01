@@ -31,6 +31,14 @@ class TolaUserViewset(viewsets.ModelViewSet):
     permision_classes = (IsAuthenticated,)    
     queryset = TolaUser.objects.all()
     serializer_class = TolaUserSerializer
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+
+        if self.request.method == 'PUT':
+            serializer_class = TolaUserUpdateSerializer
+
+        return serializer_class
     
 
 class UserRegister(APIView):
