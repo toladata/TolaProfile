@@ -55,6 +55,38 @@ class UserRegister(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#Update Password View
+class UpdatePasswordView(APIView):
+    """
+    An endpoint for changing password.
+    """
+    permission_classes = (IsAuthenticated, )
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def put(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = ChangePasswordSerializer(data=request.data)
+
+
+        if serializer.is_valid():
+            # Get old and new passwords
+            old_password = serializer.data.get("old_password")
+            new_password = serializer.data.get("new_password")
+
+            #check old Password
+            if not self.object.check_password(old_password):
+                return Response({"old_password": ["Wrong password."]}, 
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            # Otherwise set the new_password
+            self.object.set_password(new_password)
+            self.object.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @psa()
 def auth_by_token(request, backend):
