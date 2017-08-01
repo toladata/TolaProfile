@@ -18,6 +18,8 @@ export class TaskComponent implements OnInit{
   p: number = 1;
   task_id;
   tasks_completed;
+  tasks_assigned;
+  tasks_created;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
@@ -101,6 +103,8 @@ export class TaskComponent implements OnInit{
     this._service.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.tasks_completed = tasks.filter(x => x.created_by === Number(this.user.id) && x.status === 3);
+      this.tasks_created = tasks.filter(x => x.created_by === Number(this.user.id));
+      this.tasks_assigned = tasks.filter(x => x.assigned_to === Number(this.user.id));
     }
     );
   }

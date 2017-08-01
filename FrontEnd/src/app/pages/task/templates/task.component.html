@@ -230,9 +230,9 @@
                 <div class="card-block">
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('created',user.id)">
-                            <font class="task__make_link">Created by Me</font><span class=" badge badge-primary badge-pill">10</span></a>
+                            <font class="task__make_link">Created by Me</font><span class=" badge badge-primary badge-pill">{{tasks_created.length}}</span></a>
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('assigned',user.id)">
-                            <font class="task__make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">5</span></a>
+                            <font class="task__make_link">Assigned to Me</font><span class="badge badge-primary badge-pill">{{tasks_assigned.length}}</span></a>
                         <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('completed',user.id)">
                             <font class="task__make_link">Completed by Me </font><span *ngIf="tasks_completed" class="badge badge-primary badge-pill">{{tasks_completed.length}}</span></a>
                     </div>
