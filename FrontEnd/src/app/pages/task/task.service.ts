@@ -15,14 +15,6 @@ const  options = new RequestOptions({ headers : headers,});
 export class TaskService{
     constructor(private http: Http, private _authHttp: AuthHttp) { }
     getTasks(){
-        let jwtHelper: JwtHelper = new JwtHelper();
-
-        var token = localStorage.getItem('id_token');
-        console.log(
-            jwtHelper.decodeToken(token),
-            jwtHelper.getTokenExpirationDate(token),
-            jwtHelper.isTokenExpired(token)
-        );
         return this._authHttp.get(TOLAPOFILE_TASK_SERVER, options)
         .map(function(response){
             return response.json();
