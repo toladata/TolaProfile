@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular/http';
-import { AuthHttp } from "angular2-jwt/angular2-jwt";
+import { AuthHttp, JwtHelper } from "angular2-jwt/angular2-jwt";
 
 const TOLAPOFILE_USER_SERVER = 'http://127.0.0.1:8000/api/';
 const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json', });
@@ -19,12 +19,13 @@ export class UserprofileService {
     constructor (private http: Http, private _router: Router,private _authHttp: AuthHttp){
         // set token if saved in local storage
         var loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-        this.token = loggedUser && loggedUser.token;
 
-        if(typeof loggedUser === 'undefined'){
-          this.isLogged = false;
+        this.token = loggedUser && loggedUser.token;
+        this.isLogged = false;
+
+        if(typeof loggedUser == "object"){
+          this.isLogged = true;
         }
-         this.isLogged = true;
     }
 
     login(email:string, password: string){
@@ -155,5 +156,6 @@ login_with_facebook(response){
             return response.json();
         });
     }
+
 }
 

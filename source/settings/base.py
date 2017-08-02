@@ -37,6 +37,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'rest_framework',
     'social.apps.django_app.default',
+    'social_django',
     'corsheaders',
     'django_celery_results',
 )

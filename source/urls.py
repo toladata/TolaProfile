@@ -6,7 +6,7 @@ from userprofile.views import *
 
 router = routers.DefaultRouter()
 
-router.register(r'tasks', TaskListViewSet)
+router.register(r'tasks', TaskListViewSet, base_name="my_task")
 router.register(r'tolausers', TolaUserViewset)
 router.register(r'countries', CountryViewSet)
 router.register(r'organizations', OrganizationViewset)
