@@ -13,6 +13,7 @@ export class UserprofileComponent implements OnInit {
   	user;
     public isCollapsed:boolean = true;
   	private editUserForm: FormGroup;
+    private editPasswordForm: FormGroup;
     countries;
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
@@ -22,6 +23,12 @@ export class UserprofileComponent implements OnInit {
         lastname: [''],
         organization: [''],
         country: [''],
+       });
+       this.editPasswordForm = fb.group({
+         old_password:['',Validators.required],
+         new_password:['',Validators.required],
+         confirm_new_password:['',Validators.required],
+        
        });
     }
 
@@ -50,4 +57,9 @@ export class UserprofileComponent implements OnInit {
     this.isCollapsed = false;
   }
 
+  //edit password
+  editPassword(editPasswordForm){
+    this._service.updatePassword(editPasswordForm).subscribe()
+
+  }
 }
