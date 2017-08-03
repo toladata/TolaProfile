@@ -33,12 +33,12 @@ class TolaUserSerializer(serializers.ModelSerializer):
         '''
         Compare the passwords to ensure that they are same
         '''
-        if self.request.method == 'POST':
-            if data['password']:
-                if data['password'] != data['confirm_password']:
-                    raise serializers.ValidationError(
-                        "The passwords must be the same"
-                    )
+        
+        if data['password']:
+            if data['password'] != data['confirm_password']:
+                raise serializers.ValidationError(
+                    "The passwords must be the same"
+                )
         return data
 
 class TolaUserUpdateSerializer(serializers.ModelSerializer):
