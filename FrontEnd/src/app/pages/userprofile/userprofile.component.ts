@@ -38,11 +38,9 @@ export class UserprofileComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
     this._service.getCountry().subscribe((response) => {
                 this.countries = response;
-                console.log(this.countries);
           });
     this._service.getOrganization().subscribe((organization) => {
                 this.organizations = organization;
-                console.log(this.organizations);
           });      
     }
 

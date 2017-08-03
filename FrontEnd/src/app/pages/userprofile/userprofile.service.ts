@@ -153,7 +153,6 @@ login_with_facebook(response){
     getOrganization(){
         return this._authHttp.get(TOLAPOFILE_USER_SERVER+'organizations/', options)
         .map(function(response){
-            console.log(response);
             return response.json();
         });
     }

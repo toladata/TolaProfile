@@ -3,14 +3,14 @@ from rest_framework import serializers
 from models import *
 from django.contrib.auth.password_validation import validate_password
 
-class OrganizationSerializer(serializers.HyperlinkedModelSerializer):
+class OrganizationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Organization
 		fields = '__all__'
 
 
-class CountrySerializer(serializers.HyperlinkedModelSerializer):
+class CountrySerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Country
