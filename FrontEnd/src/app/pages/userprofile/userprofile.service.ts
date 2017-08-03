@@ -140,17 +140,10 @@ login_with_facebook(response){
         this.userChange.next(this.isLogged);
         this._router.navigate(['home']);
     }
+    
     //get countries
     getCountry(){
-        let headers = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-         });
-
-         let options = new RequestOptions({
-            headers: headers,
-    });
-        return this._authHttp.get('http://127.0.0.1:8000/api/countries/', options)
+        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'/api/countries/', options)
         .map(function(response){
             console.log(response);
             return response.json();
