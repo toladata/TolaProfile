@@ -75,43 +75,42 @@
 	                </form>
 	            </div>
 	        </div>
-	        <div>
-	        	<tola-button-component buttonClass="button--navy btn" (click)="editPasswordModal.show()">Edit Password</tola-button-component>
-	            <div bsModal #editPasswordModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		            <div class="modal-dialog modal-lg ">
+	        
 
-		                <!-- Modal content-->
-		                <div class="modal-content">
-		                    <div class="modal-header">
-		                        <h4 class="modal-title offset-md-5 font3">Add Task</h4>
-		                        <button type="button" class="close pull-right" aria-label="Close" (click)="editPasswordModal.hide()">
-		                          <span aria-hidden="true">&times;</span>
-		                        </button>
-		                    </div>
-		                    <div class="modal-body">
-		                    	<form [formGroup]="editPasswordForm" validate>
-		                    		<div class="form-group">
-				                        <label for="password">Old Password</label>
-				                        <input type="password" id="form4" class="form-control" placeholder="Enter Old Password" formControlName="old_password">
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="password1">New Password</label>
-				                        <input type="password" id="password1" class="form-control" placeholder="Enter New Password" formControlName="new_password">
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="password1">Confirm Password</label>
-				                        <input type="password" id="password1" class="form-control" placeholder="Confirm Your Password" formControlName="confirm_new_password">
-				                    </div>
-				                    <div class="text-center">
-				                        <button class="btn btn-primary" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
-				                    </div>
-		                    	</form>
-		                    </div>
-		                </div>
-		            </div>
-                </div>
-	        </div>
 	    </div>
 </div>
+<tola-button-component buttonClass="button--navy btn" (click)="editPasswordModal.show()">Edit Password</tola-button-component>
+          <div bsModal #editPasswordModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg ">
+                <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title offset-md-5 font3">Add Task</h4>
+                          <button type="button" class="close pull-right" aria-label="Close" (click)="editPasswordModal.hide()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                        <form [formGroup]="editPasswordForm" validate>
+                          <div class="form-group">
+                              <label for="old_password">Old Password</label>
+                              <input type="password" id="old_password" class="form-control" placeholder="Enter Old Password" formControlName="old_password">
+                          </div>
+                          <div class="form-group">
+                              <label for="new_password">New Password</label>
+                              <input type="password" id="new_password" class="form-control" placeholder="Enter New Password" formControlName="new_password"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="confirm_new_password">Confirm Password</label>
+                              <input type="password" id="confirm_new_password" class="form-control" placeholder="Confirm Your Password" formControlName="confirm_new_password"/>
+                          </div>
+                          <div class="text-center">
+                              <button class="btn btn-primary" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+            </div>
+            </div>
 <app-footer><app-footer>
 
