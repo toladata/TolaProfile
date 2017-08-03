@@ -53,6 +53,9 @@ DATABASES = {
 }
 
 
+#Facebook Social-auth login/register settings
+SOCIAL_AUTH_FACEBOOK_KEY = '329345964157851' # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b865961b92e6984bea3bb02f0f288a64' # App Secret
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
