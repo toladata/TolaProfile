@@ -38,6 +38,7 @@ export class UserprofileComponent implements OnInit {
     this._service.getCountry().subscribe((response) => {
                 this.countries = response;
           });
+    console.log(this.countries);      
     }
 
   editProfile(user_id,editUserForm){

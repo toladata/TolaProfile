@@ -143,7 +143,15 @@ login_with_facebook(response){
     
     //get countries
     getCountry(){
-        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'/api/countries/', options)
+        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'countries/', options)
+        .map(function(response){
+            return response.json();
+        });
+    }
+
+    //get organizations
+    getorganization(){
+        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'organizations/', options)
         .map(function(response){
             console.log(response);
             return response.json();
