@@ -16,10 +16,11 @@
 					  <p class="list-group-item justify-content-between">Last Name:<span class="font1">{{user.lastname}}</span></p>
 					  <p class="list-group-item justify-content-between">Email:<span class="font1">
 					  {{user.email}}</span></p>
-					  <p class="list-group-item justify-content-between">Organization:<span *ngFor= "let country of countries" class="font1">
-					  {{country.country}}</span></p>
-					  <p class="list-group-item justify-content-between">Country:<span class="font1">
-					  {{user.country}}</span></p>
+					  
+					  <!-- <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
+					  </span></p> -->
+					  <p class="list-group-item justify-content-between">Country:<span *ngFor= "let country of countries" class="font1">
+					<font > {{country.Id}} </font></span></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
 				  </div>

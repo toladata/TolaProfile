@@ -15,6 +15,7 @@ export class UserprofileComponent implements OnInit {
   	private editUserForm: FormGroup;
     private editPasswordForm: FormGroup;
     countries;
+    organizations; 
 
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
@@ -37,8 +38,12 @@ export class UserprofileComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
     this._service.getCountry().subscribe((response) => {
                 this.countries = response;
+                console.log(this.countries);
           });
-    console.log(this.countries);      
+    this._service.getOrganization().subscribe((organization) => {
+                this.organizations = organization;
+                console.log(this.organizations);
+          });      
     }
 
   editProfile(user_id,editUserForm){
