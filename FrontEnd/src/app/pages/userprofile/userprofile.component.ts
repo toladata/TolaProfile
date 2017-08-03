@@ -15,6 +15,7 @@ export class UserprofileComponent implements OnInit {
   	private editUserForm: FormGroup;
     private editPasswordForm: FormGroup;
     countries;
+
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
         username: [''],
@@ -34,9 +35,10 @@ export class UserprofileComponent implements OnInit {
 
     ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
-    this.countries = this._service.getCountry().subscribe();
-    console.log(this.countries);
-  }
+    this._service.getCountry().subscribe((response) => {
+                this.countries = response;
+          });
+    }
 
   editProfile(user_id,editUserForm){
     this._service.updateUser(user_id,editUserForm).subscribe();
