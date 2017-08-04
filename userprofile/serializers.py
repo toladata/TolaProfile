@@ -2,6 +2,7 @@ from django.contrib.auth import update_session_auth_hash
 from rest_framework import serializers
 from models import *
 from django.contrib.auth.password_validation import validate_password
+import json
 
 class OrganizationSerializer(serializers.ModelSerializer):
 
@@ -74,13 +75,9 @@ class ChangePasswordSerializer(serializers.Serializer):
     new_password = serializers.CharField(required=True)
     confirm_new_password = serializers.CharField(required=True)
 
-    def validate_new_password(self, value):
+    def validate_new_password(self, data):
 
-        if data['new_password'] != data['confirm_new_password']:
-                raise serializers.ValidationError(
-                    "The new passwords do not match (Must be the same)"
-                )
+        validate_password(data)
 
-        validate_password(value)
-        return value
+        return data
 
