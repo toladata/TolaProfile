@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular/http';
+import { AuthHttp, JwtHelper } from "angular2-jwt/angular2-jwt";
 
 const TOLAPOFILE_USER_SERVER = 'http://127.0.0.1:8000/api/';
 const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json', });
@@ -15,15 +16,16 @@ export class UserprofileService {
 
     userChange: Subject<boolean> = new Subject<boolean>();
 
-    constructor (private http: Http, private _router: Router){
+    constructor (private http: Http, private _router: Router,private _authHttp: AuthHttp){
         // set token if saved in local storage
         var loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-        this.token = loggedUser && loggedUser.token;
 
-        if(typeof loggedUser === 'undefined'){
-          this.isLogged = false;
+        this.token = loggedUser && loggedUser.token;
+        this.isLogged = false;
+
+        if(typeof loggedUser == "object"){
+          this.isLogged = true;
         }
-         this.isLogged = true;
     }
 
     login(email:string, password: string){
@@ -68,10 +70,11 @@ export class UserprofileService {
             });
 
     }
-    //update user
-    updateUser(user_id,userData){
 
-        return this.http.post(TOLAPOFILE_USER_SERVER+'/tolausers/'+ user_id + '/', JSON.stringify(userData), options)
+    //update user
+    updateUser(user_id, userData){
+
+    return this._authHttp.put('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
         .map((response: Response) => {
 
                     let data = response.json();
@@ -85,7 +88,24 @@ export class UserprofileService {
 
     }
 
-//login in wit facebook
+//update user password
+updatePassword(passData) {
+
+    return this.http.put(TOLAPOFILE_USER_SERVER + '/auth/update-password/', JSON.stringify(passData), options)
+        .map((response: Response) => {
+
+            let data = response.json();
+            if (data) {
+                return true;
+            } else {
+                console.log("there was an error");
+                return false;
+            }
+        });
+
+}
+
+//login in with facebook
 login_with_facebook(response){
 
     return this.http.post(TOLAPOFILE_USER_SERVER+'/auth/facebook/', JSON.stringify({
@@ -120,5 +140,22 @@ login_with_facebook(response){
         this.userChange.next(this.isLogged);
         this._router.navigate(['home']);
     }
+    
+    //get countries
+    getCountry(){
+        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'countries/', options)
+        .map(function(response){
+            return response.json();
+        });
+    }
+
+    //get organizations
+    getOrganization(){
+        return this._authHttp.get(TOLAPOFILE_USER_SERVER+'organizations/', options)
+        .map(function(response){
+            return response.json();
+        });
+    }
+
 }
 

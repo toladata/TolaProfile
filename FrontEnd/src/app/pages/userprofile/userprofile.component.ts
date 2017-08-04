@@ -13,20 +13,36 @@ export class UserprofileComponent implements OnInit {
   	user;
     public isCollapsed:boolean = true;
   	private editUserForm: FormGroup;
+    private editPasswordForm: FormGroup;
+    countries;
+    organizations; 
+
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
-        username: ['', Validators.required],
-        email: ['', Validators.required],
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        organization: ['', Validators.required],
-        country: ['', Validators.required],
+        username: [''],
+        email: [''],
+        firstname: [''],
+        lastname: [''],
+        organization: [''],
+        country: [''],
+       });
+       this.editPasswordForm = fb.group({
+         old_password:['',Validators.required],
+         new_password:['',Validators.required],
+         confirm_new_password:['',Validators.required],
+        
        });
     }
 
     ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
-  }
+    this._service.getCountry().subscribe((response) => {
+                this.countries = response;
+          });
+    this._service.getOrganization().subscribe((organization) => {
+                this.organizations = organization;
+          });      
+    }
 
   editProfile(user_id,editUserForm){
     this._service.updateUser(user_id,editUserForm).subscribe();
@@ -47,4 +63,9 @@ export class UserprofileComponent implements OnInit {
     this.isCollapsed = false;
   }
 
+  //edit password
+  editPassword(editPasswordForm){
+    this._service.updatePassword(editPasswordForm).subscribe()
+
+  }
 }

@@ -3,7 +3,7 @@
   background-color: $white;
   height: auto;
   margin-left:5px;
-  padding:10px;
+  padding:7px;
   &__cont{
     width: 1000px;
     
@@ -13,14 +13,6 @@
     color: $navy-darker;
     font-weight: 500;
     cursor: pointer;
-  }
-  &__link--right{
-    right:90px;
-    position:absolute;
-  }
-  &__link--far_right{
-    right:0px;
-    position:absolute
   }
 
 }

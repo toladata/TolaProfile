@@ -6,8 +6,8 @@
         <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" novalidate>
             <div class="row">
                 <div class="col-6 col-md-6 form-group">
-                    <label for="FirstName">First Name</label>
-                    <input type="text" id="FirstName" class="form-control" formControlName="firstname" placeholder="Your First Name" >
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" class="form-control" formControlName="firstname" placeholder="Your First Name" >
                 </div>
                 <div class="col-6 col-md-6 form-group">
                     <label for="lastName">Last Name</label>
@@ -30,13 +30,19 @@
                     <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password">
                 </div>
                 <div class="col-6 col-md-6 form-group">
-                    <label for="password1"> Confirm Password</label>
-                    <input type="password" id="password1" class="form-control" formControlName="confirm_password" placeholder="Confirm Your Password">
+                    <label for="confirm_password"> Confirm Password</label>
+                    <input type="password" id="confirm_password" class="form-control" formControlName="confirm_password" placeholder="Confirm Your Password">
                 </div>
             </div>
             <div class="text-center">
-                   <button class="btn btn-primary">Register</button>   
-                </div>
+               <button class="btn btn-primary">Register</button> 
+               <!-- <div class="btn_social registerForm__social"> 
+                    Sign Up With 
+                    <button class="btn_social__icon btn_social__facebook"><i class="fa fa-facebook" aria-hidden="true"></i></button>
+                    <button class="btn_social__icon btn_social__google"><i class="fa fa-google"></i></button>
+                    <button class="btn_social__icon btn_social__linkedIn"><i class="fa fa-linkedin"></i></button>
+                </div>   -->
+            </div>
         </form>
     </div>
 </div>

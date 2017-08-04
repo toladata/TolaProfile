@@ -26,6 +26,9 @@
                     <a class="dropdown-item" (click)="logout()">Log Out</a>
                 </div>
             </div>
+            <div *ngIf="!isLogged" class="header__navbar__register">
+                <a class="header__navbar__register__link" routerLink="/register">Register</a>
+            </div>
         </div>
     </nav>
 </header>

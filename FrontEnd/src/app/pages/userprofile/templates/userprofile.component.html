@@ -6,7 +6,7 @@
 	    <div class="card col-md-8 offset-md-2">
 	        <div class="card-block">
 	        <div class="text-center heading">
-	        	<h5 class="mt-0">{{user.country_id}}Details</h5>
+	        	<h5 class="mt-0">Details</h5>
 	        </div> 
 	            <div class="media">
 				  <img class="d-flex mr-3" src="front_end_assets/img/user.jpg" alt="Generic placeholder image">
@@ -16,20 +16,24 @@
 					  <p class="list-group-item justify-content-between">Last Name:<span class="font1">{{user.lastname}}</span></p>
 					  <p class="list-group-item justify-content-between">Email:<span class="font1">
 					  {{user.email}}</span></p>
-					  <p class="list-group-item justify-content-between">Organization:<span class="font1">
-					  {{user.organization}}</span></p>
-					  <p class="list-group-item justify-content-between">Country:<span class="font1">
-					  {{user.country}}</span></p>
+					  
+					  <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
+					  </span></p>
+					  <p class="list-group-item justify-content-between">Country: <span class="font1" *ngFor= "let country of countries"><font class="col-md-2" *ngIf="country.id == user.country">{{country.country}} </font>
+					</span></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
 				  </div>
 				</div>
 	        </div>
-	    </div>	
+	    </div>
 	    <div class="card col-md-8 offset-md-2">
 	        <div class="card-block">
-	            <button type="button" type="button" class="btn btn-primary"
-        		(click)="fillEditUser(user.id)" ><i class="fa fa-edit" aria-hidden="true"></i> Edit Profile</button>
+				<div>	
+		            <button type="button" type="button" class="btn btn-primary"
+	        		(click)="fillEditUser(user.id)" ><i class="fa fa-edit" aria-hidden="true"></i> Edit Profile</button>
+	        		<tola-button-component buttonClass="button--navy btn profile__password-btn" (click)="editPasswordModal.show()">Edit Password</tola-button-component>
+				</div>
 	            <div [collapse]="isCollapsed" class="profile__edit_form">
 		            <form [formGroup]="editUserForm" novalidate>
 		            	<div class="form-group row">
@@ -73,8 +77,41 @@
 		                </div>
 	                </form>
 	            </div>
-	        </div>
-	    </div>
-</div>
+	        </div> 
+        </div>
+    </div>
+	<!-- change password modal -->    
+  	<div bsModal #editPasswordModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title offset-md-5 font3"></h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="editPasswordModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="editPasswordForm" validate>
+                  <div class="form-group">
+                      <label for="old_password">Old Password</label>
+                      <input type="password" id="old_password" class="form-control" placeholder="Enter Old Password" formControlName="old_password">
+                  </div>
+                  <div class="form-group">
+                      <label for="new_password">New Password</label>
+                      <input type="password" id="new_password" class="form-control" placeholder="Enter New Password" formControlName="new_password"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="confirm_new_password">Confirm Password</label>
+                      <input type="password" id="confirm_new_password" class="form-control" placeholder="Confirm Your Password" formControlName="confirm_new_password"/>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-primary" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
+                  </div>
+                </form>
+              </div>
+          </div>
+    	</div>
+    </div>
 <app-footer><app-footer>
 

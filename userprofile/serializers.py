@@ -1,6 +1,7 @@
 from django.contrib.auth import update_session_auth_hash
 from rest_framework import serializers
 from models import *
+from django.contrib.auth.password_validation import validate_password
 
 class OrganizationSerializer(serializers.ModelSerializer):
 
@@ -32,7 +33,6 @@ class TolaUserSerializer(serializers.ModelSerializer):
         '''
         Compare the passwords to ensure that they are same
         '''
-        
         if data['password']:
             if data['password'] != data['confirm_password']:
                 raise serializers.ValidationError(
@@ -41,6 +41,9 @@ class TolaUserSerializer(serializers.ModelSerializer):
         return data
 
 class TolaUserUpdateSerializer(serializers.ModelSerializer):
+    """
+    Serializer for user profile data update endpoint.
+    """
 
     class  Meta:
         model = TolaUser
@@ -63,5 +66,21 @@ class TolaUserUpdateSerializer(serializers.ModelSerializer):
         
         return instance
 
-  
+class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Serializer for user password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+    confirm_new_password = serializers.CharField(required=True)
+
+    def validate_new_password(self, value):
+
+        if data['new_password'] != data['confirm_new_password']:
+                raise serializers.ValidationError(
+                    "The new passwords do not match (Must be the same)"
+                )
+
+        validate_password(value)
+        return value
 
