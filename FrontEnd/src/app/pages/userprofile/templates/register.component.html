@@ -59,9 +59,11 @@
                         <div [hidden]="!registerForm.controls.confirm_password.errors.required">
                             Confirm Password is required
                         </div>
-                        <div [hidden]="!registerForm.controls.confirm_password.errors.minlength">
-                            Confirm Password Minimum Length is {{registerForm.controls.confirm_password.errors.minlength?.requiredLength}}
+                        
+                        <div [hidden]="!registerForm.controls.confirm_password.errors?.MatchPassword">
+                            Password not match
                         </div> 
+
                     </div>
                 </div>
             </div>

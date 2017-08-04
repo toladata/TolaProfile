@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {UserprofileService} from '../userprofile.service';
 import {Router} from '@angular/router';
+import { PasswordValidation } from 'app/shared/helpers/password.validation';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,11 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirm_password: ['', [Validators.required, Validators.minLength(6)]],
 
-    })
+    },
+      {
+        validator: PasswordValidation.MatchPassword // your validation method
+      }
+    )
   }
 
   ngOnInit() {
