@@ -7,7 +7,12 @@
             <div class="row">
                 <div class="col-6 col-md-6 form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" class="form-control" formControlName="firstname" placeholder="Your First Name" >
+                    <input type="text" id="firstname" class="form-control" name="firstname" formControlName="firstname" placeholder="Your First Name" >
+                    <div *ngIf="!registerForm.controls.firstname?.valid && (registerForm.controls.firstname?.dirty ||registerForm.controls.firstname?.touched)" class="alert alert-danger">
+                        <div [hidden]="!registerForm.controls.firstname.errors.required">
+                            First Name is required
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6 col-md-6 form-group">
                     <label for="lastName">Last Name</label>
@@ -18,24 +23,50 @@
                 <div class="col-6 col-md-6 form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" class="form-control" formControlName="username" placeholder="Your username">
+                    <div *ngIf="!registerForm.controls.username?.valid && (registerForm.controls.username?.dirty ||registerForm.controls.username?.touched)" class="alert alert-danger">
+                        <div [hidden]="!registerForm.controls.username.errors.required">
+                            UserName is required
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6 col-md-6 form-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" class="form-control" formControlName="email" placeholder="example@domain.com">
+                    <div *ngIf="!registerForm.controls.email?.valid && (registerForm.controls.email?.dirty ||registerForm.controls.email?.touched)" class="alert alert-danger">
+                        <div [hidden]="!registerForm.controls.email.errors.required">
+                            Email is required
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6 col-md-6 form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password">
+                    <div *ngIf="!registerForm.controls.password?.valid && (registerForm.controls.password?.dirty ||registerForm.controls.password?.touched)" class="alert alert-danger">
+                        <div [hidden]="!registerForm.controls.password.errors.required">
+                            Password is required
+                        </div>
+                        <div [hidden]="!registerForm.controls.password.errors.minlength">
+                            Password Minimum Length is {{registerForm.controls.password.errors.minlength?.requiredLength}}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-6 col-md-6 form-group">
                     <label for="confirm_password"> Confirm Password</label>
                     <input type="password" id="confirm_password" class="form-control" formControlName="confirm_password" placeholder="Confirm Your Password">
+                    <div *ngIf="!registerForm.controls.confirm_password?.valid && (registerForm.controls.confirm_password?.dirty ||registerForm.controls.confirm_password?.touched)" class="alert alert-danger">
+                        <div [hidden]="!registerForm.controls.confirm_password.errors.required">
+                            Confirm Password is required
+                        </div>
+                        <div [hidden]="!registerForm.controls.confirm_password.errors.minlength">
+                            Confirm Password Minimum Length is {{registerForm.controls.confirm_password.errors.minlength?.requiredLength}}
+                        </div> 
+                    </div>
                 </div>
             </div>
             <div class="text-center">
-               <button class="btn btn-primary">Register</button> 
+               <button class="btn btn-primary" [disabled]="!registerForm.valid">Register</button> 
                <!-- <div class="btn_social registerForm__social"> 
                     Sign Up With 
                     <button class="btn_social__icon btn_social__facebook"><i class="fa fa-facebook" aria-hidden="true"></i></button>
