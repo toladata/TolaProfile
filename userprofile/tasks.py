@@ -19,7 +19,7 @@ def sync_create_with_tolawork(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 
 }
 
@@ -36,7 +36,7 @@ def sync_update_with_tolawork(data, url){
 
     if api_response.status_code == // 100 == 2:
         return True,
-    return false
+    return False
 
 }
 
@@ -53,7 +53,7 @@ def sync_delete_with_tolawork(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 
 }
 
@@ -67,7 +67,7 @@ def sync_create_with_activity(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 }
 
 @shared_task
@@ -79,7 +79,7 @@ def sync_update_with_activity(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 }
 
 @shared_task
@@ -91,7 +91,7 @@ def sync_delete_with_activity(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 }
 
 #sync with TolaTables
@@ -103,7 +103,7 @@ def sync_create_with_table(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 }
 
 @shared_task
@@ -114,5 +114,5 @@ def sync_delete_with_table(data, url){
 
     if api_response.status_code // 100 == 2:
         return True,
-    return false
+    return False
 }
