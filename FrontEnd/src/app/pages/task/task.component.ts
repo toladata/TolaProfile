@@ -102,7 +102,7 @@ export class TaskComponent implements OnInit{
   getAllTasks(): void{
     this._service.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
-      this.tasks_completed = tasks.filter(x => x.created_by === Number(this.user.id) && x.status === 3);
+      this.tasks_completed = tasks.filter(x => x.assigned_to === Number(this.user.id) && x.status === 3);
       this.tasks_created = tasks.filter(x => x.created_by === Number(this.user.id));
       this.tasks_assigned = tasks.filter(x => x.assigned_to === Number(this.user.id));
     }
@@ -178,7 +178,7 @@ export class TaskComponent implements OnInit{
     }
 
     if (option === "completed"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
+      this.tasks =  this.tasks.filter(x => x.assigned_to === Number(value) && x.status === 3);
     }
   }
 }
