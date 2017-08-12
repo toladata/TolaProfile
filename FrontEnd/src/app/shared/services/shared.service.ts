@@ -7,6 +7,8 @@ import 'rxjs/add/operator/catch'
 import 'rxjs/add/observable/throw';
 
 const TOLAPOFILE_USER_SERVER = 'http://127.0.0.1:8000/api/tolausers/';
+const TOLA_ACTIVITY_SERVER = 'http://127.0.0.1:8000/api/initiations/';
+const TOLA_WORK_SERVER = 'http://127.0.0.1:8000/api/tickets/';
 const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json',});
 const  options = new RequestOptions({ headers : headers,});
 
@@ -20,6 +22,20 @@ export class SharedService {
     .map(function(response){
       return response.json();
     });
+  }
+
+  get_unapproved_activities(){
+  	return this._authHttp.get(TOLA_ACTIVITY_SERVER, options)
+  	.map(function(response){
+			return response.json();
+  	});
+  }
+
+  get_my_tickets(){
+  	return this._authHttp.get(TOLA_WORK_SERVER, options)
+  	.map(function(response){
+			return response.json();
+  	});
   }
 
 }
