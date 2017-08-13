@@ -56,7 +56,7 @@ export class UserprofileService {
     }
 
     register(userData){
-       
+
         return this.http.post(TOLAPOFILE_USER_SERVER+'auth/register/', JSON.stringify(userData), options)
         .map((response: Response) => {
 
@@ -74,7 +74,7 @@ export class UserprofileService {
     //update user
     updateUser(user_id, userData){
 
-    return this._authHttp.put('http://127.0.0.1:8000/api/tolausers/'+user_id+'/',JSON.stringify(userData), options)
+    return this._authHttp.put(TOLAPOFILE_USER_SERVER +'tolausers/'+user_id+'/',JSON.stringify(userData), options)
         .map((response: Response) => {
 
                     let data = response.json();
@@ -91,7 +91,7 @@ export class UserprofileService {
 //update user password
 updatePassword(passData) {
 
-    return this.http.put(TOLAPOFILE_USER_SERVER + '/auth/update-password/', JSON.stringify(passData), options)
+    return this._authHttp.put(TOLAPOFILE_USER_SERVER + 'auth/update-password/', JSON.stringify(passData), options)
         .map((response: Response) => {
 
             let data = response.json();
@@ -108,7 +108,7 @@ updatePassword(passData) {
 //login in with facebook
 login_with_facebook(response){
 
-    return this.http.post(TOLAPOFILE_USER_SERVER+'/auth/facebook/', JSON.stringify({
+    return this.http.post(TOLAPOFILE_USER_SERVER+'auth/facebook/', JSON.stringify({
         "access_token": response.authResponse.accessToken,
         "backend": "facebook" }), options)
         .map((response: Response) => {
@@ -140,7 +140,7 @@ login_with_facebook(response){
         this.userChange.next(this.isLogged);
         this._router.navigate(['home']);
     }
-    
+
     //get countries
     getCountry(){
         return this._authHttp.get(TOLAPOFILE_USER_SERVER+'countries/', options)
