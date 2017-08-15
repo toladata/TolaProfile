@@ -158,12 +158,22 @@
                                 <label for="task" class="col-md-2 col-sm-2 col-form-label">Title:</label>
                                 <div class="col-md-10 col-sm-10">
                                     <input type="text" id="task" class="form-control" formControlName="task">
+                                    <div *ngIf="!editTaskForm.controls.task?.valid && (editTaskForm.controls.task?.dirty ||editTaskForm.controls.task?.touched)" class="alert alert-danger">
+                                        <div [hidden]="!editTaskForm.controls.task.errors.required">
+                                        Title is required
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="note" class="col-md-2 col-sm-2 col-form-label">Description:</label>
                                 <div class="col-md-10 col-sm-10">
                                     <textarea type="text" id="note" class="form-control" formControlName="note" rows="5"></textarea>
+                                    <div *ngIf="!editTaskForm.controls.note?.valid && (editTaskForm.controls.note?.dirty ||editTaskForm.controls.note?.touched)" class="alert alert-danger">
+                                        <div [hidden]="!editTaskForm.controls.note.errors.required">
+                                        Description is required
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -212,7 +222,7 @@
                                         <option *ngFor="let user of tolausers" value={{user.id}}>{{user.username}}</option>
                                     </select>
                             <div class="text-center">
-                                <tola-button-component buttonClass="btn-primary" (click)="editTask(task_id,editTaskForm.value)">Save Changes</tola-button-component>
+                                <button class="btn-primary btn" (click)="editTask(task_id,editTaskForm.value)" [disabled]="!editTaskForm.valid">Save Changes</button>
                                 <button class="btn task__delete_btn " type="button" (click)="hideModal()">Discard Changes</button>
                             </div>
 
