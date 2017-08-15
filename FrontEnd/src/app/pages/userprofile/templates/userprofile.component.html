@@ -19,8 +19,8 @@
 					  
 					  <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
 					  </span></p>
-					  <p class="list-group-item justify-content-between">Country: <span class="font1" *ngFor= "let country of countries"><font class="col-md-2" *ngIf="country.id == user.country">{{country.country}} </font>
-					</span></p>
+					  <p class="list-group-item">Country: <i class="font1" *ngFor= "let country of countries"><font class="col-md-2" >{{country.country}} </font>
+					</i></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
 				  </div>

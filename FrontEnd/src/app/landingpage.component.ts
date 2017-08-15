@@ -16,8 +16,8 @@ export class LandingpageComponent implements OnInit {
   constructor(private fb: FormBuilder, private _service: UserprofileService, private router: Router) {
 
     this.loginForm = fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9]+(\.[a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
 
