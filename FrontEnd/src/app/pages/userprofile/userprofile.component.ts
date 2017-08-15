@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserprofileService} from './userprofile.service';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { PasswordValidation } from 'app/shared/helpers/password.validation';
 
 @Component({
   selector: 'app-userprofile',
@@ -27,11 +28,12 @@ export class UserprofileComponent implements OnInit {
         country: [''],
        });
        this.editPasswordForm = fb.group({
-         old_password:['',Validators.required],
-         new_password:['',Validators.required],
-         confirm_new_password:['',Validators.required],
-        
-       });
+         old_password:['', Validators.required],
+         new_password:['', [Validators.required, Validators.minLength(6)]],
+         confirm_new_password:['', [Validators.required, Validators.minLength(6)]],
+         },
+            
+         );
     }
 
     ngOnInit() {
