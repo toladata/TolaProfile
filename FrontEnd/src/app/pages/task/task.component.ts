@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {TaskService} from './task.service';
 import {SharedService} from 'app/shared/services/shared.service';
+import { UserprofileService } from '../userprofile/userprofile.service';
 import {Router} from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
@@ -20,6 +21,8 @@ export class TaskComponent implements OnInit{
   tasks_completed;
   tasks_assigned;
   tasks_created;
+  user_activities_awaiting_approval;
+  user_tickets;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
@@ -62,6 +65,7 @@ export class TaskComponent implements OnInit{
 
   constructor(
     private _service: TaskService,
+    private _userprofileService: UserprofileService,
     private fb: FormBuilder,
     private _router: Router,
     private _sharedService: SharedService
@@ -181,4 +185,19 @@ export class TaskComponent implements OnInit{
       this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
     }
   }
+
+//get user tickets
+get_user_tickets(){
+  this._userprofileService.get_user_tickets().subscribe((response) => {
+    this.user_tickets = response;
+  });
+}
+
+//get user activities awaiting approval
+get_activities_awaiting_approval(){
+  this._userprofileService.get_activities_awaiting_approval().subscribe((response) => {
+    this.user_tickets = response;
+  });
+}
+
 }
