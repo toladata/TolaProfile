@@ -79,7 +79,7 @@ export class UserprofileService {
 
                     let data = response.json();
                     if (data) {
-                        return true;
+                        return data;
                     } else {
                         console.log("there was an error");
                         return false;
@@ -90,7 +90,6 @@ export class UserprofileService {
 
 //update user password
 updatePassword(passData) {
-
     return this._authHttp.put(TOLAPOFILE_USER_SERVER + 'auth/update-password/', JSON.stringify(passData), options)
         .map((response: Response) => {
 
