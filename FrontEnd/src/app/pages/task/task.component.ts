@@ -182,7 +182,7 @@ export class TaskComponent implements OnInit{
     }
 
     if (option === "completed"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === Number(value));
+      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === 3);
     }
   }
 
