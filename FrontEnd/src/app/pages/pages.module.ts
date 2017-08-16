@@ -19,7 +19,7 @@ import 'prismjs/components/prism-markup';
 import { PrismComponent } from 'angular-prism';
 import { PositionHelper } from '../shared/helpers/postion.helper';
 import { SortItemsPipe } from "app/shared/helpers/sort.pipe";
-import { FilterPipe } from "app/shared/helpers/filter.pipe";
+import { FilterPipe } from "app/shared/helpers/search.pipe";
 
 
 
