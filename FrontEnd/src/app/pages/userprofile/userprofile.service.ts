@@ -6,6 +6,8 @@ import { Http, Headers, Response, RequestOptions, RequestMethod } from '@angular
 import { AuthHttp, JwtHelper } from "angular2-jwt/angular2-jwt";
 
 const TOLAPOFILE_USER_SERVER = 'http://127.0.0.1:8000/api/';
+const TOLA_ACTIVITY_SERVER = 'http://127.0.0.1:8000/api/';
+const TOLA_WORK_SERVER = 'http://127.0.0.1:8000/api/';
 const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json', });
 const options = new RequestOptions({ headers: headers, });
 
@@ -156,5 +158,20 @@ login_with_facebook(response){
         });
     }
 
+    //get unapproved activities by logged user
+    get_activities_awaiting_approval(){
+        return this._authHttp.get(TOLA_ACTIVITY_SERVER, options)
+        .map(function(response){
+            return response.json();
+        })
+    }
+
+    //get tickets assigned to logged addUser
+    get_user_tickets(){
+        return this._authHttp.get(TOLA_WORK_SERVER, options)
+        .map(function(response){
+            return response.json();
+        })
+    }
 }
 
