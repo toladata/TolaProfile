@@ -72,7 +72,7 @@ export class TaskComponent implements OnInit{
     ){
     this.createTaskForm = fb.group({
       task: ['', Validators.required ],
-      note: ['' ],
+      note: ['', Validators.required],
       created_by: [this.user.id],
       due_date: [''],
       submitter_email: [this.user.email],
@@ -83,7 +83,7 @@ export class TaskComponent implements OnInit{
 
     this.editTaskForm = fb.group({
       task: ['', Validators.required ],
-      note: ['' ],
+      note: ['', Validators.required],
       created_by: [this.user.id],
       due_date: [''],
       submitter_email: [this.user.email],

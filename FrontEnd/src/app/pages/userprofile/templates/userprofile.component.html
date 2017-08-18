@@ -19,7 +19,7 @@
 					  
 					  <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
 					  </span></p>
-					  <p class="list-group-item">Country: <i class="font1" *ngFor= "let country of countries"><font class="col-md-2" >{{country.country}} </font>
+					  <p class="list-group-item justify-content-between">Country: <i class="font1" *ngFor= "let country of countries"><font class="offset-md-10" *ngIf="country.id == user.country">{{country.country}} </font>
 					</i></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
@@ -84,7 +84,7 @@
         <!-- Modal content-->
           <div class="modal-content">
               <div class="modal-header">
-                  <h4 class="modal-title offset-md-5 font3"></h4>
+                  <h4 class="modal-title offset-md-5 font3">Change Password</h4>
                   <button type="button" class="close pull-right" aria-label="Close" (click)="editPasswordModal.hide()">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -98,13 +98,30 @@
                   <div class="form-group">
                       <label for="new_password">New Password</label>
                       <input type="password" id="new_password" class="form-control" placeholder="Enter New Password" formControlName="new_password"/>
+                      <div *ngIf="!editPasswordForm.controls.new_password?.valid && (editPasswordForm.controls.new_password?.dirty ||editPasswordForm.controls.new_password?.touched)" class="alert alert-danger">
+                        <div [hidden]="!editPasswordForm.controls.new_password.errors.required">
+                            Password is required
+                        </div>
+                        <div [hidden]="!editPasswordForm.controls.new_password.errors.minlength">
+                            Password Minimum Length is {{editPasswordForm.controls.new_password.errors.minlength?.requiredLength}}
+                        </div>
+                    </div>
                   </div>
                   <div class="form-group">
                       <label for="confirm_new_password">Confirm Password</label>
                       <input type="password" id="confirm_new_password" class="form-control" placeholder="Confirm Your Password" formControlName="confirm_new_password"/>
+                      <!-- <div *ngIf="!editPasswordForm.controls.confirm_new_password?.valid && (editPasswordForm.controls.confirm_new_password?.dirty ||editPasswordForm.controls.confirm_new_password?.touched)" class="alert alert-danger">
+                        <div [hidden]="!editPasswordForm.controls.confirm_new_password.errors.required">
+                            Confirm Password is required
+                        </div>
+                        
+                        <div [hidden]="!editPasswordForm.controls.confirm_new_password.errors?.MatchPassword">
+                            Password not match
+                        </div> 
+                    	</div> -->
                   </div>
                   <div class="text-center">
-                      <button class="btn btn-primary" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
+                      <button class="btn btn-primary" [disabled]="!editPasswordForm.valid" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
                   </div>
                 </form>
               </div>
