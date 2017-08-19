@@ -17,7 +17,7 @@
 					  <p class="list-group-item justify-content-between">Email:<span class="font1">
 					  {{user.email}}</span></p>
 					  
-					  <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
+					  <p class="list-group-item justify-content-between">Organization: <span class="font1 offset-md-7" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
 					  </span></p>
 					  <p class="list-group-item justify-content-between">Country: <span class="font1 offset-md-7" *ngFor= "let country of countries"><font *ngIf="country.id == user.country"> {{country.country}}</font>
 					</span></p>
