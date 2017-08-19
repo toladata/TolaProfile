@@ -19,8 +19,8 @@
 					  
 					  <p class="list-group-item justify-content-between">Organization: <span class="font1" *ngFor= "let organization of organizations" class="font1"><font *ngIf="organization.id == user.organization">{{organization.name}}</font>
 					  </span></p>
-					  <p class="list-group-item justify-content-between">Country: <i class="font1" *ngFor= "let country of countries"><font class="offset-md-10" *ngIf="country.id == user.country">{{country.country}} </font>
-					</i></p>
+					  <p class="list-group-item justify-content-between">Country: <span class="font1 offset-md-7" *ngFor= "let country of countries"><font *ngIf="country.id == user.country"> {{country.country}}</font>
+					</span></p>
 					</div>
 					<p><i>Last Updated {{user.date_modified | date}}</i></p>
 				  </div>
@@ -40,6 +40,11 @@
 		                    <label for="FirstName" class="col-md-3 col-sm-3 col-form-label">First Name</label>
 		                    <div class="col-md-9 col-sm-9">
 		                    	<input type="text" id="FirstName" class="form-control" formControlName="firstname" value="{{user.firstname}}" >
+		                    	<div *ngIf="!editUserForm.controls.firstname?.valid && (editUserForm.controls.firstname?.dirty ||editUserForm.controls.firstname?.touched)" class="alert alert-danger">
+			                        <div [hidden]="!editUserForm.controls.firstname.errors.required">
+			                            First Name is required
+			                        </div>
+			                    </div>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
@@ -52,12 +57,25 @@
 		                    <label for="username" class="col-md-3 col-sm-3 col-form-label">Username:</label>
 		                    <div class="col-md-9 col-sm-9">
 		                        <input type="text" id="username" class="form-control" formControlName="username" value="{{user.username}}">
+					            <div *ngIf="!editUserForm.controls.username?.valid && (editUserForm.controls.username?.dirty ||editUserForm.controls.username?.touched)" class="alert alert-danger">
+			                        <div [hidden]="!editUserForm.controls.username.errors.required">
+			                            UserName is required
+			                        </div>
+			                    </div>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
 		                    <label for="email" class="col-md-3 col-sm-3 col-form-label">Email:</label>
 		                    <div class="col-md-9 col-sm-9">
 		                        <input type="text" id="email" class="form-control" formControlName="email" value="{{user.email}}">
+		                        <div *ngIf="!editUserForm.controls.email?.valid && (editUserForm.controls.email?.dirty ||editUserForm.controls.email?.touched)" class="alert alert-danger">
+			                        <div [hidden]="!editUserForm.controls.email.errors.required">
+			                            Email is required
+			                        </div>
+			                        <div [hidden]="!editUserForm.controls.email.errors.pattern">
+			                            Email must be like example@domain.com
+			                        </div>
+			                    </div>
 		                    </div>
 		                </div>
 		                <div class="form-group row">
@@ -96,6 +114,14 @@
                   <div class="form-group">
                       <label for="old_password">Old Password</label>
                       <input type="password" id="old_password" class="form-control" placeholder="Enter Old Password" formControlName="old_password">
+                      <div *ngIf="!editPasswordForm.controls.old_password?.valid && (editPasswordForm.controls.old_password?.dirty ||editPasswordForm.controls.old_password?.touched)" class="alert alert-danger">
+                        <div [hidden]="!editPasswordForm.controls.old_password.errors.required">
+                            Password is required
+                        </div>
+                        <div [hidden]="!editPasswordForm.controls.old_password.errors.minlength">
+                            Password Minimum Length is {{editPasswordForm.controls.old_password.errors.minlength?.requiredLength}}
+                        </div>
+                    </div>
                   </div>
                   <div class="form-group">
                       <label for="new_password">New Password</label>
@@ -112,7 +138,7 @@
                   <div class="form-group">
                       <label for="confirm_new_password">Confirm Password</label>
                       <input type="password" id="confirm_new_password" class="form-control" placeholder="Confirm Your Password" formControlName="confirm_new_password"/>
-                      <!-- <div *ngIf="!editPasswordForm.controls.confirm_new_password?.valid && (editPasswordForm.controls.confirm_new_password?.dirty ||editPasswordForm.controls.confirm_new_password?.touched)" class="alert alert-danger">
+                      <div *ngIf="!editPasswordForm.controls.confirm_new_password?.valid && (editPasswordForm.controls.confirm_new_password?.dirty ||editPasswordForm.controls.confirm_new_password?.touched)" class="alert alert-danger">
                         <div [hidden]="!editPasswordForm.controls.confirm_new_password.errors.required">
                             Confirm Password is required
                         </div>
@@ -120,7 +146,7 @@
                         <div [hidden]="!editPasswordForm.controls.confirm_new_password.errors?.MatchPassword">
                             Password not match
                         </div> 
-                    	</div> -->
+                    	</div>
                   </div>
                   <div class="text-center">
                       <button class="btn btn-primary" [disabled]="!editPasswordForm.valid" (click) = "editPassword(editPasswordForm.value)">Save Password</button>
