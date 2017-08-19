@@ -49,7 +49,9 @@ export class UserprofileComponent implements OnInit {
     }
 
   editProfile(user_id,editUserForm){
-    this._service.updateUser(user_id,editUserForm).subscribe();
+    this._service.updateUser(user_id,editUserForm).subscribe((response) => {
+    this.user = response;
+    });
 
   }
 
