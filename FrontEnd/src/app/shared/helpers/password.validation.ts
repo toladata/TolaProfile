@@ -10,4 +10,15 @@ export class PasswordValidation {
             return null
         }
     }
+
+    //match new password
+    static MatchNewPassword(AC: AbstractControl) {
+        let password = AC.get('new_password').value; // to get value in input tag
+        let confirmPassword = AC.get('confirm_new_password').value; // to get value in input tag
+        if (password != confirmPassword) {
+            AC.get('confirm_new_password').setErrors({ MatchPassword: true })
+        } else {
+            return null
+        }
+    }
 }

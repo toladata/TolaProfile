@@ -20,9 +20,9 @@ export class UserprofileComponent implements OnInit {
 
     constructor(private _service: UserprofileService,private fb: FormBuilder ) {
        this.editUserForm = fb.group({
-        username: [''],
-        email: [''],
-        firstname: [''],
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.pattern('^[a-z0-9]+(\.[a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$')]],
+        firstname: ['', Validators.required],
         lastname: [''],
         organization: [''],
         country: [''],
@@ -32,7 +32,9 @@ export class UserprofileComponent implements OnInit {
          new_password:['', [Validators.required, Validators.minLength(6)]],
          confirm_new_password:['', [Validators.required, Validators.minLength(6)]],
          },
-            
+        {
+          validator: PasswordValidation.MatchNewPassword
+        }
          );
     }
 
