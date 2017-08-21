@@ -75,3 +75,45 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#### EMAIL CONFIGURATIONS ######
+
+### <----- For Production -----> ##
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+### <----- For Development (Use one these)-----> ##
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
