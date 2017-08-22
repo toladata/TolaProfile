@@ -114,7 +114,7 @@
             <div class="alert alert-info" role="alert" *ngIf="tasks?.length == 0">
                 No tasks were found!
             </div>
-            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsFilter: searchText | paginate: { itemsPerPage: 4, currentPage: p } )">
+            <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsSearch: searchText | filterItems : filter_property : filter_value | paginate: { itemsPerPage: 4, currentPage: p } )">
                 <div class="card-header">
                     <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
                     <div [ngStyle]="{'float':'right'}">
@@ -249,11 +249,11 @@
                 </div>
                 <div class="card-block">
                     <div class="list-group">
-                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('created',user.id)">
+                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filter_user_tasks('created',user.id)">
                             <font class="task__make_link">Created by Me</font><span *ngIf="tasks_created" class=" badge badge-primary badge-pill">{{tasks_created.length}}</span></a>
-                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('assigned',user.id)">
+                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filter_user_tasks('assigned',user.id)">
                             <font class="task__make_link">Assigned to Me</font><span *ngIf="tasks_assigned" class="badge badge-primary badge-pill">{{tasks_assigned.length}}</span></a>
-                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filterTask('completed',user.id)">
+                        <a class="list-group-item list-group-item-action justify-content-between" (click)="filter_user_tasks('completed',user.id)">
                             <font class="task__make_link">Completed by Me </font><span *ngIf="tasks_completed" class="badge badge-primary badge-pill">{{tasks_completed.length}}</span></a>
                     </div>
                 </div>

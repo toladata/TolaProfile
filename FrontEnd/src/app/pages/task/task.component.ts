@@ -23,6 +23,8 @@ export class TaskComponent implements OnInit{
   tasks_created;
   user_activities_awaiting_approval;
   user_tickets;
+  filter_property;
+  filter_value;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
@@ -199,5 +201,10 @@ get_activities_awaiting_approval(){
     this.user_tickets = response;
   });
 }
+
+filter_user_tasks(property: string, value: Number){
+    this.filter_property = property;
+    this.filter_value = value;
+  }
 
 }
