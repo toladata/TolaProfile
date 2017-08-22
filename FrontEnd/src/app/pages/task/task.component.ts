@@ -178,14 +178,7 @@ export class TaskComponent implements OnInit{
     if (option === "assigned"){
       this.tasks =  this.tasks.filter(x => x.assigned_to === Number(value));
     }
-
-    if (option === "created"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value));
-    }
-
-    if (option === "completed"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === 3);
-    }
+  
   }
 
 //get user tickets
