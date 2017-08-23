@@ -16,6 +16,7 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^api/auth/', include('userprofile.urls')),
     url(r'^api/', include('task.urls')),
+    url(r'^api/', include('viewsets.urls')),
 
     #rest framework
     url(r'^api/', include(router.urls)),
