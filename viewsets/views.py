@@ -20,6 +20,7 @@ import json
 
 
 class GetUserTickets(APIView):
+    permision_classes = (IsAuthenticated,)    
 
     """
     View to get tickets assigned or created by current user
@@ -38,5 +39,7 @@ class GetUserTickets(APIView):
 
         if int(req.status_code) == 200:
             tickets = json.loads(req.content)
+
+        return tickets
             
 
