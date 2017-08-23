@@ -6,6 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class SearchItemsPipe implements PipeTransform {
   transform(allItems: any, searchText: any): any {
+  	
     if(searchText == null) return allItems;
 
     return allItems.filter(function(item){

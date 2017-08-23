@@ -9,13 +9,14 @@ from django.conf import settings
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
-import django_filters
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from social_django.utils import load_strategy, load_backend, psa, setting, BackendWrapper
 from django.contrib.auth import update_session_auth_hash
+from django.ocnf import settings
+import requests
+import json
 
 class CountryViewSet(viewsets.ModelViewSet):
 
@@ -168,4 +169,3 @@ class FacebookView(APIView):
                     'status': 'Bad request',
                     'message': 'Authentication could not be performed with received data.'
             }, status=status.HTTP_400_BAD_REQUEST)
-	
