@@ -14,7 +14,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from social_django.utils import load_strategy, load_backend, psa, setting, BackendWrapper
 from django.contrib.auth import update_session_auth_hash
-from django.ocnf import settings
+from django.conf import settings
 import requests
 import json
 
