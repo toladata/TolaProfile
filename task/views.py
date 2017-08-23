@@ -30,6 +30,7 @@ class TaskListViewSet(viewsets.ModelViewSet):
 
 #Send Mail when tasks is assigned to a user
 class SendTaskAssignedMail(APIView):
+    permision_classes = (IsAuthenticated,)    
 
     def post(self, request, format='application/json'):
 
