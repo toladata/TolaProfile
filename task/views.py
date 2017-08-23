@@ -20,7 +20,12 @@ class TaskListViewSet(viewsets.ModelViewSet):
         for the currently logged user.
         """
         user = self.request.user
-        task_object = Task.objects.filter(Q(created_by=user) | Q(assigned_to = user))
+
+        task_object = Task.objects.all()
+
+        if not user.is_admin:
+            task_object = task_object.filter(Q(created_by=user) | Q(assigned_to = user))
+
         return task_object
 
 #Send Mail when tasks is assigned to a user

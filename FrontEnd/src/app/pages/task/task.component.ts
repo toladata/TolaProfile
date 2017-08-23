@@ -23,6 +23,8 @@ export class TaskComponent implements OnInit{
   tasks_created;
   user_activities_awaiting_approval;
   user_tickets;
+  filter_property;
+  filter_value;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
@@ -181,14 +183,7 @@ export class TaskComponent implements OnInit{
     if (option === "assigned"){
       this.tasks =  this.tasks.filter(x => x.assigned_to === Number(value));
     }
-
-    if (option === "created"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value));
-    }
-
-    if (option === "completed"){
-      this.tasks =  this.tasks.filter(x => x.created_by === Number(value) && x.status === 3);
-    }
+  
   }
 
 //get user tickets
@@ -208,4 +203,10 @@ get_activities_awaiting_approval(){
 //assignTask(task_id,user_assigned){
   //console.log(task_id,user_assigned);
 //}
+
+filter_user_tasks(property: string, value: Number){
+    this.filter_property = property;
+    this.filter_value = value;
+  }
+
 }

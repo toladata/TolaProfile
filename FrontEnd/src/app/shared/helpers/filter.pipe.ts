@@ -4,25 +4,23 @@ import { Pipe, PipeTransform} from '@angular/core';
 	name: 'filterItems'
 })
 
-export class FilterItems implements PipeTransform {
+export class FilterItemsPipe implements PipeTransform {
 
-	trasnsform(items: Array<any>, args?: any): any {
+	transform(items: Array<any>, filter_property: string, filter_value: Number): any {
 
-		if(items === undefined){
-			return null;
+		if(filter_property == null && filter_value ==null){
+			return items;
 		}
 
-		return items.filter(function(items, property){
-			if(property === 'status') {
-				return items.filter(x => x.status == Number(property[args.status]));
-			}
-			if (property === 'priority') {
-				return items.filter(x => x.priority === Number(property[args.priority]));
-			}
-			if (property === 'assignee') {
-				return items.filter(x => x.assignee === Number(property[args.assignee]))
-			}
-		});
+		if (filter_property === 'created') {
+		  return items.filter(x => x.created_by == Number(filter_value));
+		}
+		if (filter_property === 'assigned') {
+		  return items.filter(x => x.assigned_to === Number(filter_value));
+		}
+		if (filter_property === 'completed') {
+		  return items.filter(x => x.created_by === Number(filter_value) && x.status === 3)
+		}
 
 	}
 }

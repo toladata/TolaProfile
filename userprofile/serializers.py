@@ -56,12 +56,9 @@ class TolaUserUpdateSerializer(serializers.ModelSerializer):
         instance.username = validated_data.get('username',instance.username)
         instance.firstname = validated_data.get('firstname',instance.firstname)
         instance.lastname = validated_data.get('lastname',instance.lastname)
+        instance.country = validated_data.get('country',instance.lastname)
+        instance.organization = validated_data.get('organization',instance.lastname)
 
-        password = validated_data.get('password', None)
-        confirm_password = validated_data.get('confirm_password', None)
-
-        if password and password == confirm_password:
-            instance.set_password(password)
 
         instance.save()
         

@@ -1,10 +1,10 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'itemsFilter',
+    name: 'itemsSearch',
     pure: false
 })
-export class FilterPipe implements PipeTransform {
+export class SearchItemsPipe implements PipeTransform {
   transform(allItems: any, searchText: any): any {
     if(searchText == null) return allItems;
 
