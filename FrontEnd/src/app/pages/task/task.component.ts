@@ -214,9 +214,9 @@ get_activities_awaiting_approval(){
 }
 //Assign Task
 assignTask(task_id,assignTaskData){
-    //let assigned_user = this.tolausers.filter(x => x.id === Number(assignTaskData.assigned_to));
-    //console.log(assigned_user)
-   let confirm_assign = confirm("You are about to assign task #"+task_id+" to user"+assignTaskData.assigned_to+".");
+    let assigned_user = this.tolausers.filter(x => x.id === Number(assignTaskData.assigned_to))[0];
+    this.username = assigned_user.username;
+   let confirm_assign = confirm("You are about to assign task #"+task_id+" to "+this.username+".");
     if(confirm_assign == true){
       console.log("nice choice");
     }
