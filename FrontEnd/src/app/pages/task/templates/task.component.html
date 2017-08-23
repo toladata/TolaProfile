@@ -137,6 +137,7 @@
                     <div>
                         <tola-button-component buttonClass="btn" (click)="fillInEditTaskForm(task.id)">Edit</tola-button-component>
                         <button class="btn task__delete_btn " type="button" (click)="deleteTask(task.id)">Delete</button>
+                        <tola-button-component buttonClass="button--navy btn profile__password-btn" (click)="assignTaskModal.show()">Assign</tola-button-component>
                     </div>
                 </div>
             </div>
@@ -234,6 +235,35 @@
         </div>
         <!-- end edit task Modal -->
 
+        <!-- assign task modal -->    
+        <div bsModal #assignTaskModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+            <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title offset-md-5 font3">Assign Task</h4>
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="assignTaskModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]="assignTaskForm" novalidate>
+                        <div class="form-group">
+                            <label for="assigned_to" class="col-form-label">Assign Task To:</label>
+                                
+                            <select class="form-control" >
+                                <option *ngFor="let user of tolausers" value={{user.id}} formControlName="assigned_to">{{user.username}}</option>
+                            </select>
+                      </div>
+                      <div class="text-center">
+                        <button class="btn-primary btn" (click)="assignTask(task.id,assignTaskForm.value)">Assign</button>
+                    </div>
+                     </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <!-- end assign task modal -->
         <div class="col-md-4">
             <div class="search">
                 <div class="input-group">

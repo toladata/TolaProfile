@@ -62,6 +62,7 @@ export class TaskComponent implements OnInit{
 
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
+  private assignTaskForm: FormGroup;
 
   constructor(
     private _service: TaskService,
@@ -92,6 +93,10 @@ export class TaskComponent implements OnInit{
       status: [''],
 
     })
+
+    this.assignTaskForm = fb.group({
+        assigned_to: [''],
+        })
    }
 
   ngOnInit() {
@@ -199,5 +204,8 @@ get_activities_awaiting_approval(){
     this.user_tickets = response;
   });
 }
-
+//Assign Task
+//assignTask(task_id,user_assigned){
+  //console.log(task_id,user_assigned);
+//}
 }
