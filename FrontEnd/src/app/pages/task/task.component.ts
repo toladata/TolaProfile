@@ -25,13 +25,16 @@ export class TaskComponent implements OnInit{
   user_tickets;
   filter_property;
   filter_value;
+  username;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
   @ViewChild('createTaskModal') public createTaskModal:ModalDirective;
+  @ViewChild('assignTaskModal') public assignTaskModal:ModalDirective;
 
   public isCreateModalShown:boolean = false;
   public isEditModalShown:boolean = false;
+  public isAssignModalShown:boolean = false;
 
   public showEditModal():void {
     this.isEditModalShown = true;
@@ -49,6 +52,16 @@ export class TaskComponent implements OnInit{
   }
   public onEditHidden():void {
     this.isEditModalShown = false;
+  }
+  //assign modal
+  public showAssignModal():void {
+    this.isAssignModalShown = true;
+  }
+  public hideAssignModal():void {
+    this.assignTaskModal.hide();
+  }
+  public onAssignHidden():void {
+    this.isAssignModalShown = false;
   }
 
   //collapse
@@ -200,9 +213,24 @@ get_activities_awaiting_approval(){
   });
 }
 //Assign Task
-//assignTask(task_id,user_assigned){
-  //console.log(task_id,user_assigned);
-//}
+assignTask(task_id,assignTaskData){
+    //let assigned_user = this.tolausers.filter(x => x.id === Number(assignTaskData.assigned_to));
+    //console.log(assigned_user)
+   let confirm_assign = confirm("You are about to assign task #"+task_id+" to user"+assignTaskData.assigned_to+".");
+    if(confirm_assign == true){
+      console.log("nice choice");
+    }
+  this.hideAssignModal()
+}
+//fill assign task form
+fillInAssignTaskForm(task__id): void{
+        let assignedTask = this.tasks.filter(x => x.id === task__id)[0];
+        this.assignTaskForm.setValue({
+          assigned_to: assignedTask.assigned_to,
+        });
+        this.task_id = task__id;
+        this.showAssignModal();
+  }
 
 filter_user_tasks(property: string, value: Number){
     this.filter_property = property;
