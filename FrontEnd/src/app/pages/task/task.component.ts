@@ -83,6 +83,9 @@ export class TaskComponent implements OnInit{
   private createTaskForm: FormGroup;
   private assignTaskForm: FormGroup;
 
+  //Date
+  public bsValue: any ;
+  
   constructor(
     private _service: TaskService,
     private _userprofileService: UserprofileService,
