@@ -147,7 +147,8 @@
             <!-- end success -->
             <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsSearch: searchText | filterItems : filter_property : filter_value | paginate: { itemsPerPage: 4, currentPage: p } )">
                 <div class="card-header">
-                    <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
+                <!-- (click)="viewIndividualTask(task.id) -->
+                    <a href="/taskItem">[TASK-{{task.id}}] {{task.task}}</a>
                     <div [ngStyle]="{'float':'right'}">
                         <span class="badge badge-primary" *ngIf="task.status == 1">Active</span>
                         <span class="badge badge-info" *ngIf="task.status == 2">Reopened</span>

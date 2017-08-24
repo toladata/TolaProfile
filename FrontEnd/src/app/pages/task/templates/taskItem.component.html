@@ -1,0 +1,28 @@
+<div class="container" style="padding:20px; background-color:#fff"> 
+    <div *ngFor="let task of tasks">
+        <h2>[TASK-{{task.id}}] </h2>
+        <div class="card"> 
+            <div class="card-header">
+                <h4 class="card-title">{{task.task}}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Submitted by <i>{{task.submitter_email}}</i> on {{task.created_date | date}}.</h6>
+            </div>
+            <div class="card-block">
+                
+                <p class="card-text">{{task.note}}</p>
+                <p><strong> Task Status:</strong>{{task.status}}</p>
+                <p><strong> Task Priority:</strong><span *ngIf="task.priority == 1"> High priority</span>
+                    <span *ngIf="task.priority == 2">Normal priority</span><span *ngIf="task.priority == 3">Low priority</span></p>
+                <p class="task__main__comment">
+                    <font *ngIf="task.assigned_to">Assigned to <i *ngFor="let user of tolausers"><strong *ngIf="task.assigned_to == user.id">{{user.username}}</strong></i> </font>
+                </p>
+                <p class="task__main__comment" *ngIf="task.due_date"><i>Due:<strong> {{task.due_date | date}}</strong></i></p>
+
+                <div>
+                    <tola-button-component buttonClass="btn" (click)="fillInEditTaskForm(task.id)">Edit</tola-button-component>
+                    <button class="btn task__delete_btn " type="button" (click)="deleteTask(task.id)">Delete</button>
+                    <tola-button-component *ngIf="!task.assigned_to" buttonClass="button--navy btn profile__password-btn" (click)="fillInAssignTaskForm(task.id)">Assign</tola-button-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

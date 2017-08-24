@@ -85,7 +85,7 @@ export class TaskComponent implements OnInit{
 
   //Date
   public bsValue: any ;
-  
+
   constructor(
     private _service: TaskService,
     private _userprofileService: UserprofileService,
@@ -248,4 +248,8 @@ filter_user_tasks(property: string, value: Number){
     this.filter_value = value;
   }
 
+  //view individual task
+  viewIndividualTask(task_id): void{
+    
+  }
 }

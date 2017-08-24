@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { UiComponentsModule } from '../ui-components/ui-components.module';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { TaskComponent } from './task/task.component';
+import { TaskItemComponent } from "./task/taskItem.component";
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LoginComponent } from './userprofile/login/login.component';
 import { UserprofileService } from './userprofile/userprofile.service';
@@ -40,6 +41,7 @@ import { FilterItemsPipe } from "app/shared/helpers/filter.pipe";
   declarations: [
     FooterComponent,
     TaskComponent,
+    TaskItemComponent,
     LoginComponent,
     RegisterComponent,
     UserprofileComponent,
