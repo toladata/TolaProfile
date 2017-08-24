@@ -111,9 +111,32 @@
                     <tola-button-component buttonClass="button--cancel btn-sm btn" (click)="getAllTasks()">Reset Filter(s)</tola-button-component>
                 </div>
             </div>
+            <!-- if no tasks exist -->
             <div class="alert alert-info" role="alert" *ngIf="tasks?.length == 0">
                 No tasks were found!
             </div>
+            <!-- success alerts -->
+            <div *ngIf="confirm_creation"> 
+                <alert type="success" dismissible="true" dismissOnTimeout="5000">
+                  <strong>Success!</strong>  {{confirm_creation}}
+                </alert>
+            </div> 
+            <div *ngIf="confirm_edition"> 
+                <alert type="success" dismissible="true" dismissOnTimeout="5000">
+                  <strong>Success!</strong> {{confirm_edition}}
+                </alert>
+            </div> 
+             <div *ngIf="confirm_delete"> 
+                <alert type="success" dismissible="true" dismissOnTimeout="5000">
+                  <strong>Success!</strong> {{confirm_delete}}
+                </alert>confirm_assign
+            </div>
+            <div *ngIf="confirm_assign"> 
+                <alert type="success" dismissible="true" dismissOnTimeout="5000">
+                  <strong>Success!</strong> {{confirm_assign}}
+                </alert>
+            </div> 
+            <!-- end success -->
             <div class="card" *ngFor="let task of (tasks | sortItems: {property: sortForm.value.task_attribute, direction: 1 } | itemsSearch: searchText | filterItems : filter_property : filter_value | paginate: { itemsPerPage: 4, currentPage: p } )">
                 <div class="card-header">
                     <a href="#">[TASK-{{task.id}}] {{task.task}}</a>
