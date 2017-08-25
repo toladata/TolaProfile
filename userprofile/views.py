@@ -41,6 +41,27 @@ class TolaUserViewset(viewsets.ModelViewSet):
             serializer_class = TolaUserUpdateSerializer
 
         return serializer_class
+
+    def get(self, request):
+        user = self.request.user.country
+        queryset = TolaUser.objects.filter(country=user)
+
+        return queryset
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the TolaUsers
+        from the same organization currently logged user.
+        """
+        user = self.request.user
+
+        tolauser_object = TolaUser.objects.all()
+
+        if not user.is_admin:
+            tolauser_object = tolauser_object.filter(organization = user.organization)
+
+        return tolauser_object
+
     
 
 class UserRegister(APIView):
