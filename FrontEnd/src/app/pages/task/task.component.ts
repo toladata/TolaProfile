@@ -26,6 +26,10 @@ export class TaskComponent implements OnInit{
   filter_property;
   filter_value;
   username;
+  confirm_delete;
+  confirm_creation;
+  confirm_edition;
+  confirm_assign;
 
   //modal
   @ViewChild('editTaskModal') public editTaskModal:ModalDirective;
@@ -78,6 +82,9 @@ export class TaskComponent implements OnInit{
   private editTaskForm: FormGroup;
   private createTaskForm: FormGroup;
   private assignTaskForm: FormGroup;
+
+  //Date
+  public bsValue: any ;
 
   constructor(
     private _service: TaskService,
@@ -137,6 +144,7 @@ export class TaskComponent implements OnInit{
   createTask(formData){
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
     this.hideCreateModal();
+    this.confirm_creation = "You have successfully added a new task";
   }
 
   //Edit task
@@ -146,6 +154,7 @@ export class TaskComponent implements OnInit{
     );
     this.tasks = this.tasks.filter(x => x.id !== task_id);
     this.hideModal();
+    this.confirm_edition = "You have successfully edited task #"+task_id+ ".";
   }
 
   //Delete Task
@@ -155,6 +164,7 @@ export class TaskComponent implements OnInit{
       this._service.deleteTask(task_id);
       this.tasks = this.tasks.filter(x => x.id !== task_id);
     }
+    this.confirm_delete = "You have successfully deleted task #"+task_id+ ".";
 
   }
 
@@ -221,6 +231,7 @@ assignTask(task_id,assignTaskData){
       console.log("nice choice");
     }
   this.hideAssignModal()
+  this.confirm_assign = "You have successfully assigned task #"+task_id+" to "+this.username+".";
 }
 //fill assign task form
 fillInAssignTaskForm(task__id): void{
@@ -237,4 +248,8 @@ filter_user_tasks(property: string, value: Number){
     this.filter_value = value;
   }
 
+  //view individual task
+  viewIndividualTask(task_id): void{
+    
+  }
 }

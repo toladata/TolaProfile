@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { LandingpageComponent } from "./landingpage.component";
 import { TaskComponent } from "./pages/task/task.component";
+import { TaskItemComponent } from "./pages/task/taskItem.component";
 import { LoginComponent } from "./pages/userprofile/login/login.component";
 import { RegisterComponent } from "./pages/userprofile/register/register.component";
 import { UserprofileComponent } from "./pages/userprofile/userprofile.component";
@@ -14,7 +15,8 @@ const appRoutes: Routes = [
   { path: 'task', component: TaskComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: UserprofileComponent }
+  { path: 'profile', component: UserprofileComponent },
+  { path: 'taskItem', component: TaskItemComponent }
 ];
 
 export const Routing = RouterModule.forRoot(appRoutes);
