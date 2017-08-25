@@ -32,28 +32,25 @@ class GetUserTickets(APIView):
         tickets = {}
         ticket_instance= {}
         user_tickets = []
-        user_email = self.request.user.email 
-        repo = settings.GITHUB_REPO + "/issues/"
+        user_name = 'joash' #self.request.user.username 
+        repo = settings.GITHUB_REPO + "/issues"
         token = settings.GITHUB_AUTH_TOKEN
         header = {'Authorization': 'token %s' % token}
 
         res = requests.get(repo, headers=header)
 
         if int(res.status_code) == 200:
+
             tickets = json.loads(res.content)
 
             for ticket in tickets:
-            	if ticket['submitter_mail'] == user_email:
-            		ticket_instance = {
-            							'github_url': ticket['html_url'],
-            							'title': ticket['title'],
-            							'issue_number': ticket['number'],
-            							'description': ticket['body'],
-            							'ticket_status': ticket['state']
-            						  }
-            		user_tickets.append(ticket_instance)
+                print(ticket['assignees'])
 
+            	if user_name in ticket['assignees']:
+                    print(ticket)
+                    ticket_instance = {'github_url': ticket['html_url'], 'title': ticket['title'], 'issue_number': ticket['number'], 'description': ticket['body'], 'ticket_status': ticket['state'] }
+                    user_tickets.append(ticket_instance)
 
-        return user_tickets
+        return Response(user_tickets)
             
 
