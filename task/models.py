@@ -98,3 +98,23 @@ class Task(models.Model):
     class Meta:
         ordering = ["priority"]
         managed = True
+
+
+class TaskComment(models.Model):
+
+    task = models.ForeignKey(Task,verbose_name=_('Task'),)
+    date = models.DateTimeField(_('Date'),default = timezone.now)
+    comment = models.TextField(_('Comment'),blank=True,null=True,)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,verbose_name=_('User'),)
+
+    class Meta:
+        ordering = ['date']
+        verbose_name = _('Task-Comment')
+        verbose_name_plural = _('Task-Comments')
+        managed = True
+
+    def __unicode__(self):
+        return u'%s' %(self.comment)
+
+
+        
