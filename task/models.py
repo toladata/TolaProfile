@@ -105,7 +105,7 @@ class TaskComment(models.Model):
     task = models.ForeignKey(Task,verbose_name=_('Task'),)
     date = models.DateTimeField(_('Date'),default = timezone.now)
     comment = models.TextField(_('Comment'),blank=True,null=True,)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,blank=True,null=True,verbose_name=_('User'),)
+    user = models.ForeignKey(TolaUser, blank=True,null=True,verbose_name=_('User'),)
 
     class Meta:
         ordering = ['date']
@@ -117,4 +117,3 @@ class TaskComment(models.Model):
         return u'%s' %(self.comment)
 
 
-        

@@ -28,6 +28,13 @@ class TaskListViewSet(viewsets.ModelViewSet):
 
         return task_object
 
+#Task Comments Viewset
+class TaskCommentViewSet(viewsets.ModelViewSet):
+    permision_classes = (IsAuthenticated,)
+    serializer_class = TaskCommentSerializer
+
+    queryset = TaskComment.objects.all()
+
 #Send Mail when tasks is assigned to a user
 class SendTaskAssignedMail(APIView):
     permision_classes = (IsAuthenticated,)    
