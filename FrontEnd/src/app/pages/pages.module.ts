@@ -12,6 +12,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ModalModule,CollapseModule, AccordionModule, DatepickerModule, AlertModule } from 'ngx-bootstrap';
+import {SelectModule} from 'ng2-select';
 
 /* Import prismjs core for code hughlits */
 //import 'prismjs/prism';
@@ -37,6 +38,7 @@ import { FilterItemsPipe } from "app/shared/helpers/filter.pipe";
     DatepickerModule.forRoot(),
     CollapseModule.forRoot(),
     AlertModule.forRoot(),
+    SelectModule,
   ],
   declarations: [
     FooterComponent,
