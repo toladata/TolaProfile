@@ -163,8 +163,8 @@ export class TaskComponent implements OnInit{
     if(confirm_delete == true){
       this._service.deleteTask(task_id);
       this.tasks = this.tasks.filter(x => x.id !== task_id);
+      this.confirm_delete = "You have successfully deleted task #"+task_id+ ".";
     }
-    this.confirm_delete = "You have successfully deleted task #"+task_id+ ".";
 
   }
 

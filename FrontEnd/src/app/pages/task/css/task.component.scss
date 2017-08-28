@@ -59,3 +59,12 @@ $orange: #DD6E42;
 {
 	margin-bottom:10px;
 }
+//individual task
+.task__item
+{
+	padding:20px; 
+	background-color:#fff
+	&__collapse{
+		margin-top:10px;
+	}
+}
