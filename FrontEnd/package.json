@@ -54,6 +54,7 @@
     "ngx-barcode": "^0.2.2",
     "ngx-bootstrap": "^1.7.1",
     "ngx-pagination": "^3.0.1",
+    "ngx-mydatepicker": "2.0.14",
     "npm": "^5.0.3",
     "quagga": "^0.12.1",
     "rxjs": "^5.1.0",

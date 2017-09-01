@@ -13,6 +13,8 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ModalModule,CollapseModule, AccordionModule, DatepickerModule, AlertModule } from 'ngx-bootstrap';
 import {SelectModule} from 'ng2-select';
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+
 
 /* Import prismjs core for code hughlits */
 //import 'prismjs/prism';
@@ -39,6 +41,8 @@ import { FilterItemsPipe } from "app/shared/helpers/filter.pipe";
     CollapseModule.forRoot(),
     AlertModule.forRoot(),
     SelectModule,
+    NgxMyDatePickerModule.forRoot()
+
   ],
   declarations: [
     FooterComponent,
@@ -61,7 +65,8 @@ import { FilterItemsPipe } from "app/shared/helpers/filter.pipe";
     LoginComponent,
     RegisterComponent,
     UserprofileComponent,
-    PrismComponent
+    PrismComponent,
+
   ]
 })
 export class PagesModule {}
