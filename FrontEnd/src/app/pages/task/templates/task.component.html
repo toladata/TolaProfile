@@ -205,7 +205,7 @@
                             <div class="form-group row">
                                 <label for="due_date" class="col-md-2 col-sm-2 col-form-label">Due Date:</label>
                                 <div class="col-md-10 col-sm-10">
-                                    <input type="date" id="due_date" class="form-control" formControlName="due_date">
+                                    <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="due_date" formControlName="due_date" [options]="myOptions" #dp="ngx-mydatepicker" (click)="dp.toggleCalendar()"/>
                                     <!-- <datepicker [showWeeks]="true" formControlName="due_date"></datepicker> -->
                                 </div>
                             </div>

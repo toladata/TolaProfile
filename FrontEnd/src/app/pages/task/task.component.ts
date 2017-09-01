@@ -89,7 +89,7 @@ export class TaskComponent implements OnInit{
 
   private myOptions: INgxMyDpOptions = {
     // other options...
-    dateFormat: 'dd/mm/yyyy',
+    dateFormat: 'yyyy-mm-dd',
   };
 
   constructor(
@@ -147,6 +147,11 @@ export class TaskComponent implements OnInit{
         }
       }
     });
+
+    this.editTaskForm.setValue({
+      due_date: date
+      
+    });
   }
 
   clearDate(): void {
@@ -167,7 +172,6 @@ export class TaskComponent implements OnInit{
 
   //Create a task
   createTask(formData){
-    console.log(formData)
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
     this.hideCreateModal();
     this.confirm_creation = "You have successfully added a new task";
@@ -175,6 +179,7 @@ export class TaskComponent implements OnInit{
 
   //Edit task
   editTask(task_id, editFormData){
+    console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
       task =>this.tasks.unshift(task),
     );
