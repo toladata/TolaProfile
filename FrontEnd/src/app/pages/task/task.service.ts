@@ -29,6 +29,7 @@ export class TaskService{
                             "status": 1,
                             "submitter_email": taskData.submitter_email,
                             "created_by": Number(taskData.created_by),
+                            "due_date": new Date(String(taskData.due_date.formatted)),
                             "note": taskData.note
                         };
 
@@ -49,7 +50,6 @@ export class TaskService{
     }
 
     updateTask(task_id, editTaskData){
-
          let postEditData = {
                             "task": editTaskData.task,
                             "priority": Number(editTaskData.priority),
@@ -58,8 +58,10 @@ export class TaskService{
                             "created_by": Number(editTaskData.created_by),
                             "note": editTaskData.note,
                             "assigned_to": Number(editTaskData.assigned_to),
-                            "due_date": new Date(editTaskData.due_date)
+                            "due_date": new Date(String(editTaskData.due_date.formatted))
                         };
+         console.log(postEditData);
+
 
         return this._authHttp.put(TOLAPOFILE_TASK_SERVER+Number(task_id)+'/', JSON.stringify(postEditData), options)
             .map(function(response){

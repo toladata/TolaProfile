@@ -103,7 +103,7 @@ export class TaskComponent implements OnInit{
       task: ['', Validators.required ],
       note: ['', Validators.required],
       created_by: [this.user.id],
-      due_date: [''],
+      due_date: ['', Validators.required],
       submitter_email: [this.user.email],
       assigned_to: [''],
       priority: [''],
@@ -149,8 +149,14 @@ export class TaskComponent implements OnInit{
     });
 
     this.editTaskForm.setValue({
-      due_date: date
-      
+      due_date: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    
     });
   }
 
@@ -179,7 +185,6 @@ export class TaskComponent implements OnInit{
 
   //Edit task
   editTask(task_id, editFormData){
-    console.log(editFormData);
     this._service.updateTask(task_id, editFormData).subscribe(
       task =>this.tasks.unshift(task),
     );
