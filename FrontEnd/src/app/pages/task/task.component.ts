@@ -5,6 +5,7 @@ import {SharedService} from 'app/shared/services/shared.service';
 import { UserprofileService } from '../userprofile/userprofile.service';
 import {Router} from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { INgxMyDpOptions, IMyDateModel } from 'ngx-mydatepicker';
 
 @Component({
   selector: 'app-task',
@@ -86,6 +87,11 @@ export class TaskComponent implements OnInit{
   //Date
   public bsValue: any ;
 
+  private myOptions: INgxMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+  };
+
   constructor(
     private _service: TaskService,
     private _userprofileService: UserprofileService,
@@ -129,6 +135,25 @@ export class TaskComponent implements OnInit{
       );
   }
 
+  setDate(): void {
+    // Set today date using the setValue function
+    let date = new Date();
+    this.createTaskForm.setValue({
+      due_date: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    });
+  }
+
+  clearDate(): void {
+    // Clear the date using the setValue function
+    this.createTaskForm.setValue({ due_date: null });
+  }
+
   //get all tasks
   getAllTasks(): void{
     this._service.getTasks().subscribe((tasks) => {
@@ -142,6 +167,7 @@ export class TaskComponent implements OnInit{
 
   //Create a task
   createTask(formData){
+    console.log(formData)
     this._service.createTask(formData).subscribe(task => this.tasks.push(task));
     this.hideCreateModal();
     this.confirm_creation = "You have successfully added a new task";
