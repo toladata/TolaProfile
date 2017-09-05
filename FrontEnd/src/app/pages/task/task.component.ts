@@ -5,6 +5,7 @@ import {SharedService} from 'app/shared/services/shared.service';
 import { UserprofileService } from '../userprofile/userprofile.service';
 import {Router} from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { INgxMyDpOptions, IMyDateModel } from 'ngx-mydatepicker';
 
 @Component({
   selector: 'app-task',
@@ -86,6 +87,11 @@ export class TaskComponent implements OnInit{
   //Date
   public bsValue: any ;
 
+  private myOptions: INgxMyDpOptions = {
+    // other options...
+    dateFormat: 'yyyy-mm-dd',
+  };
+
   constructor(
     private _service: TaskService,
     private _userprofileService: UserprofileService,
@@ -97,7 +103,7 @@ export class TaskComponent implements OnInit{
       task: ['', Validators.required ],
       note: ['', Validators.required],
       created_by: [this.user.id],
-      due_date: [''],
+      due_date: ['', Validators.required],
       submitter_email: [this.user.email],
       assigned_to: [''],
       priority: [''],
@@ -127,6 +133,36 @@ export class TaskComponent implements OnInit{
       this._sharedService.getTolaUsers().subscribe(
         tolausers => this.tolausers=tolausers,
       );
+  }
+
+  setDate(): void {
+    // Set today date using the setValue function
+    let date = new Date();
+    this.createTaskForm.setValue({
+      due_date: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    });
+
+    this.editTaskForm.setValue({
+      due_date: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      }
+    
+    });
+  }
+
+  clearDate(): void {
+    // Clear the date using the setValue function
+    this.createTaskForm.setValue({ due_date: null });
   }
 
   //get all tasks

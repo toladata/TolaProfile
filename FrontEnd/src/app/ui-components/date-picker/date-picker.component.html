@@ -1,0 +1,15 @@
+<div *ngIf="formGroup" class="grid-form__card-body card-body datapicker__block" [formGroup]="formGroup" [ngClass]="errors ? 'has-danger' : ''" >
+  <label for="{{id}}">{{labelText}}</label>
+  <!--<ng2-datepicker [options]="options"  formControlName="{{controlName}}"></ng2-datepicker>-->
+  <div class="datapicker__block_field">
+    <input ngx-mydatepicker
+           name="{{id}}"
+           [options]="myOptions"
+           #dp="ngx-mydatepicker"
+           [value]="firstDate"
+           [placeholder]="inputPlaceholder"
+           (click)="dp.openCalendar()"
+           (dateChanged)="onDateChanged($event)"/>
+    <span class="icon-calendar" (click)="dp.openCalendar()"></span>
+  </div>
+</div>

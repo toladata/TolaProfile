@@ -16,6 +16,7 @@ import { RadioInlineComponent } from './radio-inline/radio-inline.component';
 import { TextHelper } from '../shared/helpers/text.helper';
 import { SubmitInlineComponent } from './submit-inline/submit-inline.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DragulaModule,
     MdCheckboxModule,
     SelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     ButtonComponent,
@@ -55,7 +56,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CheckboxInlineComponent,
     RadioInlineComponent,
     SubmitInlineComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class UiComponentsModule { }

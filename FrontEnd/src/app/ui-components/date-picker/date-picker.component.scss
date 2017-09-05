@@ -1,0 +1,89 @@
+@import "../../../assets/scss/config/_config";
+:host {
+  label {
+    display: block;
+  }
+}
+
+/deep/ {
+  ngx-my-date-picker {
+    .ngxmdp {
+      .header,
+      .headerbtncell,
+      .headerbtn,
+      .headerlabelbtn,
+      .weekdaytitle,
+      .currmonth {
+        background-color: $white;
+      }
+
+      .weekdaytitle {
+        padding-top: rem-calc(14);
+        padding-bottom: rem-calc(14);
+        color: $navy;
+        font-weight: 600;
+      }
+
+      .daycell,
+      .currmonth,
+      .highlight {
+        color: $gray;
+        font-weight: 500;
+      }
+
+      .tablesingleday:hover,
+      .tablesinglemonth:hover,
+      .tablesingleyear:hover {
+        background-color: $orange;
+        border-radius: rem-calc(4);
+        .currmonth {
+          color: white;
+        }
+      }
+      .selectedday .datevalue {
+        background-color: $orange !important;
+        color: white;
+      }
+      .selector{
+        padding: rem-calc(5);
+        background: $white;
+        border-color: rgba($black, .125);
+        &:focus{
+          border-color: rgba($black, .125);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+        }
+      }
+      .selectorarrow{
+        &:focus{
+          &:before{
+            border-bottom-color: rgba($black, .125);
+          }
+        }
+      }
+      .selectorarrow:after{
+        border-bottom-color: $white;
+      }
+    }
+    .markcurrday, markcurrmonth{
+      text-decoration: none;
+    }
+  }
+}
+
+
+.datapicker__block {
+  &_field {
+    position: relative;
+    margin: rem-calc(15 0);
+    input {
+      width: calc(100% - 26px);
+      border: none;
+    }
+    span {
+      position: absolute;
+      top: rem-calc(2);
+      right: 0;
+      font-size: rem-calc(20);
+    }
+  }
+}
